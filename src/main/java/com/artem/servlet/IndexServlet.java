@@ -18,7 +18,6 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
         ArrayList<KitchenDevice> kitchenDevicesArrayServ = KitchenDeviceDB.selectKitchenDevice();
         request.setAttribute("kitchenDevicesArrayServ", kitchenDevicesArrayServ);
         getServletContext().getRequestDispatcher("/index2.jsp").forward(request, response);
