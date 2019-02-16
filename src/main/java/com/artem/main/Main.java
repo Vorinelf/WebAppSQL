@@ -1,6 +1,7 @@
 package com.artem.main;
 
 import com.artem.connect.ConnectSql;
+import com.artem.device.KitchenDevice;
 import com.artem.device.KitchenDeviceDB;
 import org.apache.log4j.Logger;
 
@@ -23,6 +24,10 @@ public class Main {
         String query3 = "select count(*) from help_category";
         KitchenDeviceDB kitchenDeviceDB = new KitchenDeviceDB();
         kitchenDeviceDB.selectKitchenDevice();
+       // kitchenDeviceDB.selectOneKitchenDevice(5);
+       // kitchenDeviceDB.insert(new KitchenDevice("bbbb",5,true,5,  5));
+       // kitchenDeviceDB.update(new KitchenDevice("aaaa",5,true,5,  5),5);
+       // kitchenDeviceDB.delete(4);
 //        try {
 //            logger.info("Start connection to database!");
 //            Class.forName(connectSql.getClassForName());
