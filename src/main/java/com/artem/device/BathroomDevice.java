@@ -11,16 +11,16 @@ public class BathroomDevice extends Device {
     public BathroomDevice() {
     }
 
-    public BathroomDevice(String name, int powerSizekW, boolean powerON, boolean waterproof) {
-        super(name, powerSizekW, powerON);
+    public BathroomDevice(int id, String name, int powerSizekW, boolean powerON, boolean waterproof) {
+        super(id, name, powerSizekW, powerON);
 
         this.waterproof = waterproof;
     }
 
     @Override
     public String toString() {
-        return "\n"+ "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW()
-                + " " + "PowerON: " + isPowerON() + " " +  "waterproof: " + isWaterproof();
+        return "Id" + getId() + "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW()
+                + " " + "PowerON: " + isPowerON() + " " + "waterproof: " + isWaterproof();
     }
 
     public boolean isWaterproof() {

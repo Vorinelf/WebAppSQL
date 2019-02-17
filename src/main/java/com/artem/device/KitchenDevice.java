@@ -8,8 +8,8 @@ public class KitchenDevice extends Device {
     public KitchenDevice() {
     }
 
-    public KitchenDevice(String name, int powerSize_kW, boolean powerON, int minTemperature, int maxTemperature) {
-        super(name, powerSize_kW, powerON);
+    public KitchenDevice(int id, String name, int powerSize_kW, boolean powerON, int minTemperature, int maxTemperature) {
+        super(id, name, powerSize_kW, powerON);
         this.maxTemperature = maxTemperature;
         this.minTemperature = minTemperature;
 
@@ -17,9 +17,9 @@ public class KitchenDevice extends Device {
 
     @Override
     public String toString() {
-        return "\n"+ "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW()
-                + " " + "PowerON: " + isPowerON() +  " " + "minTemperature: " + getMinTemperature()+ " " + "maxTemperature: "
-                + getMaxTemperature() ;
+        return "Id" + getId() + "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW()
+                + " " + "PowerON: " + isPowerON() + " " + "minTemperature: " + getMinTemperature() + " " + "maxTemperature: "
+                + getMaxTemperature();
     }
 
     void resultTemperature() {

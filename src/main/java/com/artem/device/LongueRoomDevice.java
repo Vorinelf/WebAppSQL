@@ -8,8 +8,8 @@ public class LongueRoomDevice extends Device {
     public LongueRoomDevice() {
     }
 
-    public LongueRoomDevice(String name, int powerSizekW, boolean powerON, boolean lcdDisplay, boolean wiFi, boolean bluetooth) {
-        super(name, powerSizekW, powerON);
+    public LongueRoomDevice(int id, String name, int powerSizekW, boolean powerON, boolean lcdDisplay, boolean wiFi, boolean bluetooth) {
+        super(id, name, powerSizekW, powerON);
         this.lcdDisplay = lcdDisplay;
         this.wiFi = wiFi;
         this.bluetooth = bluetooth;
@@ -17,8 +17,8 @@ public class LongueRoomDevice extends Device {
 
     @Override
     public String toString() {
-        return "\n" + "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW() + " " + "PowerON: " + isPowerON() + " "
-                 + " " + "lcdDisplay: " + isLcdDisplay() + " " + "wiFi: " + isWiFi() + " " + "bluetooth: " + isBluetooth();
+        return "Id" + getId() + "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW() + " " + "PowerON: " + isPowerON() + " "
+                + " " + "lcdDisplay: " + isLcdDisplay() + " " + "wiFi: " + isWiFi() + " " + "bluetooth: " + isBluetooth();
     }
 
     public boolean isLcdDisplay() {
