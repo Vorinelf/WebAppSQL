@@ -1,6 +1,6 @@
 package com.artem.servlet;
 
-import com.artem.DB.BathroomDeviceDB;
+import com.artem.db.BathroomDeviceDB;
 import com.artem.device.BathroomDevice;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class CreateServletBathroom extends HttpServlet {
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
 
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            BathroomDeviceDB.insert(bathroomDevice);
+            BathroomDeviceDB.getBathroomDeviceDB().insert(bathroomDevice);
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {
 

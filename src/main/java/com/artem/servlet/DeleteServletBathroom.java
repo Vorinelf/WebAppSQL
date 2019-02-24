@@ -1,6 +1,6 @@
 package com.artem.servlet;
 
-import com.artem.DB.BathroomDeviceDB;
+import com.artem.db.BathroomDeviceDB;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ public class DeleteServletBathroom extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            BathroomDeviceDB.delete(id);
+            BathroomDeviceDB.getBathroomDeviceDB().delete(id);
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);

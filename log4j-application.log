@@ -1,53 +1,12 @@
-2019-02-15 19:36:17 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-15 19:36:17 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-15 19:36:17 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-15 19:36:17 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-15 19:36:17 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-15 19:37:44 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-15 19:37:44 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-15 19:37:45 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-15 19:37:45 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-15 19:37:45 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-15 20:19:16 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-15 20:19:16 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-15 20:19:16 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-15 20:19:16 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-15 20:19:16 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-15 21:47:30 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-15 21:47:30 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-15 21:47:31 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-15 21:47:31 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-15 21:47:31 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-15 21:48:56 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-15 21:48:56 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-15 21:48:57 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-15 21:48:57 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-15 21:48:57 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-16 00:52:43 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-16 00:52:43 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-16 00:52:44 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-16 00:52:44 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-16 00:52:44 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-16 15:07:34 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-16 15:07:34 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-16 15:07:35 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-16 15:07:35 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-16 15:07:35 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-17 17:48:32 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-17 17:48:32 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-17 17:48:33 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-17 17:48:33 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-17 17:48:33 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-17 18:44:59 INFO  KitchenDeviceDB:14 - KITCHEN_DEVICE_DB: Start method <selectKitchenDevice>
-2019-02-17 18:45:00 INFO  KitchenDeviceDB:19 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-17 18:45:00 INFO  KitchenDeviceDB:22 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-17 18:45:00 INFO  KitchenDeviceDB:24 - KITCHEN_DEVICE_DB: Start selection!
-2019-02-17 18:45:00 INFO  KitchenDeviceDB:48 - KITCHEN_DEVICE_DB: Good selection!
-2019-02-17 18:47:05 INFO  KitchenDeviceDB:90 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-17 18:47:05 INFO  KitchenDeviceDB:93 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-17 18:47:34 INFO  KitchenDeviceDB:115 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-17 18:47:34 INFO  KitchenDeviceDB:118 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-17 18:52:36 INFO  KitchenDeviceDB:115 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-17 18:52:37 INFO  KitchenDeviceDB:118 - KITCHEN_DEVICE_DB: Good connection!
-2019-02-17 19:13:17 INFO  KitchenDeviceDB:115 - KITCHEN_DEVICE_DB:Start connection to database!
-2019-02-17 19:13:17 INFO  KitchenDeviceDB:118 - KITCHEN_DEVICE_DB: Good connection!
+2019-02-24 19:38:28 INFO  KitchenDeviceDB:23 - KITCHEN_DEVICE_DB: Start the method <selectKitchenDevice>
+2019-02-24 19:38:28 INFO  ConnectionPool:24 - CONNECTION_POOL: Start method <ConnectionPool>
+2019-02-24 19:38:28 INFO  ConnectionPool:35 - CONNECTION_POOL: The method <ConnectionPool> is done successfully
+2019-02-24 19:38:28 INFO  ConnectionPool:39 - CONNECTION_POOL: Start method <getConnection>
+2019-02-24 19:38:28 INFO  ConnectionPool:46 - CONNECTION_POOL: The method <getConnection> is done successfully
+2019-02-24 19:38:28 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <closeConnection>
+2019-02-24 19:38:28 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <closeConnection> is done successfully
+2019-02-24 19:38:28 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <closeConnection>
+2019-02-24 19:38:28 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <closeConnection> is done successfully
+2019-02-24 19:38:28 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <closeConnection>
+2019-02-24 19:38:28 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <closeConnection> is done successfully
+2019-02-24 19:38:28 INFO  KitchenDeviceDB:47 - KITCHEN_DEVICE_DB: The method <selectBathroomDevice> is done successfully

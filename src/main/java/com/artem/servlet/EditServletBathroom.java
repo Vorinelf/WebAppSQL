@@ -1,9 +1,7 @@
 package com.artem.servlet;
 
-import com.artem.DB.BathroomDeviceDB;
+import com.artem.db.BathroomDeviceDB;
 import com.artem.device.BathroomDevice;
-import com.artem.device.KitchenDevice;
-import com.artem.DB.KitchenDeviceDB;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -21,7 +19,7 @@ public class EditServletBathroom extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            BathroomDevice bathroomDevice = BathroomDeviceDB.selectOneBathroomDevice(id);
+            BathroomDevice bathroomDevice = BathroomDeviceDB.getBathroomDeviceDB().selectOneBathroomDevice(id);
             if (bathroomDevice != null) {
                 request.setAttribute("bathroomDevice", bathroomDevice);
                 getServletContext().getRequestDispatcher("/editBathroom.jsp").forward(request, response);
@@ -44,7 +42,7 @@ public class EditServletBathroom extends HttpServlet {
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
 
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            BathroomDeviceDB.update(bathroomDevice);
+            BathroomDeviceDB.getBathroomDeviceDB().update(bathroomDevice);
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {
 

@@ -1,62 +1,61 @@
-package com.artem.DB;
+package com.artem.db;
 
-import com.artem.connect.ConnectSql;
+import com.artem.connect.ConnectionPool;
 import com.artem.device.BathroomDevice;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BathroomDeviceDB {
-    private static org.apache.log4j.Logger logger = Logger.getLogger(KitchenDeviceDB.class);
+    private static org.apache.log4j.Logger logger = Logger.getLogger(BathroomDeviceDB.class);
+
+    private static BathroomDeviceDB bathroomDeviceDB = null;
+
+    private BathroomDeviceDB() {
+    }
 
 
-    public static ArrayList<BathroomDevice> selectBatroomDevice() {
+    public static BathroomDeviceDB getBathroomDeviceDB() {
+        return bathroomDeviceDB = bathroomDeviceDB == null ? new BathroomDeviceDB() : bathroomDeviceDB;
+    }
+
+    public List<BathroomDevice> selectBatroomDevice() {
         logger.info("BATHROOM_DEVICE_DB: Start method <selectBathroomDevice>");
 
-        ArrayList<BathroomDevice> bathroomDevicesArray = new ArrayList<BathroomDevice>();
-        ConnectSql connectSql = new ConnectSql();
+        List<BathroomDevice> bathroomDevicesArray = new ArrayList<BathroomDevice>();
         try {
-            logger.info("BATHROOM_DEVICE_DB:Start connection to database!");
-            Class.forName(connectSql.getClassForName());
-            Connection connection = DriverManager.getConnection(connectSql.getURL(), connectSql.getUserName(), connectSql.getPassWord());
-            logger.info("BATHROOM_DB: Good connection!");
+            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
             Statement stmt = connection.createStatement();
-            logger.info("BATHROOM_DEVICE_DB: Start selection!");
             ResultSet rs = stmt.executeQuery("select * from bathroom_device");
-
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
                 int powerSize = rs.getInt(3);
                 boolean powerON = rs.getBoolean(4);
                 boolean waterproof = rs.getBoolean(5);
-
                 BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSize, powerON, waterproof);
                 bathroomDevicesArray.add(bathroomDevice);
+                ConnectionPool.getConnectionPool().returnConnection(connection);
             }
-
-            if (connection != null) {
-                connection.close();
+            if (stmt != null && rs != null) {
+                stmt.close();
+                rs.close();
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        logger.info("KITCHEN_DEVICE_DB: Good selection!");
+        logger.info("BATHROOM_DEVICE_DB: The method <selectBathroomDevice> is done successfully");
         return bathroomDevicesArray;
     }
 
 
-    public static BathroomDevice selectOneBathroomDevice(int id_bathroom_device) {
+    public BathroomDevice selectOneBathroomDevice(int id_bathroom_device) {
+        logger.info("BATHROOM_DEVICE_DB: Start method <selectOneBathroomDevice>");
         BathroomDevice bathroomDevice = null;
-        ConnectSql connectSql = new ConnectSql();
         try {
-            logger.info("BATHROOM_DEVICE_DB:Start connection to database!");
-            Class.forName(connectSql.getClassForName());
-            Connection connection = DriverManager.getConnection(connectSql.getURL(), connectSql.getUserName(), connectSql.getPassWord());
-            logger.info("BATHROOM_DEVICE_DB: Good connection!");
+            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
             logger.info("BATHROOM_DEVICE_DB: Start selection!");
             String sql = "SELECT * FROM bathroom_device WHERE id_bathroom_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -69,27 +68,23 @@ public class BathroomDeviceDB {
                 boolean powerON = rs.getBoolean(4);
                 boolean waterproof = rs.getBoolean(5);
                 bathroomDevice = new BathroomDevice(id, name, powerSize, powerON, waterproof);
+                ConnectionPool.getConnectionPool().returnConnection(connection);
             }
-            if (connection != null) {
-                connection.close();
+            if (preparedStatement != null && rs != null) {
+                preparedStatement.close();
+                rs.close();
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        logger.info("KITCHEN_DEVICE_DB: Good selection!");
+        logger.info("BATHROOM_DEVICE_DB: The method <selectOneBathroomDevice> is done successfully");
         return bathroomDevice;
     }
 
-    public static int insert(BathroomDevice bathroomDevice) {
-        ConnectSql connectSql = new ConnectSql();
+    public int insert(BathroomDevice bathroomDevice) {
         try {
-            logger.info("BATHROOM_DEVICE_DB:Start connection to database!");
-            Class.forName(connectSql.getClassForName());
-            Connection connection = DriverManager.getConnection(connectSql.getURL(), connectSql.getUserName(), connectSql.getPassWord());
-            logger.info("BATHROOM_DEVICE_DB: Good connection!");
-            logger.info("BATHROOM_DEVICE_DB: Start selection!");
+            logger.info("BATHROOM_DEVICE_DB: Start method <insert>");
+            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
             String sql = "INSERT INTO bathroom_device (id_bathroom_device, bathroom_name, bathroom_powerSize_kW, bathroom_powerON, bathroom_waterProof) Values (?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, bathroomDevice.getId());
@@ -97,24 +92,22 @@ public class BathroomDeviceDB {
             preparedStatement.setInt(3, bathroomDevice.getPowerSizekW());
             preparedStatement.setBoolean(4, bathroomDevice.isPowerON());
             preparedStatement.setBoolean(5, bathroomDevice.isWaterproof());
+            ConnectionPool.getConnectionPool().returnConnection(connection);
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
             return preparedStatement.executeUpdate();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        logger.info("BATHROOM_DEVICE_DB: Good selection!");
+        logger.info("BATHROOM_DEVICE_DB: The method <insert> is done successfully");
         return 0;
     }
 
-    public static int update(BathroomDevice bathroomDevice) {
-        ConnectSql connectSql = new ConnectSql();
+    public int update(BathroomDevice bathroomDevice) {
         try {
-            logger.info("BATHROOM_DEVICE_DB:Start connection to database!");
-            Class.forName(connectSql.getClassForName());
-            Connection connection = DriverManager.getConnection(connectSql.getURL(), connectSql.getUserName(), connectSql.getPassWord());
-            logger.info("BATHROOM_DEVICE_DB: Good connection!");
-            logger.info("BATHROOM_DEVICE_DB: Start selection!");
+            logger.info("BATHROOM_DEVICE_DB: Start method <update>");
+            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
             String sql = "UPDATE bathroom_device SET bathroom_name=?, bathroom_powerSize_kW=?, bathroom_powerON=?, bathroom_waterProof=? WHERE id_bathroom_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, bathroomDevice.getName());
@@ -122,36 +115,35 @@ public class BathroomDeviceDB {
             preparedStatement.setBoolean(3, bathroomDevice.isPowerON());
             preparedStatement.setBoolean(4, bathroomDevice.isWaterproof());
             preparedStatement.setInt(5, bathroomDevice.getId());
+            ConnectionPool.getConnectionPool().returnConnection(connection);
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
             return preparedStatement.executeUpdate();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        logger.info("BATHROOM_DEVICE_DB: Good selection!");
+        logger.info("BATHROOM_DEVICE_DB: The method <update> is done successfully");
         return 0;
     }
 
-    public static int delete(int id_bathroom_device) {
-        ConnectSql connectSql = new ConnectSql();
+    public int delete(int id_bathroom_device) {
+
         try {
-            logger.info("BATHROOM_DEVICE_DB:Start connection to database!");
-            Class.forName(connectSql.getClassForName());
-            Connection connection = DriverManager.getConnection(connectSql.getURL(), connectSql.getUserName(), connectSql.getPassWord());
-            logger.info("BATHROOM_DEVICE_DB: Good connection!");
-            logger.info("BATHROOM_DEVICE_DB: Start selection!");
+            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            logger.info("BATHROOM_DEVICE_DB: Start method <delete>");
             String sql = "DELETE FROM bathroom_device WHERE id_bathroom_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id_bathroom_device);
+            ConnectionPool.getConnectionPool().returnConnection(connection);
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
             return preparedStatement.executeUpdate();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        logger.info("KITCHEN_DEVICE_DB: Good selection!");
+        logger.info("BATHROOM_DEVICE_DB: The method <delete> is done successfully");
         return 0;
     }
 }
-
-

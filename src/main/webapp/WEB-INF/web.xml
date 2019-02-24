@@ -8,6 +8,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee"
          metadata-complete="false">
 <display-name>Archetype Created Web Application</display-name>
-
+    <resource-ref>
+        <description>mySQL Datasource</description>
+        <res-ref-name>jdbc/devices</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 
 </web-app>

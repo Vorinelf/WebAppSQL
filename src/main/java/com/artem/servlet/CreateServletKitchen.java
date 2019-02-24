@@ -1,7 +1,7 @@
 package com.artem.servlet;
 
 import com.artem.device.KitchenDevice;
-import com.artem.DB.KitchenDeviceDB;
+import com.artem.db.KitchenDeviceDB;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class CreateServletKitchen extends HttpServlet {
             int maxTemperature = Integer.parseInt(request.getParameter("maxTemperature"));
 
             KitchenDevice kitchenDevice = new KitchenDevice(id, name, powerSizekW, powerON, minTemperature, maxTemperature);
-            KitchenDeviceDB.insert(kitchenDevice);
+            KitchenDeviceDB.getBathroomDeviceDB().insert(kitchenDevice);
             response.sendRedirect(request.getContextPath() + "/selectKitchen");
         } catch (Exception ex) {
 

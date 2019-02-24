@@ -1,6 +1,6 @@
 package com.artem.main;
 
-import com.artem.DB.KitchenDeviceDB;
+import com.artem.db.KitchenDeviceDB;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -18,10 +18,10 @@ public class Main {
         String query1 = "select * from help_category where parent_category_id=7";
         String query2 = "INSERT INTO mysql.help_category (help_category_id, name, parent_category_id, url  ) VALUES (41, 'Mike', 7, 'url')";
         String query3 = "select count(*) from help_category";
-        KitchenDeviceDB kitchenDeviceDB = new KitchenDeviceDB();
-        // kitchenDeviceDB.selectKitchenDevice();
-        // kitchenDeviceDB.selectOneKitchenDevice(5);
-        // kitchenDeviceDB.insert(new KitchenDevice(4,"bbbb",5,true,5,  5));
+        KitchenDeviceDB kitchenDeviceDB =  KitchenDeviceDB.getBathroomDeviceDB();
+      kitchenDeviceDB.selectKitchenDevice();
+      // kitchenDeviceDB.selectOneKitchenDevice(5);
+     //   kitchenDeviceDB.insert(new KitchenDevice(4,"bbbb",5,true,5,  5));
         // kitchenDeviceDB.update(new KitchenDevice(4,"cccc",5,true,5,  5));
 
 
