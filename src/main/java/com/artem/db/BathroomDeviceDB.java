@@ -11,14 +11,14 @@ import java.util.List;
 public class BathroomDeviceDB {
     private static org.apache.log4j.Logger logger = Logger.getLogger(BathroomDeviceDB.class);
 
-    private static BathroomDeviceDB bathroomDeviceDB = null;
+    private static BathroomDeviceDB bathroomDeviceDB = new BathroomDeviceDB();
 
     private BathroomDeviceDB() {
     }
 
 
     public static BathroomDeviceDB getBathroomDeviceDB() {
-        return bathroomDeviceDB = bathroomDeviceDB == null ? new BathroomDeviceDB() : bathroomDeviceDB;
+        return bathroomDeviceDB;
     }
 
     public List<BathroomDevice> selectBatroomDevice() {
@@ -26,7 +26,7 @@ public class BathroomDeviceDB {
 
         List<BathroomDevice> bathroomDevicesArray = new ArrayList<BathroomDevice>();
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select * from bathroom_device");
             while (rs.next()) {
@@ -37,7 +37,7 @@ public class BathroomDeviceDB {
                 boolean waterproof = rs.getBoolean(5);
                 BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSize, powerON, waterproof);
                 bathroomDevicesArray.add(bathroomDevice);
-                ConnectionPool.getConnectionPool().returnConnection(connection);
+                ConnectionPool.getInstance().returnConnection(connection);
             }
             if (stmt != null && rs != null) {
                 stmt.close();
@@ -55,7 +55,7 @@ public class BathroomDeviceDB {
         logger.info("BATHROOM_DEVICE_DB: Start method <selectOneBathroomDevice>");
         BathroomDevice bathroomDevice = null;
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             logger.info("BATHROOM_DEVICE_DB: Start selection!");
             String sql = "SELECT * FROM bathroom_device WHERE id_bathroom_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -68,7 +68,7 @@ public class BathroomDeviceDB {
                 boolean powerON = rs.getBoolean(4);
                 boolean waterproof = rs.getBoolean(5);
                 bathroomDevice = new BathroomDevice(id, name, powerSize, powerON, waterproof);
-                ConnectionPool.getConnectionPool().returnConnection(connection);
+                ConnectionPool.getInstance().returnConnection(connection);
             }
             if (preparedStatement != null && rs != null) {
                 preparedStatement.close();
@@ -84,7 +84,7 @@ public class BathroomDeviceDB {
     public int insert(BathroomDevice bathroomDevice) {
         try {
             logger.info("BATHROOM_DEVICE_DB: Start method <insert>");
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             String sql = "INSERT INTO bathroom_device (id_bathroom_device, bathroom_name, bathroom_powerSize_kW, bathroom_powerON, bathroom_waterProof) Values (?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, bathroomDevice.getId());
@@ -92,7 +92,7 @@ public class BathroomDeviceDB {
             preparedStatement.setInt(3, bathroomDevice.getPowerSizekW());
             preparedStatement.setBoolean(4, bathroomDevice.isPowerON());
             preparedStatement.setBoolean(5, bathroomDevice.isWaterproof());
-            ConnectionPool.getConnectionPool().returnConnection(connection);
+            ConnectionPool.getInstance().returnConnection(connection);
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
@@ -107,7 +107,7 @@ public class BathroomDeviceDB {
     public int update(BathroomDevice bathroomDevice) {
         try {
             logger.info("BATHROOM_DEVICE_DB: Start method <update>");
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             String sql = "UPDATE bathroom_device SET bathroom_name=?, bathroom_powerSize_kW=?, bathroom_powerON=?, bathroom_waterProof=? WHERE id_bathroom_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, bathroomDevice.getName());
@@ -115,7 +115,7 @@ public class BathroomDeviceDB {
             preparedStatement.setBoolean(3, bathroomDevice.isPowerON());
             preparedStatement.setBoolean(4, bathroomDevice.isWaterproof());
             preparedStatement.setInt(5, bathroomDevice.getId());
-            ConnectionPool.getConnectionPool().returnConnection(connection);
+            ConnectionPool.getInstance().returnConnection(connection);
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
@@ -130,12 +130,12 @@ public class BathroomDeviceDB {
     public int delete(int id_bathroom_device) {
 
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             logger.info("BATHROOM_DEVICE_DB: Start method <delete>");
             String sql = "DELETE FROM bathroom_device WHERE id_bathroom_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id_bathroom_device);
-            ConnectionPool.getConnectionPool().returnConnection(connection);
+            ConnectionPool.getInstance().returnConnection(connection);
             if (preparedStatement != null) {
                 preparedStatement.close();
             }

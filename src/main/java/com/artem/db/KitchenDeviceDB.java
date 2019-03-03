@@ -23,7 +23,7 @@ public class KitchenDeviceDB {
         logger.info("KITCHEN_DEVICE_DB: Start the method <selectKitchenDevice>");
         List<KitchenDevice> kitchenDevicesArray = new ArrayList<KitchenDevice>();
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select * from kitchen_device");
             while (rs.next()) {
@@ -35,7 +35,7 @@ public class KitchenDeviceDB {
                 int maxT = rs.getInt(6);
                 KitchenDevice kitchenDevice = new KitchenDevice(id, name, powerSize, powerON, minT, maxT);
                 kitchenDevicesArray.add(kitchenDevice);
-                ConnectionPool.getConnectionPool().returnConnection(connection);
+                ConnectionPool.getInstance().returnConnection(connection);
             }
             if (stmt != null && rs != null) {
                 stmt.close();
@@ -53,7 +53,7 @@ public class KitchenDeviceDB {
         logger.info("KITCHEN_DEVICE_DB: Start the method <selectOneKitchenDevice>");
         KitchenDevice kitchenDevice = null;
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             String sql = "SELECT * FROM kitchen_device WHERE id_kitchen_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id_kitchen_device);
@@ -66,7 +66,7 @@ public class KitchenDeviceDB {
                 int minT = rs.getInt(5);
                 int maxT = rs.getInt(6);
                 kitchenDevice = new KitchenDevice(id, name, powerSize, powerON, minT, maxT);
-                ConnectionPool.getConnectionPool().returnConnection(connection);
+                ConnectionPool.getInstance().returnConnection(connection);
             }
             if (preparedStatement != null && rs != null) {
                 preparedStatement.close();
@@ -82,7 +82,7 @@ public class KitchenDeviceDB {
     public int insert(KitchenDevice kitchenDevice) {
         logger.info("KITCHEN_DEVICE_DB: Start the method <insert>");
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             String sql = "INSERT INTO kitchen_device (id_kitchen_device, kitchen_name, kitchen_powerSize_kW, kitchen_power_ON, kitchen_minTemperature, kitchen_maxTemperature) Values (?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, kitchenDevice.getId());
@@ -91,7 +91,7 @@ public class KitchenDeviceDB {
             preparedStatement.setBoolean(4, kitchenDevice.isPowerON());
             preparedStatement.setInt(5, kitchenDevice.getMinTemperature());
             preparedStatement.setInt(6, kitchenDevice.getMaxTemperature());
-            ConnectionPool.getConnectionPool().returnConnection(connection);
+            ConnectionPool.getInstance().returnConnection(connection);
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
@@ -107,7 +107,7 @@ public class KitchenDeviceDB {
     public int update(KitchenDevice kitchenDevice) {
         logger.info("KITCHEN_DEVICE_DB: Start the method <update>");
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             String sql = "UPDATE kitchen_device SET kitchen_name=?, kitchen_powerSize_kW=?, kitchen_power_ON=?, kitchen_minTemperature=?, kitchen_maxTemperature=? WHERE id_kitchen_device =?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, kitchenDevice.getName());
@@ -116,7 +116,7 @@ public class KitchenDeviceDB {
             preparedStatement.setInt(4, kitchenDevice.getMinTemperature());
             preparedStatement.setInt(5, kitchenDevice.getMaxTemperature());
             preparedStatement.setInt(6, kitchenDevice.getId());
-            ConnectionPool.getConnectionPool().returnConnection(connection);
+            ConnectionPool.getInstance().returnConnection(connection);
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
@@ -132,11 +132,11 @@ public class KitchenDeviceDB {
     public int delete(int id_kitchen_device) {
         logger.info("KITCHEN_DEVICE_DB: Start the method <delete>");
         try {
-            Connection connection = (Connection) ConnectionPool.getConnectionPool().getConnection();
+            Connection connection = (Connection) ConnectionPool.getInstance().getConnection();
             String sql = "DELETE FROM kitchen_device WHERE id_kitchen_device =?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id_kitchen_device);
-            ConnectionPool.getConnectionPool().returnConnection(connection);
+            ConnectionPool.getInstance().returnConnection(connection);
             if (preparedStatement != null) {
                 preparedStatement.close();
             }

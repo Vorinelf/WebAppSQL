@@ -10,3 +10,27 @@
 2019-02-24 19:38:28 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <closeConnection>
 2019-02-24 19:38:28 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <closeConnection> is done successfully
 2019-02-24 19:38:28 INFO  KitchenDeviceDB:47 - KITCHEN_DEVICE_DB: The method <selectBathroomDevice> is done successfully
+2019-02-28 21:27:42 INFO  KitchenDeviceDB:23 - KITCHEN_DEVICE_DB: Start the method <selectKitchenDevice>
+2019-02-28 21:27:42 INFO  ConnectionPool:24 - CONNECTION_POOL: Start method <ConnectionPool>
+2019-02-28 21:27:43 INFO  ConnectionPool:35 - CONNECTION_POOL: The method <ConnectionPool> is done successfully
+2019-02-28 21:27:43 INFO  ConnectionPool:39 - CONNECTION_POOL: Start method <getConnection>
+2019-02-28 21:27:43 INFO  ConnectionPool:46 - CONNECTION_POOL: The method <getConnection> is done successfully
+2019-02-28 21:27:43 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <closeConnection>
+2019-02-28 21:27:43 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <closeConnection> is done successfully
+2019-02-28 21:27:43 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <closeConnection>
+2019-02-28 21:27:43 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <closeConnection> is done successfully
+2019-02-28 21:27:43 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <closeConnection>
+2019-02-28 21:27:43 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <closeConnection> is done successfully
+2019-02-28 21:27:43 INFO  KitchenDeviceDB:47 - KITCHEN_DEVICE_DB: The method <selectBathroomDevice> is done successfully
+2019-02-28 21:28:30 INFO  KitchenDeviceDB:23 - KITCHEN_DEVICE_DB: Start the method <selectKitchenDevice>
+2019-02-28 21:28:30 INFO  ConnectionPool:24 - CONNECTION_POOL: Start method <ConnectionPool>
+2019-02-28 21:28:30 INFO  ConnectionPool:35 - CONNECTION_POOL: The method <ConnectionPool> is done successfully
+2019-02-28 21:28:30 INFO  ConnectionPool:39 - CONNECTION_POOL: Start method <getConnection>
+2019-02-28 21:28:30 INFO  ConnectionPool:46 - CONNECTION_POOL: The method <getConnection> is done successfully
+2019-02-28 21:28:30 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <returnConnection>
+2019-02-28 21:28:30 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <returnConnection> is done successfully
+2019-02-28 21:28:30 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <returnConnection>
+2019-02-28 21:28:30 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <returnConnection> is done successfully
+2019-02-28 21:28:30 INFO  ConnectionPool:51 - CONNECTION_POOL: Start method <returnConnection>
+2019-02-28 21:28:30 INFO  ConnectionPool:53 - CONNECTION_POOL: The method <returnConnection> is done successfully
+2019-02-28 21:28:30 INFO  KitchenDeviceDB:47 - KITCHEN_DEVICE_DB: The method <selectBathroomDevice> is done successfully

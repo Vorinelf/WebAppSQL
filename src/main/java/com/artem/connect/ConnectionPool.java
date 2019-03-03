@@ -13,10 +13,10 @@ public class ConnectionPool<T> {
     private String userName = "root";
     private String passWord = "root";
     private BlockingQueue<T> connectionQueue;
-    private static ConnectionPool<ProxyConnection>  connectionPool= null;
+    private static ConnectionPool<ProxyConnection>  connectionPool= new ConnectionPool<>(20);
 
-    public static  ConnectionPool getConnectionPool() {
-        return connectionPool = connectionPool == null ? new ConnectionPool<>(20) : connectionPool;
+    public static  ConnectionPool getInstance() {
+        return connectionPool;
     }
 
 
@@ -48,8 +48,8 @@ public class ConnectionPool<T> {
     }
 
     public void returnConnection(T connection) {
-        logger.info("CONNECTION_POOL: Start method <closeConnection>");
+        logger.info("CONNECTION_POOL: Start method <returnConnection>");
         connectionQueue.offer(connection);
-        logger.info("CONNECTION_POOL: The method <closeConnection> is done successfully");
+        logger.info("CONNECTION_POOL: The method <returnConnection> is done successfully");
     }
 }
