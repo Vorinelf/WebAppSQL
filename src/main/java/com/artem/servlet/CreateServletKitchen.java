@@ -32,7 +32,7 @@ public class CreateServletKitchen extends HttpServlet {
             int maxTemperature = Integer.parseInt(request.getParameter("maxTemperature"));
 
             KitchenDevice kitchenDevice = new KitchenDevice(id, name, powerSizekW, powerON, minTemperature, maxTemperature);
-            KitchenDeviceDB.getBathroomDeviceDB().insert(kitchenDevice);
+            KitchenDeviceDB.getKitchenDeviceDB().insert(kitchenDevice);
             response.sendRedirect(request.getContextPath() + "/selectKitchen");
         } catch (Exception ex) {
 

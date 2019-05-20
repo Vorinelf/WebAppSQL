@@ -18,7 +18,7 @@ public class EditServletKitchen extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            KitchenDevice kitchenDevice = KitchenDeviceDB.getBathroomDeviceDB().selectOneKitchenDevice(id);
+            KitchenDevice kitchenDevice = KitchenDeviceDB.getKitchenDeviceDB().selectOneKitchenDevice(id);
             if(kitchenDevice!=null) {
                 request.setAttribute("kitchenDevice", kitchenDevice);
                 getServletContext().getRequestDispatcher("/editKitchen.jsp").forward(request, response);
@@ -44,7 +44,7 @@ public class EditServletKitchen extends HttpServlet {
             int maxTemperature = Integer.parseInt(request.getParameter("maxTemperature"));
 
             KitchenDevice kitchenDevice = new KitchenDevice(id,name,powerSizekW,powerON,minTemperature,maxTemperature);
-            KitchenDeviceDB.getBathroomDeviceDB().update(kitchenDevice);
+            KitchenDeviceDB.getKitchenDeviceDB().update(kitchenDevice);
             response.sendRedirect(request.getContextPath()+"/selectKitchen");
         }
         catch(Exception ex) {

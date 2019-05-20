@@ -1,8 +1,10 @@
 package com.artem.servlet;
 
 import com.artem.db.BathroomDeviceDB;
+import com.artem.db.DataBaseHelper;
 import com.artem.device.BathroomDevice;
 
+import java.io.DataInput;
 import java.io.IOException;
 
 
@@ -15,9 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/createBathroom")
 public class CreateServletBathroom extends HttpServlet {
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(request, response);
     }
 
@@ -30,9 +33,12 @@ public class CreateServletBathroom extends HttpServlet {
             int powerSizekW = Integer.parseInt(request.getParameter("powerSizekW"));
             boolean powerON = Boolean.parseBoolean(request.getParameter("powerON"));
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
-
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            BathroomDeviceDB.getBathroomDeviceDB().insert(bathroomDevice);
+            DataBaseHelper dataBaseHelper = new DataBaseHelper();
+            dataBaseHelper.insertBathroomDevice(dataBaseHelper.getPrepareStatementInsert(), bathroomDevice);
+            dataBaseHelper.closePrepareStatement(dataBaseHelper.getPrepareStatementInsert());
+            dataBaseHelper.closeConnect();
+
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {
 

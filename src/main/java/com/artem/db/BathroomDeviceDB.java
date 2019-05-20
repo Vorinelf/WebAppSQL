@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BathroomDeviceDB {
+
     private static org.apache.log4j.Logger logger = Logger.getLogger(BathroomDeviceDB.class);
 
     private static BathroomDeviceDB bathroomDeviceDB = new BathroomDeviceDB();
@@ -20,6 +21,7 @@ public class BathroomDeviceDB {
     public static BathroomDeviceDB getBathroomDeviceDB() {
         return bathroomDeviceDB;
     }
+
 
     public List<BathroomDevice> selectBatroomDevice() {
         logger.info("BATHROOM_DEVICE_DB: Start method <selectBathroomDevice>");
@@ -46,6 +48,7 @@ public class BathroomDeviceDB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         logger.info("BATHROOM_DEVICE_DB: The method <selectBathroomDevice> is done successfully");
         return bathroomDevicesArray;
     }

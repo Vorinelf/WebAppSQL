@@ -15,13 +15,9 @@ public class ProxyConnection implements Connection {
     }
 
     @Override
-    public Statement createStatement() {
-        try {
-            return connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public Statement createStatement() throws SQLException{
+        return connection.createStatement();
+
     }
 
     @Override

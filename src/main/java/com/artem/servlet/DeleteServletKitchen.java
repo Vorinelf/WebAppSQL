@@ -18,7 +18,7 @@ public class DeleteServletKitchen extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            KitchenDeviceDB.getBathroomDeviceDB().delete(id);
+            KitchenDeviceDB.getKitchenDeviceDB().delete(id);
             response.sendRedirect(request.getContextPath() + "/selectKitchen");
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);

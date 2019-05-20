@@ -10,12 +10,12 @@ import java.util.List;
 
 public class KitchenDeviceDB {
     private static org.apache.log4j.Logger logger = Logger.getLogger(KitchenDeviceDB.class);
-    private static KitchenDeviceDB kitchenDeviceDB = null;
+    private static KitchenDeviceDB kitchenDeviceDB;
 
     private KitchenDeviceDB() {
     }
 
-    public static KitchenDeviceDB getBathroomDeviceDB() {
+    public static KitchenDeviceDB getKitchenDeviceDB() {
         return kitchenDeviceDB = kitchenDeviceDB == null ? new KitchenDeviceDB() : kitchenDeviceDB;
     }
 
@@ -120,7 +120,7 @@ public class KitchenDeviceDB {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            return preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

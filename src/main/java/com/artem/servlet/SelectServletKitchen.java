@@ -18,7 +18,7 @@ public class SelectServletKitchen extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-       List<KitchenDevice> kitchenDevicesArrayServ = KitchenDeviceDB.getBathroomDeviceDB().selectKitchenDevice();
+       List<KitchenDevice> kitchenDevicesArrayServ = KitchenDeviceDB.getKitchenDeviceDB().selectKitchenDevice();
         request.setAttribute("kitchenDevicesArrayServ", kitchenDevicesArrayServ);
         getServletContext().getRequestDispatcher("/mainKitchen.jsp").forward(request, response);
     }
