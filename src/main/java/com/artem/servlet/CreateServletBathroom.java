@@ -1,10 +1,8 @@
 package com.artem.servlet;
 
-import com.artem.db.BathroomDeviceDB;
-import com.artem.db.DataBaseHelper;
+import com.artem.methods.DataBaseHelper;
 import com.artem.device.BathroomDevice;
 
-import java.io.DataInput;
 import java.io.IOException;
 
 

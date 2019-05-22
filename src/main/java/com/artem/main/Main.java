@@ -1,6 +1,5 @@
 package com.artem.main;
 
-import com.artem.db.KitchenDeviceDB;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;

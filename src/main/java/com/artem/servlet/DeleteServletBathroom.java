@@ -1,6 +1,6 @@
 package com.artem.servlet;
 
-import com.artem.db.BathroomDeviceDB;
+import com.artem.methods.BathroomDeviceDB;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

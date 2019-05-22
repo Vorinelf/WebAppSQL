@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.artem.device.KitchenDevice;
-import com.artem.db.KitchenDeviceDB;
+import com.artem.methods.KitchenDeviceDB;
 
 @WebServlet("/selectKitchen")
 public class SelectServletKitchen extends HttpServlet {

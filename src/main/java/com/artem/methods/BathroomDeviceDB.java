@@ -1,4 +1,4 @@
-package com.artem.db;
+package com.artem.methods;
 
 import com.artem.connect.ConnectionPool;
 import com.artem.device.BathroomDevice;

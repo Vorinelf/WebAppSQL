@@ -1,6 +1,6 @@
 package com.artem.servlet;
 import com.artem.device.KitchenDevice;
-import com.artem.db.KitchenDeviceDB;
+import com.artem.methods.KitchenDeviceDB;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

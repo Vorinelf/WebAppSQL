@@ -1,4 +1,4 @@
-package com.artem.db;
+package com.artem.methods;
 
 import com.artem.connect.ConnectionPoolNew;
 import com.artem.connect.ProxyConnection;
