@@ -1,33 +1,35 @@
 package com.artem.methods;
 
 import com.artem.dao.Dao;
-import com.artem.device.Device;
+import com.artem.device.KitchenDevice;
 
 import java.util.List;
 
-public class AllMethodsKitchen implements Dao<Device> {
+public class AllMethodsKitchen implements Dao<KitchenDevice> {
+
+
     @Override
-    public List<Device> findAll() {
+    public List<KitchenDevice> findAll() {
         return null;
     }
 
     @Override
-    public void delete(int id) {
-
+    public boolean delete(int id) {
+        return false;
     }
 
     @Override
-    public void update(Device entity) {
-
+    public boolean update(KitchenDevice entity) {
+        return false;
     }
 
     @Override
-    public void save(Device entity) {
-
+    public boolean create(KitchenDevice entity) {
+        return false;
     }
 
     @Override
-    public Device findEntityById(int id) {
+    public KitchenDevice findEntityById(int id) {
         return null;
     }
 }

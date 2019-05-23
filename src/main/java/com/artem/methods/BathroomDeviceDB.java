@@ -137,7 +137,6 @@ public class BathroomDeviceDB {
             logger.info("BATHROOM_DEVICE_DB: Start method <delete>");
             String sql = "DELETE FROM bathroom_device WHERE id_bathroom_device=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, id_bathroom_device);
             ConnectionPool.getInstance().returnConnection(connection);
             if (preparedStatement != null) {
                 preparedStatement.close();

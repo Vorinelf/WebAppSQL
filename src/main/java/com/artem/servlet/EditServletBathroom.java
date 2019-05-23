@@ -1,5 +1,6 @@
 package com.artem.servlet;
 
+import com.artem.methods.AllMethodsBathroom;
 import com.artem.methods.BathroomDeviceDB;
 import com.artem.device.BathroomDevice;
 
@@ -16,10 +17,10 @@ public class EditServletBathroom extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            BathroomDevice bathroomDevice = BathroomDeviceDB.getBathroomDeviceDB().selectOneBathroomDevice(id);
+            AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+            BathroomDevice bathroomDevice = allMethodsBathroom.findEntityById(id);
             if (bathroomDevice != null) {
                 request.setAttribute("bathroomDevice", bathroomDevice);
                 getServletContext().getRequestDispatcher("/editBathroom.jsp").forward(request, response);
@@ -33,7 +34,6 @@ public class EditServletBathroom extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
@@ -42,7 +42,8 @@ public class EditServletBathroom extends HttpServlet {
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
 
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            BathroomDeviceDB.getBathroomDeviceDB().update(bathroomDevice);
+            AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+            allMethodsBathroom.update(bathroomDevice);
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {
 

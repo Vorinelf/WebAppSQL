@@ -1,5 +1,6 @@
 package com.artem.servlet;
 
+import com.artem.methods.AllMethodsBathroom;
 import com.artem.methods.DataBaseHelper;
 import com.artem.device.BathroomDevice;
 
@@ -32,10 +33,8 @@ public class CreateServletBathroom extends HttpServlet {
             boolean powerON = Boolean.parseBoolean(request.getParameter("powerON"));
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            DataBaseHelper dataBaseHelper = new DataBaseHelper();
-            dataBaseHelper.insertBathroomDevice(dataBaseHelper.getPrepareStatementInsert(), bathroomDevice);
-            dataBaseHelper.closePrepareStatement(dataBaseHelper.getPrepareStatementInsert());
-            dataBaseHelper.closeConnect();
+            AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+            allMethodsBathroom.create(bathroomDevice);
 
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {

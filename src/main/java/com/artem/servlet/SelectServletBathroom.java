@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.artem.methods.DataBaseHelper;
+import com.artem.methods.AllMethodsBathroom;
 import com.artem.device.BathroomDevice;
 
 @WebServlet("/selectBathroom")
@@ -20,10 +20,8 @@ public class SelectServletBathroom extends HttpServlet {
 
         List<BathroomDevice> bathroomDeviceArrayServ;
 
-        DataBaseHelper dataBaseHelper = new DataBaseHelper();
-        bathroomDeviceArrayServ = dataBaseHelper.selectAllBathroomDevice(dataBaseHelper.getStatementSelectAll());
-        dataBaseHelper.closeStatement(dataBaseHelper.getStatementSelectAll());
-        dataBaseHelper.closeConnect();
+        AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+        bathroomDeviceArrayServ = allMethodsBathroom.findAll();
         request.setAttribute("bathroomDeviceArrayServ", bathroomDeviceArrayServ);
         getServletContext().getRequestDispatcher("/mainBathroom.jsp").forward(request, response);
 
