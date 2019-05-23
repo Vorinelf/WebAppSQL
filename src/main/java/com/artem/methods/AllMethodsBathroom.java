@@ -28,12 +28,12 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
                 boolean waterproof = resultSet.getBoolean(5);
                 BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSize, powerON, waterproof);
                 bathroomDevicesArray.add(bathroomDevice);
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    ConnectionPoolNew.getInstance().closeConnection(connection);
-                }
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                ConnectionPoolNew.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,12 +56,13 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
                 boolean powerOn = resultSet.getBoolean(4);
                 boolean waterProof = resultSet.getBoolean(5);
                 bathroomDevice = new BathroomDevice(idBathroom, name, powerSize, powerOn, waterProof);
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if (connection != null) {
-                    ConnectionPoolNew.getInstance().closeConnection(connection);
-                }
+
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                ConnectionPoolNew.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,6 +76,7 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("DELETE FROM bathroom_device WHERE id_bathroom_device=?");
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
             flag = true;
             if (preparedStatement != null) {
@@ -98,22 +100,23 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("UPDATE bathroom_device SET bathroom_name=?, bathroom_powerSize_kW=?, bathroom_powerON=?, bathroom_waterProof=? WHERE id_bathroom_device=?");
             preparedStatement.setString(1, bathroomDevice.getName());
-            preparedStatement.setInt(2,bathroomDevice.getPowerSizekW());
-            preparedStatement.setBoolean(3,bathroomDevice.isPowerON());
+            preparedStatement.setInt(2, bathroomDevice.getPowerSizekW());
+            preparedStatement.setBoolean(3, bathroomDevice.isPowerON());
             preparedStatement.setBoolean(4, bathroomDevice.isWaterproof());
-            preparedStatement.setInt(5,bathroomDevice.getId());
+            preparedStatement.setInt(5, bathroomDevice.getId());
+            preparedStatement.executeUpdate();
             flag = true;
-            if(preparedStatement!=null){
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection!=null) {
+            if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-                return flag;
+        return flag;
     }
 
     @Override
@@ -135,7 +138,6 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
             if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
