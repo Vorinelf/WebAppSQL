@@ -20,7 +20,7 @@ public class CreateServletBathroom extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

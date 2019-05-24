@@ -17,20 +17,17 @@ public class CreateCommand implements Command {
     }
     @Override
     public String execute(HttpServletRequest request) {
-        try {
-            String name = request.getParameter("name");
+
             int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
             int powerSizekW = Integer.parseInt(request.getParameter("powerSizekW"));
             boolean powerON = Boolean.parseBoolean(request.getParameter("powerON"));
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
             allMethodsBathroom.create(bathroomDevice);
             return "/selectBathroom";
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return "/createBathroom.jsp";
+
         }
 
     }
-}
+

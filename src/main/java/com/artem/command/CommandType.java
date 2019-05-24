@@ -16,6 +16,6 @@ public enum  CommandType {
     }
 
 
-    public static Command getDefault () {return null;}
+    public static Command getDefault () {return CREATE.command;}
 
 }

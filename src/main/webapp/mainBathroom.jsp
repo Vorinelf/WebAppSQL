@@ -7,8 +7,8 @@
 </head>
 <body>
 <h2>BathroomDevices List</h2>
-<p><a href='<c:url value="/index.jsp" />'>Come back to start page</a></p>
-<p><a href='<c:url value="/createBathroom" />'>Create new bathroomDevice</a></p>
+<p><a href='<c:url value="/index.jsp"/>'>Come back to start page</a></p>
+<p><a href='<c:url value="/createBathroom.jsp"/>'>Create new bathroomDevice</a></p>
 <table>
 <tr><th>Id</th><th> Name</th><th> PowerSizekW</th><th> PowerON</th><th> Waterproof</th></tr>
 <c:forEach var="bd" items="${bathroomDeviceArrayServ}">

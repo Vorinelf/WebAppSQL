@@ -16,19 +16,21 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(req, resp);
+        processRequest(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
+
     }
 
     private void  processRequest (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String nameCommand = req.getParameter("command");
         Command command = CommandType.findCommand(nameCommand);
         String page = command.execute(req);
-        req.getRequestDispatcher(page).forward(req,resp);
+        resp.sendRedirect(req.getContextPath() + page);
+      //req.getRequestDispatcher(page).forward(req,resp);
 
     }
 }
