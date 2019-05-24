@@ -15,7 +15,6 @@ public class CreateCommand implements Command {
     public static Command getInstance() {
         return INSTANCE;
     }
-
     @Override
     public String execute(HttpServletRequest request) {
         try {

@@ -3,7 +3,6 @@ package com.artem.command;
 import java.util.Arrays;
 
 public enum  CommandType {
-
     CREATE(CreateCommand.getInstance());
     private Command command;
 
