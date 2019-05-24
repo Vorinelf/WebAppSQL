@@ -9,6 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllMethodsBathroom implements Dao<BathroomDevice> {
+    private final static AllMethodsBathroom INSTANCE = new AllMethodsBathroom();
+
+    public static AllMethodsBathroom getInstance() {
+        return INSTANCE;
+    }
+
+    private AllMethodsBathroom() {
+    }
 
 
     Connection connection = ConnectionPoolNew.getInstance().getConnection();
@@ -98,22 +106,22 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("UPDATE bathroom_device SET bathroom_name=?, bathroom_powerSize_kW=?, bathroom_powerON=?, bathroom_waterProof=? WHERE id_bathroom_device=?");
             preparedStatement.setString(1, bathroomDevice.getName());
-            preparedStatement.setInt(2,bathroomDevice.getPowerSizekW());
-            preparedStatement.setBoolean(3,bathroomDevice.isPowerON());
+            preparedStatement.setInt(2, bathroomDevice.getPowerSizekW());
+            preparedStatement.setBoolean(3, bathroomDevice.isPowerON());
             preparedStatement.setBoolean(4, bathroomDevice.isWaterproof());
-            preparedStatement.setInt(5,bathroomDevice.getId());
+            preparedStatement.setInt(5, bathroomDevice.getId());
             flag = true;
-            if(preparedStatement!=null){
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection!=null) {
+            if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-                return flag;
+        return flag;
     }
 
     @Override

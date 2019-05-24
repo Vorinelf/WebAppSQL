@@ -19,7 +19,7 @@ public class EditServletBathroom extends HttpServlet {
             throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+            AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
             BathroomDevice bathroomDevice = allMethodsBathroom.findEntityById(id);
             if (bathroomDevice != null) {
                 request.setAttribute("bathroomDevice", bathroomDevice);
@@ -42,7 +42,7 @@ public class EditServletBathroom extends HttpServlet {
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
 
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+            AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
             allMethodsBathroom.update(bathroomDevice);
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {

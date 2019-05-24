@@ -20,7 +20,7 @@ public class CreateServletBathroom extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(request, response);
+        //getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +33,7 @@ public class CreateServletBathroom extends HttpServlet {
             boolean powerON = Boolean.parseBoolean(request.getParameter("powerON"));
             boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
             BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
-            AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+            AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
             allMethodsBathroom.create(bathroomDevice);
 
             response.sendRedirect(request.getContextPath() + "/selectBathroom");

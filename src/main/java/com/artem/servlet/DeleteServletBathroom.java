@@ -19,7 +19,7 @@ public class DeleteServletBathroom extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+            AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
             allMethodsBathroom.delete(id);
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {

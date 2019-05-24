@@ -18,7 +18,10 @@
 <input name="powerON"/><br><br>
 <label>Waterproof</label><br>
 <input name="waterproof"/><br><br>
-<input type="submit" value="Save" />
+
+action='<c:url value="/mainServlet" />' style="display:inline;">
+        <input type="hidden" name="command" value="create">
+        <input type="submit" value="Save">
 </form>
 </body>
 </html>

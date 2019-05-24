@@ -20,7 +20,7 @@ public class SelectServletBathroom extends HttpServlet {
 
         List<BathroomDevice> bathroomDeviceArrayServ;
 
-        AllMethodsBathroom allMethodsBathroom = new AllMethodsBathroom();
+        AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
         bathroomDeviceArrayServ = allMethodsBathroom.findAll();
         request.setAttribute("bathroomDeviceArrayServ", bathroomDeviceArrayServ);
         getServletContext().getRequestDispatcher("/mainBathroom.jsp").forward(request, response);
