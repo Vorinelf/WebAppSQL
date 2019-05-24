@@ -104,9 +104,7 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
             preparedStatement.setBoolean(4, bathroomDevice.isWaterproof());
             preparedStatement.setInt(5, bathroomDevice.getId());
             flag = true;
-
             preparedStatement.close();
-
             if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
@@ -135,12 +133,9 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
             if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return flag;
-
-
     }
 }
