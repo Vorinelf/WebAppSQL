@@ -9,9 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllMethodsBathroom implements Dao<BathroomDevice> {
+    private final static AllMethodsBathroom INSTANCE = new AllMethodsBathroom();
+    public static AllMethodsBathroom getInstance() {return INSTANCE;}
 
 
     Connection connection = ConnectionPoolNew.getInstance().getConnection();
+
+
 
 
     @Override

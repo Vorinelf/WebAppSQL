@@ -19,6 +19,7 @@
 <label>Waterproof</label><br>
 <input name="waterproof"/><br><br>
 
+
 action='<c:url value="/mainServlet" />' style="display:inline;">
         <input type="hidden" name="command" value="create">
         <input type="submit" value="Save">
