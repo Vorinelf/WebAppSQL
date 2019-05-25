@@ -22,7 +22,7 @@ public class SelectServletBathroom extends HttpServlet {
 
         AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
         bathroomDeviceArrayServ = allMethodsBathroom.findAll();
-        request.setAttribute("bathroomDeviceArrayServ", bathroomDeviceArrayServ);
+        request.setAttribute("bathroomDeviceArray", bathroomDeviceArrayServ);
         getServletContext().getRequestDispatcher("/mainBathroom.jsp").forward(request, response);
 
     }

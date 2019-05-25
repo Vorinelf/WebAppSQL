@@ -11,7 +11,7 @@
 <p><a href='<c:url value="/createBathroom.jsp"/>'>Create new bathroomDevice</a></p>
 <table>
 <tr><th>Id</th><th> Name</th><th> PowerSizekW</th><th> PowerON</th><th> Waterproof</th></tr>
-<c:forEach var="bd" items="${bathroomDeviceArrayServ}">
+<c:forEach var="bd" items="${bathroomDeviceArray}">
  <tr><td>${bd.id}</td>
     <td>${bd.name}</td>
     <td>${bd.powerSizekW}</td>

@@ -29,8 +29,8 @@ public class MainServlet extends HttpServlet {
         String nameCommand = req.getParameter("command");
         Command command = CommandType.findCommand(nameCommand);
         String page = command.execute(req);
-        resp.sendRedirect(req.getContextPath() + page);
-      //req.getRequestDispatcher(page).forward(req,resp);
+      // resp.sendRedirect(req.getContextPath() + page);
+      req.getRequestDispatcher(page).forward(req,resp);
 
     }
 }
