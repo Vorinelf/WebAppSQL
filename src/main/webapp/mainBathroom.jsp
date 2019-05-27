@@ -7,8 +7,12 @@
 </head>
 <body>
 <h2>BathroomDevices List</h2>
-<p><a href='<c:url value="/index.jsp"/>'>Come back to start page</a></p>
-<p><a href='<c:url value="/createBathroom.jsp"/>'>Create new bathroomDevice</a></p>
+<form action = "index.jsp">
+<input type="submit" value = "Come back to start page"/>
+</form>
+        <form action = "createBathroom.jsp">
+         <input type="submit" value = "Create new bathroomDevice"/>
+                </form>
 <table>
 <tr><th>Id</th><th> Name</th><th> PowerSizekW</th><th> PowerON</th><th> Waterproof</th></tr>
 <c:forEach var="bd" items="${bathroomDeviceArray}">
@@ -18,16 +22,16 @@
     <td>${bd.powerON}</td>
     <td>${bd.waterproof}</td>
     <td>
+
     <form method = "POST" action = "mainServlet">
     <input type = "hidden" name = "id" value = "${bd.id}"/>
     <input type = "hidden" name = "command" value = "edit_read"/>
     <input type="submit" value = "Edit"/>
-    </form>
-
-    <form method="POST" action= action = "mainServlet">
+       </form>
+        <form method = "POST" action = "mainServlet">
         <input type="hidden" name="id" value="${bd.id}">
         <input type = "hidden" name = "command" value = "delete"/>
-        <input type="submit" value="Delete">
+      <input type="submit" value="Delete">
     </form>
  </td></tr>
  </c:forEach>

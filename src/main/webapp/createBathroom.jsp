@@ -20,6 +20,7 @@
 <input name="waterproof"/><br><br>
 <input type="hidden" name = "command" value = "create"/>
 <input type="submit" value="Save">
+<form method ="Po"
 </form>
 </body>
 </html>

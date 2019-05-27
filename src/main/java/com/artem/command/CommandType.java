@@ -7,7 +7,8 @@ public enum  CommandType {
     EDIT_READ (EditReadCommand.getInstance()),
     EDIT_WRITE(EditWriteCommand.getInstance()),
     DELETE(DeleteCommand.getInstance()),
-    FIND_ALL(FindAllCommand.getInstance());
+    FIND_ALL(FindAllCommand.getInstance()),
+    REGISTRATION(RegistrationCommand.getInstance());
 
     private Command command;
 

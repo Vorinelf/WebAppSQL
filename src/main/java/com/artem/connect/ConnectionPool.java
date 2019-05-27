@@ -21,7 +21,6 @@ public class ConnectionPool<T> {
 
 
 
-
     static {
         try {
             connectionPool = new ConnectionPool<>(20);
