@@ -3,7 +3,12 @@ package com.artem.command;
 import java.util.Arrays;
 
 public enum  CommandType {
-    CREATE(CreateCommand.getInstance());
+    CREATE(CreateCommand.getInstance()),
+    EDIT_READ (EditReadCommand.getInstance()),
+    EDIT_WRITE(EditWriteCommand.getInstance()),
+    DELETE(DeleteCommand.getInstance()),
+    FIND_ALL(FindAllCommand.getInstance());
+
     private Command command;
 
     CommandType (Command command) {this.command = command;}
@@ -16,6 +21,6 @@ public enum  CommandType {
     }
 
 
-    public static Command getDefault () {return CREATE.command;}
+    public static Command getDefault () {return FIND_ALL.command;}
 
 }

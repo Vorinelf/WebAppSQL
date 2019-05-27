@@ -7,7 +7,7 @@
 </head>
 <body>
 <h3>Edit bathroomDevice</h3>
-<form method="post">
+<form method="POST">
 <input type="hidden" value="${bathroomDevice.id}" name="id" />
 <label>Name</label><br>
 <input name="name" value="${bathroomDevice.name}" /><br><br>
@@ -17,7 +17,8 @@
 <input name="powerON" value="${bathroomDevice.powerON}" /><br><br>
 <label>Waterproof</label><br>
 <input name="waterproof" value="${bathroomDevice.waterproof}" /><br><br>
-<input type="submit" value="Send" />
+<input type="hidden" name = "command" value = "edit_write"/>
+<input type="submit" value="Update" />
 </form>
 </body>
 </html>

@@ -3,11 +3,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>KitchenDevices</title>
+<title>Devices</title>
 </head>
 <body>
-<h2>KitchenDevices List</h2>
-<p><a href='<c:url value="/selectKitchen" />'>All Kitchen Devices</a></p>
-<p><a href='<c:url value="/selectBathroom" />'>All Bathroom Devices</a></p>
+<h2>Select Devices List</h2>
+<form method = "POST" action = "mainServlet">
+    <input type = "hidden" name = "command" value = "find_all"/>
+    <input type="submit" value = "Select all bathroom devices"/>
+    </form>
+<form method = "POST" action = "mainServlet">
+        <input type = "hidden" name = "command" value = "no value"/>
+        <input type="submit" value = "Select all kitchen device"/>
+        </form>
 </body>
 </html>

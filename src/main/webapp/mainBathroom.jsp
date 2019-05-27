@@ -18,9 +18,15 @@
     <td>${bd.powerON}</td>
     <td>${bd.waterproof}</td>
     <td>
-    <a href='<c:url value="/editBathroom?id=${bd.id}"/>'>Edit</a>
-    <form method="post" action='<c:url value="/deleteBathroom" />' style="display:inline;">
+    <form method = "POST" action = "mainServlet">
+    <input type = "hidden" name = "id" value = "${bd.id}"/>
+    <input type = "hidden" name = "command" value = "edit_read"/>
+    <input type="submit" value = "Edit"/>
+    </form>
+
+    <form method="POST" action= action = "mainServlet">
         <input type="hidden" name="id" value="${bd.id}">
+        <input type = "hidden" name = "command" value = "delete"/>
         <input type="submit" value="Delete">
     </form>
  </td></tr>
