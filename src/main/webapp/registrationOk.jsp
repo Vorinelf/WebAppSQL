@@ -5,8 +5,9 @@
 <head><title>RegistrationOk</title></head>
 <body>
 <h3> Successful registration, Congratulations!!!</h3>
-<form action = "index.jsp">
-<input type="submit" value = "Go to start page to login"/>
+<h3> Welcome, ${user.firstName} ${user.secondName} </h3>
+<form action = "index2.jsp">
+<input type="submit" value = "Go to site"/>
 </form>
 </body>
 </html>

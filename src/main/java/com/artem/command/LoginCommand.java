@@ -21,7 +21,7 @@ public class LoginCommand implements Command {
         String page;
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        User user = loginMethods.checkLogin(login, password);
+        User user = loginMethods.checkLoginOrNewUser(login, password);
         if (user != null) {
             request.setAttribute("user", user);
             page = "checkLoginOk.jsp";

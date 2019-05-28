@@ -33,15 +33,16 @@ public class LoginMethods {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         }
         return flag;
     }
 
-    public User checkLogin(String login, String password) {
+    public User checkLoginOrNewUser(String login, String password) {
         User user = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM user_data WHERE user_login=? AND user_password=? limit=1");
+                    ("SELECT * FROM user_data WHERE user_login=? AND user_password=? limit 1");
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -57,7 +58,7 @@ public class LoginMethods {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
         return user;
     }

@@ -1,6 +1,5 @@
 package com.artem.command;
 
-import com.artem.methods.AllMethodsBathroom;
 import com.artem.methods.LoginMethods;
 import com.artem.users.User;
 
@@ -19,16 +18,20 @@ public class RegistrationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+        String page;
         String firstName = request.getParameter("firstName");
         String secondName = request.getParameter("secondName");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        User user = new User(firstName, secondName, login, password);
-        boolean result = loginMethods.registration(user);
-        if (result)
-            return "registrationOk.jsp";
-        else {
-            return "errorRegistration.jsp";
+        User userAfterCheck = loginMethods.checkLoginOrNewUser(login, password);
+        if (userAfterCheck!= null) {
+            page = "registrationError.jsp";
+        } else {
+            User user = new User(firstName, secondName, login, password);
+            loginMethods.registration(user);
+            request.setAttribute("user", user);
+            page = "registrationOk.jsp";
         }
+        return page;
     }
 }
