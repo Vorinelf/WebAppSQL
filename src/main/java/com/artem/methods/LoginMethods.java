@@ -10,10 +10,14 @@ import java.util.List;
 
 public class LoginMethods {
     private static final LoginMethods INSTANCE = new LoginMethods();
-    public static LoginMethods getInstance() {return INSTANCE;}
+
+    public static LoginMethods getInstance() {
+        return INSTANCE;
+    }
+
     private Connection connection = ConnectionPoolNew.getInstance().getConnection();
 
-    public boolean registration (User entity) {
+    public boolean registration(User entity) {
         boolean flag = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
@@ -33,46 +37,30 @@ public class LoginMethods {
         return flag;
     }
 
-    public boolean checkUser (User entity) {
-        boolean flag = false;
+    public User checkLogin(String login, String password) {
+        User user = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM user_data WHERE user_login=? AND user_password=?");
-
-            preparedStatement.setString(1, entity.getLogin());
-            preparedStatement.setString(2, entity.getPassword());
-            preparedStatement.executeUpdate();
-            flag = true;
+                    ("SELECT * FROM user_data WHERE user_login=? AND user_password=? limit=1");
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String firstName = resultSet.getString(2);
+                String secondName = resultSet.getString(3);
+                String log = resultSet.getString(4);
+                String passw = resultSet.getString(5);
+                user = new User(firstName,secondName,log,passw);
+            }
             preparedStatement.close();
             if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
-        }
-        return flag;
 
-
-        List<BathroomDevice> users = new ArrayList<>();
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from bathroom_device");
-            while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                int powerSize = resultSet.getInt(3);
-                boolean powerON = resultSet.getBoolean(4);
-                boolean waterproof = resultSet.getBoolean(5);
-                BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSize, powerON, waterproof);
-                bathroomDevicesArray.add(bathroomDevice);
-            }
-            statement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return bathroomDevicesArray;
+        return user;
     }
+
 
 }

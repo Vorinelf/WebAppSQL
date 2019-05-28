@@ -8,7 +8,8 @@ public enum  CommandType {
     EDIT_WRITE(EditWriteCommand.getInstance()),
     DELETE(DeleteCommand.getInstance()),
     FIND_ALL(FindAllCommand.getInstance()),
-    REGISTRATION(RegistrationCommand.getInstance());
+    REGISTRATION(RegistrationCommand.getInstance()),
+    LOGIN(LoginCommand.getInstance());
 
     private Command command;
 
