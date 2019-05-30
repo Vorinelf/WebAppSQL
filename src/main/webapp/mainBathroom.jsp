@@ -13,6 +13,9 @@
         <form action = "createBathroom.jsp">
          <input type="submit" value = "Create new bathroomDevice"/>
                 </form>
+                <form action = "session.jsp">
+                <input type="submit" value = "Session"/>
+                </form>
 <table>
 <tr><th>Id</th><th> Name</th><th> PowerSizekW</th><th> PowerON</th><th> Waterproof</th></tr>
 <c:forEach var="bd" items="${bathroomDeviceArray}">
