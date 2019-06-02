@@ -2,14 +2,13 @@ package com.artem.servlet;
 
 import com.artem.command.Command;
 import com.artem.command.CommandType;
+import com.artem.session.Cookies;
+import com.artem.session.SessionLocator;
 import com.artem.users.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -37,11 +36,31 @@ public class MainServlet extends HttpServlet {
         String page = command.execute(req);
         req.getRequestDispatcher(page).forward(req, resp);
 
-        HttpSession session = req.getSession();
+        Cookies.setCookie(resp);
+        req.setAttribute("messagesCookie",Cookies.addToRequest(req));
+
+        HttpSession session;
+        if (SessionLocator.flag) {
+            session = req.getSession();
+            session.setMaxInactiveInterval(10);
+            SessionLocator.flag = false;
+
+        } else {
+            session = req.getSession(false);
+            if (session == null) {
+                SessionLocator.flag = true;
+            }
+        }
+
         Integer count = (Integer) session.getAttribute("count");
         if (count == null) {
             session.setAttribute("count", 1);
         } else
             session.setAttribute("count", count + 1);
+
+        if (session.getAttribute("role") == null) {
+            session.setAttribute("role", "user");
+        }
+        session.setAttribute("messages", SessionLocator.addMessage(session));
     }
 }
