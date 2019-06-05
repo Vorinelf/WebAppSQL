@@ -27,7 +27,7 @@ public class LoginCommand implements Command {
         if (user != null) {
             HttpSession session;
             ClientType clientType;
-            if (user.isAdmin() == true) {
+            if (user.isAdmin()) {
                 clientType = ClientType.ADMIN;
                 session = request.getSession();
                 session.setAttribute("role", clientType);
