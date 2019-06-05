@@ -2,6 +2,8 @@ package com.artem.servlet;
 
 import com.artem.command.Command;
 import com.artem.command.CommandType;
+import com.artem.filter.ClientType;
+import com.artem.filter.FilterController;
 import com.artem.session.Cookies;
 import com.artem.session.SessionLocator;
 import com.artem.users.User;
@@ -37,7 +39,7 @@ public class MainServlet extends HttpServlet {
         req.getRequestDispatcher(page).forward(req, resp);
 
         Cookies.setCookie(resp);
-        req.setAttribute("messagesCookie",Cookies.addToRequest(req));
+        req.setAttribute("messagesCookie", Cookies.addToRequest(req));
 
         HttpSession session;
         if (SessionLocator.flag) {
@@ -55,12 +57,12 @@ public class MainServlet extends HttpServlet {
         Integer count = (Integer) session.getAttribute("count");
         if (count == null) {
             session.setAttribute("count", 1);
-        } else
+        } else {
             session.setAttribute("count", count + 1);
-
-        if (session.getAttribute("role") == null) {
-            session.setAttribute("role", "user");
         }
+
+
+
         session.setAttribute("messages", SessionLocator.addMessage(session));
     }
 }

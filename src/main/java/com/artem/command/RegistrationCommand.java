@@ -23,11 +23,12 @@ public class RegistrationCommand implements Command {
         String secondName = request.getParameter("secondName");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        boolean isAdmin = Boolean.parseBoolean(request.getParameter("isAdmin"));
         User userAfterCheck = loginMethods.checkLoginOrNewUser(login, password);
         if (userAfterCheck!= null) {
             page = "registrationError.jsp";
         } else {
-            User user = new User(firstName, secondName, login, password);
+            User user = new User(firstName, secondName, login, password,isAdmin);
             loginMethods.registration(user);
             request.setAttribute("user", user);
             page = "registrationOk.jsp";

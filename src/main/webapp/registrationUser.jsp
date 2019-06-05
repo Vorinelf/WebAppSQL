@@ -14,6 +14,7 @@
 <input name="login"/><br><br>
 <label>Password</label><br>
 <input name="password"/><br><br>
+<input name="isAdmin" value = "false"/>
 <input type = "hidden" name = "command" value = "registration"/>
 <input type="submit" value="Registration">
 </form>

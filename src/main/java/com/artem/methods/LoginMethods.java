@@ -21,11 +21,12 @@ public class LoginMethods {
         boolean flag = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("INSERT INTO user_data (user_firstName, user_secondName, user_login, user_password) Values (?,?,?,?)");
+                    ("INSERT INTO user_data (user_firstName, user_secondName, user_login, user_password, user_isAdmin) Values (?,?,?,?,?)");
             preparedStatement.setString(1, entity.getFirstName());
             preparedStatement.setString(2, entity.getSecondName());
             preparedStatement.setString(3, entity.getLogin());
             preparedStatement.setString(4, entity.getPassword());
+            preparedStatement.setBoolean(5,entity.isAdmin());
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();
@@ -51,7 +52,8 @@ public class LoginMethods {
                 String secondName = resultSet.getString(3);
                 String log = resultSet.getString(4);
                 String passw = resultSet.getString(5);
-                user = new User(firstName,secondName,log,passw);
+                Boolean isAdmin = resultSet.getBoolean(6);
+                user = new User(firstName,secondName,log,passw,isAdmin);
             }
             preparedStatement.close();
             if (connection != null) {

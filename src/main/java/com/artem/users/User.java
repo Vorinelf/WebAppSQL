@@ -9,5 +9,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class User {
     private String firstName, secondName, login, password;
+    boolean isAdmin;
 
 }
