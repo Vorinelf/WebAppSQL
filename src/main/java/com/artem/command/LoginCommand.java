@@ -2,6 +2,7 @@ package com.artem.command;
 
 import com.artem.filter.ClientType;
 import com.artem.methods.LoginMethods;
+import com.artem.session.SessionLocator;
 import com.artem.users.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,19 +22,25 @@ public class LoginCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+        HttpSession session;
+        ClientType clientType;
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         User user = loginMethods.checkLoginOrNewUser(login, password);
         if (user != null) {
-            HttpSession session;
-            ClientType clientType;
             if (user.isAdmin()) {
                 clientType = ClientType.ADMIN;
-                session = request.getSession();
+                request.getSession().invalidate();
+                session = request.getSession(true);
+                session.setMaxInactiveInterval(60*5);
+                session.setAttribute("messages", SessionLocator.addMessage(session));
                 session.setAttribute("role", clientType);
             } else {
                 clientType = ClientType.USER;
-                session = request.getSession();
+                request.getSession().invalidate();
+                session = request.getSession(true);
+                session.setMaxInactiveInterval(60*5);
+                session.setAttribute("messages", SessionLocator.addMessage(session));
                 session.setAttribute("role", clientType);
             }
             request.setAttribute("user", user);

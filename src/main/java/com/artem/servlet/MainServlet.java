@@ -21,6 +21,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookies.setCookie(resp);
 
         processRequest(req, resp);
     }
@@ -37,32 +38,32 @@ public class MainServlet extends HttpServlet {
         Command command = CommandType.findCommand(nameCommand);
         String page = command.execute(req);
         req.getRequestDispatcher(page).forward(req, resp);
-
-        Cookies.setCookie(resp);
         req.setAttribute("messagesCookie", Cookies.addToRequest(req));
-
-        HttpSession session;
-        if (SessionLocator.flag) {
-            session = req.getSession();
-            session.setMaxInactiveInterval(10);
-            SessionLocator.flag = false;
-
-        } else {
-            session = req.getSession(false);
-            if (session == null) {
-                SessionLocator.flag = true;
-            }
-        }
-
-        Integer count = (Integer) session.getAttribute("count");
-        if (count == null) {
-            session.setAttribute("count", 1);
-        } else {
-            session.setAttribute("count", count + 1);
-        }
+        System.out.println(Cookies.addToRequest(req));
 
 
-
-        session.setAttribute("messages", SessionLocator.addMessage(session));
+//        HttpSession session;
+//        if (SessionLocator.flag) {
+//            session = req.getSession();
+//            session.setMaxInactiveInterval(20);
+//            SessionLocator.flag = false;
+//
+//        } else {
+//            session = req.getSession(false);
+//            if (session == null) {
+//                SessionLocator.flag = true;
+//            }
+//        }
+//
+//        Integer count = (Integer) session.getAttribute("count");
+//        if (count == null) {
+//            session.setAttribute("count", 1);
+//        } else {
+//            session.setAttribute("count", count + 1);
+//        }
+//
+//
+//
+//        session.setAttribute("messages", SessionLocator.addMessage(session));
     }
 }

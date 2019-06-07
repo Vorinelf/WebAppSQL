@@ -8,18 +8,18 @@ import java.util.List;
 
 
 public class Cookies {
-    private static int number = 1;
-
 
     public static void setCookie (HttpServletResponse response) {
-        String name = "cookie";
-        String cook = "Cookies is OK";
+        String name = "Art";
+        String cook = "Vor";
         Cookie cookie = new Cookie(name,cook);
         cookie.setMaxAge(3600);
-        response.addCookie(cookie);
         String value = response.getLocale().toString();
         Cookie loc = new Cookie("locale",value);
+        Cookie cookie1 = new Cookie("Artem","Voronov");
+        response.addCookie(cookie);
         response.addCookie(loc);
+        response.addCookie(cookie1);
     }
 
     public static List<String> addToRequest (HttpServletRequest request) {
