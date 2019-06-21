@@ -7,6 +7,7 @@
 <h3>ERROR LOGIN OR PASSWORD </h3>
 <form action = "index.jsp">
 <input type="submit" value = "Log in again"/>
+</form>
 <form action = "registrationUser.jsp">
 <input type="submit" value = "Registration"/>
 </form>

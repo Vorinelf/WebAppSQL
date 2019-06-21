@@ -23,6 +23,7 @@ public class AllMethodsKitchen implements Dao<KitchenDevice> {
         return false;
     }
 
+
     @Override
     public boolean create(KitchenDevice entity) {
         return false;

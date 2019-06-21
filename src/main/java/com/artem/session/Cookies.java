@@ -10,13 +10,11 @@ import java.util.List;
 public class Cookies {
 
     public static void setCookie (HttpServletResponse response) {
-        String name = "Art";
-        String cook = "Vor";
-        Cookie cookie = new Cookie(name,cook);
+        Cookie cookie = new Cookie("FirstName","Artem");
         cookie.setMaxAge(3600);
         String value = response.getLocale().toString();
         Cookie loc = new Cookie("locale",value);
-        Cookie cookie1 = new Cookie("Artem","Voronov");
+        Cookie cookie1 = new Cookie("SecondName","Voronov");
         response.addCookie(cookie);
         response.addCookie(loc);
         response.addCookie(cookie1);

@@ -4,7 +4,7 @@ import com.artem.device.Device;
 
 import java.util.List;
 
-public interface Dao <T extends Device> {
+public interface Dao<T extends Device> {
     List<T> findAll();
 
     T findEntityById(int id);
@@ -14,7 +14,6 @@ public interface Dao <T extends Device> {
     boolean delete(int id);
 
     boolean update(T entity);
-
 
 
 

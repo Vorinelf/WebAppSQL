@@ -8,28 +8,39 @@ import com.artem.session.Cookies;
 import com.artem.session.SessionLocator;
 import com.artem.users.User;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet("/mainServlet")
 public class MainServlet extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Cookies.setCookie(resp);
 
-        processRequest(req, resp);
+
+            processRequest(req, resp);
+
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        processRequest(req, resp);
+
+
+            processRequest(req, resp);
+
+
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

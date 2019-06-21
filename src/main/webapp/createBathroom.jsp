@@ -8,19 +8,16 @@
 <body>
 <h3>New bathroomDevice</h3>
 <form method="POST" action = "mainServlet">
-<label>Id</label><br>
-<input name="id"/><br><br>
 <label>Name</label><br>
-<input name="name"/><br><br>
+<input name="name" required/><br><br>
 <label>PowerSizekW</label><br>
-<input name="powerSizekW"/><br><br>
+<input name="powerSizekW" required/><br><br>
 <label>PowerON</label><br>
-<input name="powerON"/><br><br>
+<input name="powerON" required/><br><br>
 <label>Waterproof</label><br>
-<input name="waterproof"/><br><br>
+<input name="waterproof" required/><br><br>
 <input type="hidden" name = "command" value = "create"/>
 <input type="submit" value="Save">
-<form method ="Po"
 </form>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <body>
 <h2>BathroomDevices List</h2>
 <form action = "index.jsp">
-<input type="submit" value = "Come back to start page"/>
+<input type="submit" value = "Back to start page"/>
 </form>
         <form action = "createBathroom.jsp">
          <input type="submit" value = "Create new bathroomDevice"/>
@@ -36,6 +36,11 @@
         <input type = "hidden" name = "command" value = "delete"/>
       <input type="submit" value="Delete">
     </form>
+          <form method = "POST" action = "mainServlet">
+            <input type = "hidden" name = "id" value = "${bd.id}"/>
+            <input type = "hidden" name = "command" value = "in_cart"/>
+            <input type="submit" value = "in cart"/>
+               </form>
  </td></tr>
  </c:forEach>
 </table>

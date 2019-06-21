@@ -20,12 +20,11 @@ public class CreateCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
 
-        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int powerSizekW = Integer.parseInt(request.getParameter("powerSizekW"));
         boolean powerON = Boolean.parseBoolean(request.getParameter("powerON"));
         boolean waterproof = Boolean.parseBoolean(request.getParameter("waterproof"));
-        BathroomDevice bathroomDevice = new BathroomDevice(id, name, powerSizekW, powerON, waterproof);
+        BathroomDevice bathroomDevice = new BathroomDevice(name, powerSizekW, powerON, waterproof);
         allMethodsBathroom.create(bathroomDevice);
         List<BathroomDevice> listBathroom = allMethodsBathroom.findAll();
         request.setAttribute("bathroomDeviceArray", listBathroom);

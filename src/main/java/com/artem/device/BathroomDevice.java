@@ -1,6 +1,5 @@
 package com.artem.device;
 
-
 public class BathroomDevice extends Device {
     private boolean waterproof;
 
@@ -10,7 +9,11 @@ public class BathroomDevice extends Device {
 
     public BathroomDevice() {
     }
+    public BathroomDevice( String name, int powerSizekW, boolean powerON, boolean waterproof) {
+        super(name, powerSizekW, powerON);
 
+        this.waterproof = waterproof;
+    }
     public BathroomDevice(int id, String name, int powerSizekW, boolean powerON, boolean waterproof) {
         super(id, name, powerSizekW, powerON);
 
@@ -19,7 +22,7 @@ public class BathroomDevice extends Device {
 
     @Override
     public String toString() {
-        return "Id" + getId() + "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW()
+        return "Id: " + getId() + " "+ "Name: " + getName() + " " + "PowerSize: " + getPowerSizekW()
                 + " " + "PowerON: " + isPowerON() + " " + "waterproof: " + isWaterproof();
     }
 
@@ -27,4 +30,5 @@ public class BathroomDevice extends Device {
         return waterproof;
     }
 }
+
 

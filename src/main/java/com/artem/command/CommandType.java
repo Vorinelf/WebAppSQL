@@ -9,7 +9,9 @@ public enum  CommandType {
     DELETE(DeleteCommand.getInstance()),
     FIND_ALL(FindAllCommand.getInstance()),
     REGISTRATION(RegistrationCommand.getInstance()),
-    LOGIN(LoginCommand.getInstance());
+    IN_CART(InCartCommand.getInstance()),
+    LOGIN(LoginCommand.getInstance()),
+    DELETE_FROM_CART(DeleteFromCartCommand.getInstance());
 
     private Command command;
 

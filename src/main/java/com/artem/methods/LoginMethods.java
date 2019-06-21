@@ -1,12 +1,10 @@
 package com.artem.methods;
 
 import com.artem.connect.ConnectionPoolNew;
-import com.artem.device.BathroomDevice;
 import com.artem.users.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class LoginMethods {
     private static final LoginMethods INSTANCE = new LoginMethods();
@@ -26,7 +24,7 @@ public class LoginMethods {
             preparedStatement.setString(2, entity.getSecondName());
             preparedStatement.setString(3, entity.getLogin());
             preparedStatement.setString(4, entity.getPassword());
-            preparedStatement.setBoolean(5,entity.isAdmin());
+            preparedStatement.setString(5, String.valueOf(entity.isAdmin()));
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();

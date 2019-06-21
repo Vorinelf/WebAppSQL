@@ -3,13 +3,18 @@ package com.artem.methods;
 import com.artem.connect.ConnectionPoolNew;
 import com.artem.dao.Dao;
 import com.artem.device.BathroomDevice;
+import com.artem.device.Device;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class AllMethodsBathroom implements Dao<BathroomDevice> {
     private final static AllMethodsBathroom INSTANCE = new AllMethodsBathroom();
+    private List<BathroomDevice> bathroomDevicesArray;
+    private AtomicInteger idGenerator;
+
 
     public static AllMethodsBathroom getInstance() {
         return INSTANCE;
@@ -21,7 +26,7 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
 
     @Override
     public List<BathroomDevice> findAll() {
-        List<BathroomDevice> bathroomDevicesArray = new ArrayList<>();
+       bathroomDevicesArray = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from bathroom_device");
@@ -76,7 +81,7 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("DELETE FROM bathroom_device WHERE id_bathroom_device=?");
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();
@@ -117,10 +122,11 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
     @Override
     public boolean create(BathroomDevice entity) {
         boolean flag = false;
+        idGenerator = new AtomicInteger(bathroomDevicesArray.size());
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("INSERT INTO bathroom_device (id_bathroom_device, bathroom_name, bathroom_powerSize_kW, bathroom_powerON, bathroom_waterProof) Values (?,?,?,?,?)");
-            preparedStatement.setInt(1, entity.getId());
+            preparedStatement.setInt(1, idGenerator.incrementAndGet());
             preparedStatement.setString(2, entity.getName());
             preparedStatement.setInt(3, entity.getPowerSizekW());
             preparedStatement.setBoolean(4, entity.isPowerON());
@@ -136,4 +142,5 @@ public class AllMethodsBathroom implements Dao<BathroomDevice> {
         }
         return flag;
     }
+
 }

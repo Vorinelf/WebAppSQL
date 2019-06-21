@@ -8,6 +8,7 @@
 <h3> Your count  is ${count} </h3>
 <h3> Your role: ${role} </h3>
 <h3> ${messages} </h3>
-<h3> ${messagesCookie} </h3>
+<h3> ${messagesCookie} </h3><p>
+<h3> Devices in cart: ${cart} </h3>
 </body>
 </html>

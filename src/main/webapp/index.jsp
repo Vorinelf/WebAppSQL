@@ -7,9 +7,9 @@
 <h3>Please, enter your login and password </h3>
 <form method="POST" action = "mainServlet">
 <label>Login</label><br>
-<input name="login"/><br><br>
+<input name="login" required/><br><br>
 <label>Password</label><br>
-<input name="password"/><br><br>
+<input name="password" required/><br><br>
 <input type = "hidden" name = "command" value = "login"/>
 <input type="submit" value="Log in">
 </form>

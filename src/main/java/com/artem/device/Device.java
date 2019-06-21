@@ -14,7 +14,12 @@ public abstract class Device {
         this.powerON = powerON;
 
     }
+    public Device(String name, int powerSizekW, boolean powerON) {
+        this.name = name;
+        this.powerSizekW = powerSizekW;
+        this.powerON = powerON;
 
+    }
 
     public Device() {
     }
