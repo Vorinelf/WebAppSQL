@@ -1,14 +1,14 @@
 package com.artem.command;
 
 import com.artem.device.BathroomDevice;
-import com.artem.methods.AllMethodsBathroom;
+import com.artem.headphones.Headphones;
+import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 public class EditReadCommand implements Command {
     private static final Command INSTANCE = new EditReadCommand();
-    private final AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
+    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
     private EditReadCommand() {
     }
@@ -20,10 +20,10 @@ public class EditReadCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        BathroomDevice bathroomDevice = allMethodsBathroom.findEntityById(id);
-        if (bathroomDevice != null) {
-            request.setAttribute("bathroomDevice", bathroomDevice);
+       Headphones headphones = allMethodsDataBase.findEntityById(id);
+        if (headphones != null) {
+            request.setAttribute("headphones", headphones);
         }
-        return "editBathroom.jsp";
+        return "editHeadphones.jsp";
     }
 }

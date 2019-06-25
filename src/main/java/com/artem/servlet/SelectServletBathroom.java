@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.artem.methods.AllMethodsBathroom;
+import com.artem.methods.AllMethodsDataBase;
 import com.artem.device.BathroomDevice;
 
 @WebServlet("/selectBathroom")
@@ -20,10 +20,10 @@ public class SelectServletBathroom extends HttpServlet {
 
         List<BathroomDevice> bathroomDeviceArrayServ;
 
-        AllMethodsBathroom allMethodsBathroom = AllMethodsBathroom.getInstance();
-        bathroomDeviceArrayServ = allMethodsBathroom.findAll();
-        request.setAttribute("bathroomDeviceArray", bathroomDeviceArrayServ);
-        getServletContext().getRequestDispatcher("/mainBathroom.jsp").forward(request, response);
+        AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
+     //   bathroomDeviceArrayServ = allMethodsDataBase.findAll();
+      //  request.setAttribute("bathroomDeviceArray", bathroomDeviceArrayServ);
+        getServletContext().getRequestDispatcher("/headphonesAdmin.jsp").forward(request, response);
 
     }
 

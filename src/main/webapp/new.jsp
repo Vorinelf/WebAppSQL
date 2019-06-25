@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 </head>
 <body>
+
 <div id="wrapper">
 		<header>
 		<form name="login" action="mainServlet" method="POST">
@@ -20,16 +21,19 @@
 	   </header>
 	   <header2>
        		<ul class ="header-menu">
-       			            <li><a href="cart.jsp"><h3>MY CART${sizeOfCart}</h3></a></li>
+       			            <li><a href="cart.jsp"><h3>MY CART ${sizeOfCart}</h3></a></li>
                        		<li><a href="registrationUser.jsp"><h3>REGISTRATION</h3></a></li>
                        		<li><a href="/customers/"><h3>SESSION</h3></a></li>
                        		</ul></header2>
 		<header1>
-		<h1>HEADPHONES SHOP</h1>
+		HEADPHONES SHOP
 		</header1>
 		<nav>
 		<ul class="top-menu">
-        		<li><a href="index.jsp">SORT BY PRICE (from high to low)</a></li>
+        		<li><a<form name ="selectMenu" action="mainServlet" method "POST">
+                                  <input type="hidden" name="command" value="find_all"/>
+                                  <button type = "submit">SORT BY PRICE (from high to low)</button>
+
         		<li><a href="/partners/">SORT BY PRICE (from low to high)</a></li>
         		<li><a href="/customers/">SORT BY NAME</a></li>
         		<li><a href="/projects/">SORT BY DATE OF RELEASE</a></li>
@@ -39,22 +43,112 @@
 		<aside>
 		<navy>
         	<ul class="aside-menu">
-        		<li class="active">BRAND</li>
-        		<li><a href="/donec/">PRICE (FROM - TO)</a></li>
-        		<li><a href="/vestibulum/">CONSTRUCTION</a></li>
-        		<li><a href="/etiam/"></a>HI-RES</li>
-        		<li><a href="/phasellus/">BLUETOOTH</a></li>
-        		<li><a href="/cras/"></a>IN STOCK</li>
+        		<li>BRAND</li>
+        		<form name ="selectMenu" action="mainServlet" method "POST">
+                                     <li><a><input type = "radio" name ="name" value ="SONY"/>SONY</a></li>
+                                     <li><a><input type="radio" name="name" value="JBL"/>JBL</a> </li>
+                                     <li><a><input type="radio" name="name" value="AUDIO-TECHNICA"/>AUDIO-TECHNICA</a></li>
+                                     <li><a><input type="radio" name="name" value="SENNHEISER"/>SENNHEISER</a></li>
+                                     <li><a><input type="radio"name="name" value="BOSE"/>BOSE</a></li>
+                                      <li><a><input type="radio"name="name" value="APPLE"/>APPLE</a></li>
+                                     <input type="hidden" name="command" value="find_by_name"/>
+                                    <button type = "submit">SELECT</button>
+                                      </form>
+            <form name ="selectMenu" action="mainServlet" method "POST">
+            <input type="hidden" name="command" value="find_all"/>
+            <button type = "submit">RESET</button>
+            </form>
+
+
+        		<li>
+        		PRICE</a></li>
+        		<form name="price" action="mainServlet" method="POST">
+                		<li><input type="text" name="priceFrom" required placeholder="from $"/></li>
+                		<li><input type="text" name="priceTo" required placeholder="to $"/></li>
+                		<input type = "hidden" name = "command" value = "find_by_price"/>
+                        <button type = "submit">SELECT</button>
+                        </form>
+                         <form name ="selectMenu" action="mainServlet" method "POST">
+                                    <input type="hidden" name="command" value="find_all"/>
+                                    <button type = "submit">RESET</button>
+                                    </form>
+        		<li>CONSTRUCTION</li>
+        		<form name = "selectMenu" action="mainServlet" method "POST">
+                                                     <li><a><input type="radio" name="constr" value="insert">INSERT</a></li>
+                                                      <li><a><input type="radio" name="constr" value="intra-channel" >INTRA-CHANNEL</a> </li>
+                                                     <li><a><input type="radio" name="constr" value="monitor" >MONITOR</a></li>
+                                                     <li><a><input type="radio" name="constr" value="overhead"> OVERHEAD</a></li>
+                                                        <input type="hidden" name="command" value="find_by_construction"/>
+                                                     <button type = "submit">SELECT</button>
+                                                 </form>
+                                                  <form name ="selectMenu" action="mainServlet" method "POST">
+                                                             <input type="hidden" name="command" value="find_all"/>
+                                                             <button type = "submit">RESET</button>
+                                                             </form>
+        		<li>HI-RES</li>
+        		<form name = "selectMenu" action="mainServlet" method "POST">
+                                                                     <li><a><input type="radio" name="hiRes" value="YES"> YES</a></li>
+                                                                      <li><a><input type="radio" name="hiRes" value="NO"> NO</a> </li>
+                                                                      <input type="hidden" name="command" value="find_by_hires"/>
+                                                                      <button type = "submit">SELECT</button>
+                                                                 </form>
+                                                                  <form name ="selectMenu" action="mainServlet" method "POST">
+                                                                             <input type="hidden" name="command" value="find_all"/>
+                                                                             <button type = "submit">RESET</button>
+                                                                             </form>
+        		<li>BLUETOOTH</a></li>
+        		       		<form name = "selectMenu" action="mainServlet" method "POST">
+                                                                                     <li><a><input type="radio" name="blue" value="YES"> YES</a></li>
+                                                                                      <li><a><input type="radio" name="blue" value="NO"> NO</a> </li>
+                                                                                        <input type="hidden" name="command" value="find_by_blue"/>
+                                                                                      <button type = "submit">SELECT</button>
+                                                                                 </form>
+                                                                                  <form name ="selectMenu" action="mainServlet" method "POST">
+                                                                                             <input type="hidden" name="command" value="find_all"/>
+                                                                                             <button type = "submit">RESET</button>
+                                                                                             </form>
+        		<li>IN STOCK</li>
+        		       		<form name = "selectMenu" action="mainServlet" method "POST">
+                                                                                     <li><a><input type="radio" name="stock" value="YES"> YES</a></li>
+                                                                                      <li><a><input type="radio" name="stock" value="NO"> NO</a> </li>
+                                                                                      <input type="hidden" name="command" value="find_by_stock"/>
+                                                                                      <button type = "submit">SELECT</button>
+                                                                                 </form>
+                                                                                  <form name ="selectMenu" action="mainServlet" method "POST">
+                                                                                             <input type="hidden" name="command" value="find_all"/>
+                                                                                             <button type = "submit">RESET</button>
+                                                                                             </form>
         	</ul>
         </navy>
 		</aside>
 		<section>
-		<blockquote>
-        	<p>
-        	The place for the list of headphones
-        	</p>
+		<p><blockquote>
+        	<table>
+             <tr>
+           <th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>
+            ${headphonesArray1}
+            <c:forEach var="hp" items="${headphonesArray}">
+                <tr>
+                <td>${hp.name}</td>
+                <td>${hp.model}</td>
+                <td>${hp.price}$</td>
+                <td>${hp.construction}</td>
+                <td>${hp.hiRes}</td>
+                <td>${hp.bluetooth}</td>
+                <td>${hp.release}</td>
+                <td>${hp.stock}</td>
+                <td>
+                    <form method = "POST" action = "mainServlet">
+                    <input type = "hidden" name = "id" value = "${hp.id}"/>
+                   <input type = "hidden" name = "command" value = "in_cart"/>
+                           <button type = "submit">ADD IN CART</button>
+                       </form>
+                       </td>
+            </tr>
+              </c:forEach>
+            </table>
+        	</blockquote> </p>
 
-        	</blockquote>
 		</section>
 	</div>
 	<footer></footer>

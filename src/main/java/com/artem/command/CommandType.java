@@ -4,14 +4,20 @@ import java.util.Arrays;
 
 public enum  CommandType {
     CREATE(CreateCommand.getInstance()),
-    EDIT_READ (EditReadCommand.getInstance()),
+    EDIT_READ(EditReadCommand.getInstance()),
     EDIT_WRITE(EditWriteCommand.getInstance()),
     DELETE(DeleteCommand.getInstance()),
     FIND_ALL(FindAllCommand.getInstance()),
     REGISTRATION(RegistrationCommand.getInstance()),
     IN_CART(InCartCommand.getInstance()),
     LOGIN(LoginCommand.getInstance()),
-    DELETE_FROM_CART(DeleteFromCartCommand.getInstance());
+    DELETE_FROM_CART(DeleteFromCartCommand.getInstance()),
+    FIND_BY_NAME(FindByNameCommand.getInstance()),
+    FIND_BY_PRICE(FindByPriceCommand.getInstance()),
+    FIND_BY_CONSTRUCTION(FindByConstruction.getInstance()),
+    FIND_BY_HIRES(FindByHiRes.getInstance()),
+    FIND_BY_BLUE(FindByBluetooth.getInstance()),
+    FIND_BY_STOCK(FindByStock.getInstance());
 
     private Command command;
 
