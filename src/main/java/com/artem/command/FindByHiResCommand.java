@@ -6,12 +6,12 @@ import com.artem.methods.AllMethodsDataBase;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class FindByHiRes implements Command{
-    private static final Command INSTANCE = new FindByHiRes();
+public class FindByHiResCommand implements Command{
+    private static final Command INSTANCE = new FindByHiResCommand();
 
-    AllMethodsDataBase allMethodsDataBase = new AllMethodsDataBase();
+    AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
-    private FindByHiRes() {
+    private FindByHiResCommand() {
     }
 
 

@@ -6,9 +6,9 @@ import com.artem.methods.AllMethodsDataBase;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class FindByStock implements Command{
-    private static final Command INSTANCE = new FindByStock();
-    AllMethodsDataBase allMethodsDataBase = new AllMethodsDataBase();
+public class FindByStockCommand implements Command{
+    private static final Command INSTANCE = new FindByStockCommand();
+    AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
     public static Command getInstance(){return INSTANCE;}
 
     @Override

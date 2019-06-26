@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class FindByNameCommand implements Command {
     private static final Command INSTANCE = new FindByNameCommand();
 
-    AllMethodsDataBase allMethodsDataBase = new AllMethodsDataBase();
+    AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
     private FindByNameCommand() {
     }
@@ -23,6 +23,7 @@ public class FindByNameCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         String name = request.getParameter("name");
         List<Headphones> listHeadphones = allMethodsDataBase.findByName(name);
         request.setAttribute("headphonesArray", listHeadphones);

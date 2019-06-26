@@ -6,6 +6,7 @@ import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindAllCommand implements Command {
@@ -22,14 +23,19 @@ public class FindAllCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+        List<Headphones> listHd;
         HttpSession session = request.getSession();
+        listHd = (List<Headphones>) session.getAttribute("headphonesArray");
+        if (listHd !=null){
+        listHd.clear();}
+        session.setAttribute("headphonesArray",listHd);
         List<Headphones> list = (List<Headphones>) session.getAttribute("cart");
         if (list != null) {
             session.setAttribute("sizeOfCart", list.size());
         }
         ClientType clientType = (ClientType) session.getAttribute("role");
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
-        session.setAttribute("headphonesArray",listHeadphones);
+        request.setAttribute("headphonesArray",listHeadphones);
         if (clientType == ClientType.ADMIN) {
             page = "headphonesAdmin.jsp";
         } else {

@@ -13,7 +13,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
     private final static AllMethodsDataBase INSTANCE = new AllMethodsDataBase();
     private List<Headphones> headphonesArray;
     private AtomicInteger idGenerator;
-
+    private AllMethodsDataBase(){}
 
     public static AllMethodsDataBase getInstance() {
         return INSTANCE;
@@ -27,8 +27,8 @@ public class AllMethodsDataBase implements Dao<Headphones> {
     public List<Headphones> findAll() {
         headphonesArray = new ArrayList<>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from headphones");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM headphones");
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
@@ -42,7 +42,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 Headphones headphones = new Headphones(id, name, model, price, construction, hiRes, bluetooth, release, stock);
                 headphonesArray.add(headphones);
             }
-            statement.close();
+            preparedStatement.close();
             if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
@@ -343,5 +343,64 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         }
         return list;
     }
+
+    @Override
+    public List<Headphones> findAndSortByPrice (String column, String highOrLow) {
+        List<Headphones> list = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM headphones ORDER BY " + column + " " + highOrLow);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String name1 = resultSet.getString(2);
+                String model = resultSet.getString(3);
+                int price = resultSet.getInt(4);
+                String construction = resultSet.getString(5);
+                String hiRes = resultSet.getString(6);
+                String bluetooth = resultSet.getString(7);
+                int release = resultSet.getInt(8);
+                String stock = resultSet.getString(9);
+                Headphones headphones = new Headphones(id, name1, model, price, construction, hiRes, bluetooth, release, stock);
+                list.add(headphones);
+            }
+           statement.close();
+            if (connection != null) {
+                ConnectionPoolNew.getInstance().closeConnection(connection);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Headphones> findAndSortBy(String column) {
+        List<Headphones> list = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM headphones ORDER BY " + column);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String name1 = resultSet.getString(2);
+                String model = resultSet.getString(3);
+                int price = resultSet.getInt(4);
+                String construction = resultSet.getString(5);
+                String hiRes = resultSet.getString(6);
+                String bluetooth = resultSet.getString(7);
+                int release = resultSet.getInt(8);
+                String stock = resultSet.getString(9);
+                Headphones headphones = new Headphones(id, name1, model, price, construction, hiRes, bluetooth, release, stock);
+                list.add(headphones);
+            }
+            statement.close();
+            if (connection != null) {
+                ConnectionPoolNew.getInstance().closeConnection(connection);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
 }

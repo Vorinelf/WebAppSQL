@@ -19,6 +19,10 @@ public interface Dao<T extends Headphones> {
 
     List<Headphones> findByStock(String stock);
 
+    List<Headphones> findAndSortByPrice (String column, String highOrLow);
+
+    List<Headphones> findAndSortBy(String column);
+
     T findEntityById(int id);
 
     boolean create(T entity);

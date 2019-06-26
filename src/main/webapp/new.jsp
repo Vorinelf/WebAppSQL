@@ -30,14 +30,28 @@
 		</header1>
 		<nav>
 		<ul class="top-menu">
-        		<li><a<form name ="selectMenu" action="mainServlet" method "POST">
-                                  <input type="hidden" name="command" value="find_all"/>
+        		<li><form name ="selectMenu" action="mainServlet" method "POST">
+        		                  <input type="hidden" name="column" value="price"/>
+        		                  <input type="hidden" name="highOrLow" value="DESC"/>
+                                  <input type="hidden" name="command" value="sort_by_price"/>
                                   <button type = "submit">SORT BY PRICE (from high to low)</button>
-
-        		<li><a href="/partners/">SORT BY PRICE (from low to high)</a></li>
-        		<li><a href="/customers/">SORT BY NAME</a></li>
-        		<li><a href="/projects/">SORT BY DATE OF RELEASE</a></li>
-
+                                  </form></li>
+                	<li><form name ="selectMenu" action="mainServlet" method "POST">
+                        		                  <input type="hidden" name="column" value="price"/>
+                        		                  <input type="hidden" name="highOrLow" value="ASC"/>
+                                                  <input type="hidden" name="command" value="sort_by_price"/>
+                                                  <button type = "submit">SORT BY PRICE (from low to high)</button>
+                                                  </form></li>
+                <li><form name ="selectMenu" action="mainServlet" method "POST">
+                                                    <input type="hidden" name="column" value="name"/>
+                                                  <input type="hidden" name="command" value="sort_by"/>
+                                                  <button type = "submit">SORT BY NAME </button>
+                                                  </form></li>
+                 <li><form name ="selectMenu" action="mainServlet" method "POST">
+                                                   <input type="hidden" name="column" value= "releas"/>
+                                                  <input type="hidden" name="command" value="sort_by"/>
+                                                  <button type = "submit">SORT BY DATE OF RELEASE </button>
+                                                  </form></li>
         	</ul></nav>
 		<div id="heading"></div>
 		<aside>
@@ -63,15 +77,15 @@
         		<li>
         		PRICE</a></li>
         		<form name="price" action="mainServlet" method="POST">
-                		<li><input type="text" name="priceFrom" required placeholder="from $"/></li>
-                		<li><input type="text" name="priceTo" required placeholder="to $"/></li>
+                		<input type="text" name="priceFrom" required placeholder="from $"/>
+                		<input type="text" name="priceTo" required placeholder="to $"/>
                 		<input type = "hidden" name = "command" value = "find_by_price"/>
                         <button type = "submit">SELECT</button>
-                        </form>
-                         <form name ="selectMenu" action="mainServlet" method "POST">
+                        </form></li>
+                         </li><form name ="selectMenu" action="mainServlet" method "POST">
                                     <input type="hidden" name="command" value="find_all"/>
                                     <button type = "submit">RESET</button>
-                                    </form>
+                                    </form></li>
         		<li>CONSTRUCTION</li>
         		<form name = "selectMenu" action="mainServlet" method "POST">
                                                      <li><a><input type="radio" name="constr" value="insert">INSERT</a></li>

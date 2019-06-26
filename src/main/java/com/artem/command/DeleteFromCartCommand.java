@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DeleteFromCartCommand implements Command {
     private static final Command INSTANCE = new DeleteFromCartCommand();
-    private final AllMethodsDataBase allMethodsDataBase = new AllMethodsDataBase();
+    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
     List<Headphones> cartList;
     private DeleteFromCartCommand() {
     }

@@ -6,12 +6,12 @@ import com.artem.methods.AllMethodsDataBase;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class FindByConstruction implements Command {
-    private static final Command INSTANCE = new FindByConstruction();
+public class FindByConstructionCommand implements Command {
+    private static final Command INSTANCE = new FindByConstructionCommand();
 
-    AllMethodsDataBase allMethodsDataBase = new AllMethodsDataBase();
+    AllMethodsDataBase allMethodsDataBase =AllMethodsDataBase.getInstance();
 
-    private FindByConstruction() {
+    private FindByConstructionCommand() {
     }
 
 

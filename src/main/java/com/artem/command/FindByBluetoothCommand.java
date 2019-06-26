@@ -6,11 +6,11 @@ import com.artem.methods.AllMethodsDataBase;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class FindByBluetooth implements Command {
-    private static final Command INSTANCE = new FindByBluetooth();
-    AllMethodsDataBase allMethodsDataBase = new AllMethodsDataBase();
+public class FindByBluetoothCommand implements Command {
+    private static final Command INSTANCE = new FindByBluetoothCommand();
+    AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
-    private FindByBluetooth() {
+    private FindByBluetoothCommand() {
     }
 
     public static Command getInstance() {
