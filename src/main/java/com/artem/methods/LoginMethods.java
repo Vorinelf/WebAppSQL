@@ -19,12 +19,17 @@ public class LoginMethods {
         boolean flag = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("INSERT INTO user_data (user_firstName, user_secondName, user_login, user_password, user_isAdmin) Values (?,?,?,?,?)");
-            preparedStatement.setString(1, entity.getFirstName());
-            preparedStatement.setString(2, entity.getSecondName());
-            preparedStatement.setString(3, entity.getLogin());
-            preparedStatement.setString(4, entity.getPassword());
-            preparedStatement.setString(5, String.valueOf(entity.isAdmin()));
+                    ("INSERT INTO users (isAdmin, login, password, firstName, secondName, country, city, street, postIndex, phone) Values (?,?,?,?,?,?,?,?,?,?)");
+            preparedStatement.setString(1, String.valueOf(entity.isAdmin()));
+            preparedStatement.setString(2, entity.getLogin());
+            preparedStatement.setString(3, entity.getPassword());
+            preparedStatement.setString(4, entity.getFirstName());
+            preparedStatement.setString(5, entity.getSecondName());
+            preparedStatement.setString(6, entity.getCountry());
+            preparedStatement.setString(7, entity.getCity());
+            preparedStatement.setString(8, entity.getStreet());
+            preparedStatement.setString(9, entity.getPostIndex());
+            preparedStatement.setString(10, entity.getPhone());
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();
@@ -41,17 +46,22 @@ public class LoginMethods {
         User user = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM user_data WHERE user_login=? AND user_password=? limit 1");
+                    ("SELECT * FROM users WHERE login=? AND password=? limit 1");
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                String firstName = resultSet.getString(2);
-                String secondName = resultSet.getString(3);
-                String log = resultSet.getString(4);
-                String passw = resultSet.getString(5);
-                Boolean isAdmin = resultSet.getBoolean(6);
-                user = new User(firstName,secondName,log,passw,isAdmin);
+                Boolean isAdmin = resultSet.getBoolean(2);
+                String log = resultSet.getString(3);
+                String passw = resultSet.getString(4);
+                String firstName = resultSet.getString(5);
+                String secondName = resultSet.getString(6);
+                String country = resultSet.getString(7);
+                String city = resultSet.getString(8);
+                String street = resultSet.getString(9);
+                String postIndex = resultSet.getString(10);
+                String phone = resultSet.getString(11);
+                user = new User(isAdmin, log, passw, firstName, secondName, country, city, street, postIndex, phone);
             }
             preparedStatement.close();
             if (connection != null) {

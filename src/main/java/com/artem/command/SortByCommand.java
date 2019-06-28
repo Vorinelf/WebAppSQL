@@ -27,8 +27,7 @@ public class SortByCommand implements Command {
         String column = request.getParameter("column");
         if (list!=null){
             List<Headphones> listSorted;
-            String param = "name";
-            if (column.equals(param)) {
+            if (column.equals("name")) {
                 listSorted = list.stream()
                         .sorted(Comparator.comparing(Headphones::getName))
                         .collect(Collectors.toList());

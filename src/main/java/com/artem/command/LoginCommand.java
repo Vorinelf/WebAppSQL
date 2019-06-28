@@ -30,7 +30,7 @@ public class LoginCommand implements Command {
     @Override
     public String execute(HttpServletRequest request)  {
         String page;
-        HttpSession session;
+        HttpSession session=request.getSession(true);
         ClientType clientType;
         String login= request.getParameter("login");
         String password = request.getParameter("password");
@@ -48,20 +48,15 @@ public class LoginCommand implements Command {
         }
         String passwordCipher = sb.toString();
         User user = loginMethods.checkLoginOrNewUser(login, passwordCipher);
+
         if (user != null) {
+            session.setAttribute("loginForOrder",login);
+            session.setAttribute("passwordForOrder",passwordCipher);
             if (user.isAdmin()) {
                 clientType = ClientType.ADMIN;
-                request.getSession().invalidate();
-                session = request.getSession(true);
-                session.setMaxInactiveInterval(60*5);
-                session.setAttribute("messages", SessionLocator.addMessage(session));
                 session.setAttribute("role", clientType);
             } else {
                 clientType = ClientType.USER;
-                request.getSession().invalidate();
-                session = request.getSession(true);
-                session.setMaxInactiveInterval(60*5);
-                session.setAttribute("messages", SessionLocator.addMessage(session));
                 session.setAttribute("role", clientType);
             }
             request.setAttribute("user", user);

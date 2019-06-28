@@ -4,6 +4,7 @@ import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class FindByConstructionCommand implements Command {
@@ -23,6 +24,8 @@ public class FindByConstructionCommand implements Command {
     public String execute(HttpServletRequest request) {
         String construction = request.getParameter("constr");
         List<Headphones> listHeadphones = allMethodsDataBase.findByConstruction(construction);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("headphonesArray", listHeadphones);
         request.setAttribute("headphonesArray", listHeadphones);
         return "new.jsp";
     }

@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class User {
-    private String firstName, secondName, login, password;
     boolean isAdmin;
-
+    private String login, password, firstName, secondName, country, city, street, postIndex, phone;
 }

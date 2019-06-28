@@ -12,14 +12,15 @@ public enum  CommandType {
     IN_CART(InCartCommand.getInstance()),
     LOGIN(LoginCommand.getInstance()),
     DELETE_FROM_CART(DeleteFromCartCommand.getInstance()),
-    FIND_BY_NAME(FindByNameCommand.getInstance()),
+    FIND_BY_NAME(FindByBrandCommand.getInstance()),
     FIND_BY_PRICE(FindByPriceCommand.getInstance()),
     FIND_BY_CONSTRUCTION(FindByConstructionCommand.getInstance()),
     FIND_BY_HIRES(FindByHiResCommand.getInstance()),
     FIND_BY_BLUE(FindByBluetoothCommand.getInstance()),
     FIND_BY_STOCK(FindByStockCommand.getInstance()),
     SORT_BY_PRICE(SortByPriceCommand.getInstance()),
-    SORT_BY(SortByCommand.getInstance());
+    SORT_BY(SortByCommand.getInstance()),
+    ORDER(OrderCommand.getInstance());
 
     private Command command;
 

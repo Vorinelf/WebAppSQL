@@ -30,28 +30,32 @@
 		</header1>
 		<nav>
 		<ul class="top-menu">
-        		<li><form name ="selectMenu" action="mainServlet" method "POST">
+        		<li><form name ="topMenu" action="mainServlet" method "POST">
         		                  <input type="hidden" name="column" value="price"/>
         		                  <input type="hidden" name="highOrLow" value="DESC"/>
                                   <input type="hidden" name="command" value="sort_by_price"/>
                                   <button type = "submit">SORT BY PRICE (from high to low)</button>
                                   </form></li>
-                	<li><form name ="selectMenu" action="mainServlet" method "POST">
+                	<li><form name ="topMenu" action="mainServlet" method "POST">
                         		                  <input type="hidden" name="column" value="price"/>
                         		                  <input type="hidden" name="highOrLow" value="ASC"/>
                                                   <input type="hidden" name="command" value="sort_by_price"/>
                                                   <button type = "submit">SORT BY PRICE (from low to high)</button>
                                                   </form></li>
-                <li><form name ="selectMenu" action="mainServlet" method "POST">
-                                                    <input type="hidden" name="column" value="name"/>
+                <li><form name ="topMenu" action="mainServlet" method "POST">
+                                                  <input type="hidden" name="column" value="name"/>
                                                   <input type="hidden" name="command" value="sort_by"/>
                                                   <button type = "submit">SORT BY NAME </button>
                                                   </form></li>
-                 <li><form name ="selectMenu" action="mainServlet" method "POST">
-                                                   <input type="hidden" name="column" value= "releas"/>
+                 <li><form name ="topMenu" action="mainServlet" method "POST">
+                                                  <input type="hidden" name="column" value= "releas"/>
                                                   <input type="hidden" name="command" value="sort_by"/>
                                                   <button type = "submit">SORT BY DATE OF RELEASE </button>
                                                   </form></li>
+        	    <li> <form name ="topMenu" action="mainServlet" method "POST">
+                                                                             <input type="hidden" name="command" value="find_all"/>
+                                                                             <button type = "submit">RESET FILTERS</button>
+                                                                             </form></li>
         	</ul></nav>
 		<div id="heading"></div>
 		<aside>
@@ -140,8 +144,7 @@
         	<table>
              <tr>
            <th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>
-            ${headphonesArray1}
-            <c:forEach var="hp" items="${headphonesArray}">
+           <c:forEach var="hp" items="${headphonesArray}">
                 <tr>
                 <td>${hp.name}</td>
                 <td>${hp.model}</td>
@@ -167,4 +170,5 @@
 	</div>
 	<footer></footer>
 </body>
+
 </html>

@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FindByNameCommand implements Command {
-    private static final Command INSTANCE = new FindByNameCommand();
+public class FindByBrandCommand implements Command {
+    private static final Command INSTANCE = new FindByBrandCommand();
 
     AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
-    private FindByNameCommand() {
+    private FindByBrandCommand() {
     }
 
 

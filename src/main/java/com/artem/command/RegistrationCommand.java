@@ -27,11 +27,17 @@ public class RegistrationCommand implements Command {
     @Override
     public String execute(HttpServletRequest request){
         String page;
-        String firstName = request.getParameter("firstName");
-        String secondName = request.getParameter("secondName");
+        boolean isAdmin = Boolean.parseBoolean(request.getParameter("isAdmin"));
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        boolean isAdmin = Boolean.parseBoolean(request.getParameter("isAdmin"));
+        String firstName = request.getParameter("firstName");
+        String secondName = request.getParameter("secondName");
+        String country = request.getParameter("country");
+        String city = request.getParameter("city");
+        String street = request.getParameter("street");
+        String postIndex = request.getParameter("postIndex");
+        String phone = request.getParameter("phone");
+
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
@@ -49,7 +55,7 @@ public class RegistrationCommand implements Command {
         if (userAfterCheck!= null) {
             page = "registrationError.jsp";
         } else {
-            User user = new User(firstName, secondName, login, passwordCipher,isAdmin);
+            User user = new User(isAdmin, login, passwordCipher,firstName, secondName, country,city,street, postIndex,phone);
             loginMethods.registration(user);
             request.setAttribute("user", user);
             page = "registrationOk.jsp";

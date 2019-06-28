@@ -3,6 +3,7 @@ package com.artem.command;
 import com.artem.filter.ClientType;
 import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
+import com.artem.session.SessionLocator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,17 +26,19 @@ public class FindAllCommand implements Command {
         String page;
         List<Headphones> listHd;
         HttpSession session = request.getSession();
+        session.setAttribute("messages", SessionLocator.addMessage(session));
         listHd = (List<Headphones>) session.getAttribute("headphonesArray");
-        if (listHd !=null){
-        listHd.clear();}
-        session.setAttribute("headphonesArray",listHd);
+        if (listHd != null) {
+            listHd = null;
+        }
+        session.setAttribute("headphonesArray", listHd);
         List<Headphones> list = (List<Headphones>) session.getAttribute("cart");
         if (list != null) {
             session.setAttribute("sizeOfCart", list.size());
         }
         ClientType clientType = (ClientType) session.getAttribute("role");
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
-        request.setAttribute("headphonesArray",listHeadphones);
+        request.setAttribute("headphonesArray", listHeadphones);
         if (clientType == ClientType.ADMIN) {
             page = "headphonesAdmin.jsp";
         } else {

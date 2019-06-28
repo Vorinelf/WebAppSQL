@@ -17,7 +17,7 @@ public class FilterController implements Filter {
 
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
@@ -26,12 +26,12 @@ public class FilterController implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
+        session.setAttribute("messages", SessionLocator.addMessage(session));
         session.setMaxInactiveInterval(60*5);
         ClientType clientType = (ClientType) session.getAttribute("role");
         if (clientType == null) {
             clientType = ClientType.GUEST;
             session.setAttribute("role", clientType);
-            session.setAttribute("messages", SessionLocator.addMessage(session));
             RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/mainServlet");
             dispatcher.forward(req, resp);
             return;

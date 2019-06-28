@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class InCartCommand implements Command {
     private static final Command INSTANCE = new InCartCommand();
     private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
-    private List<Headphones> listHeadphones;
+    private List<Headphones> listHeadphonesCart;
 
     public static Command getInstance() {
         return INSTANCE;
@@ -28,29 +28,34 @@ public class InCartCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        Headphones headphones = allMethodsDataBase.findEntityById(id);
         HttpSession session = request.getSession(true);
-        listHeadphones = (List<Headphones>) session.getAttribute("cart");
-        if (listHeadphones == null) {
-            listHeadphones = new ArrayList<>();
-           listHeadphones.add(headphones);
-            session.setAttribute("cart", listHeadphones);
-            session.setAttribute("sizeOfCart",listHeadphones.size());
+        Headphones headphones = allMethodsDataBase.findEntityById(id);
+        listHeadphonesCart = (List<Headphones>) session.getAttribute("cart");
+        if (listHeadphonesCart == null) {
+            listHeadphonesCart = new ArrayList<>();
+            listHeadphonesCart.add(headphones);
+            session.setAttribute("cart", listHeadphonesCart);
+            session.setAttribute("sizeOfCart", listHeadphonesCart.size());
 
         } else {
-            listHeadphones.add(headphones);
-            List<Headphones> listHeadphonesSorted = listHeadphones
+            listHeadphonesCart.add(headphones);
+            List<Headphones> listHeadphonesSorted = listHeadphonesCart
                     .stream()
                     .sorted(Comparator.comparing(Headphones::getId))
                     .collect(Collectors.toList());
             session.setAttribute("cart", listHeadphonesSorted);
-            session.setAttribute("sizeOfCart",listHeadphonesSorted.size());
+            session.setAttribute("sizeOfCart", listHeadphonesSorted.size());
         }
-
-        List<Headphones> listHeadphones = (List<Headphones>) session.getAttribute("headphonesArray");
-        request.setAttribute("headphonesArray",listHeadphones);
+        List<Headphones> list = (List<Headphones>) session.getAttribute("headphonesArray");
+        if (list!=null) {
+            session.setAttribute("headphonesArray", list);
+        } else {
+            List<Headphones> listHd = allMethodsDataBase.findAll();
+            request.setAttribute("headphonesArray", listHd);
+        }
         return "new.jsp";
     }
+
 
 }
 
