@@ -1,6 +1,8 @@
 package com.artem.command;
 
 import com.artem.filter.ClientType;
+import com.artem.headphones.Headphones;
+import com.artem.methods.AllMethodsDataBase;
 import com.artem.methods.LoginMethods;
 import com.artem.session.SessionLocator;
 import com.artem.users.User;
@@ -15,10 +17,12 @@ import javax.servlet.http.HttpSession;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class LoginCommand implements Command {
     private static final Command INSTANCE = new LoginCommand();
     private final LoginMethods loginMethods = LoginMethods.getInstance();
+    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
     private LoginCommand() {
     }
@@ -55,15 +59,23 @@ public class LoginCommand implements Command {
             if (user.isAdmin()) {
                 clientType = ClientType.ADMIN;
                 session.setAttribute("role", clientType);
+                String pageForRole = "indexAdmin.jsp";
+                session.setAttribute("pageFoRole", pageForRole);
             } else {
                 clientType = ClientType.USER;
                 session.setAttribute("role", clientType);
+                String pageForRole = "indexUser.jsp";
+                session.setAttribute("pageFoRole", pageForRole);
             }
-            request.setAttribute("user", user);
-            page = "checkLoginOk.jsp";
+            session.setAttribute("user", user);
+            page = (String) session.getAttribute("pageFoRole");
         } else {
             page = "checkLoginError.jsp";
         }
+
+        List<Headphones> listHeadphones =allMethodsDataBase.findAll();
+        request.setAttribute("headphonesArray", listHeadphones);
+
         return page;
     }
 }

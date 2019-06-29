@@ -1,6 +1,6 @@
 package com.artem.filter;
 
-import com.artem.device.BathroomDevice;
+
 import com.artem.session.SessionLocator;
 
 import javax.servlet.*;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 @WebFilter(urlPatterns = {"/*"})
 
@@ -32,6 +31,8 @@ public class FilterController implements Filter {
         if (clientType == null) {
             clientType = ClientType.GUEST;
             session.setAttribute("role", clientType);
+            String pageFoRole ="index.jsp";
+            session.setAttribute("pageFoRole", pageFoRole);
             RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/mainServlet");
             dispatcher.forward(req, resp);
             return;

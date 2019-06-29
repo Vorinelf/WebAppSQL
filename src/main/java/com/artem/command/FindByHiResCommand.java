@@ -4,6 +4,7 @@ import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class FindByHiResCommand implements Command{
@@ -24,6 +25,10 @@ public class FindByHiResCommand implements Command{
         String hiRes = request.getParameter("hiRes");
         List<Headphones> listHeadphones = allMethodsDataBase.findByHiRes(hiRes);
         request.setAttribute("headphonesArray", listHeadphones);
-        return "new.jsp";
+
+        HttpSession session =request.getSession(true);
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 }

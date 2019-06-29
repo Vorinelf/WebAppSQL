@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class FindByPriceCommand implements Command{
+public class FindByPriceCommand implements Command {
     private static final Command INSTANCE = new FindByPriceCommand();
 
     AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
@@ -24,10 +24,13 @@ public class FindByPriceCommand implements Command{
     public String execute(HttpServletRequest request) {
         int priceFrom = Integer.parseInt(request.getParameter("priceFrom"));
         int priceTo = Integer.parseInt(request.getParameter("priceTo"));
-        List<Headphones> listHeadphones = allMethodsDataBase.findByPrice(priceFrom,priceTo);
+        List<Headphones> listHeadphones = allMethodsDataBase.findByPrice(priceFrom, priceTo);
         HttpSession session = request.getSession(true);
         session.setAttribute("headphonesArray", listHeadphones);
         request.setAttribute("headphonesArray", listHeadphones);
-        return "new.jsp";
+
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 }

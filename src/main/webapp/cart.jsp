@@ -4,25 +4,21 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<title>cart</title>
+<title>Headphones shop</title>
 <link href="stylesCart.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 </head>
 <body>
 <div id="wrapper">
     <header>
-		<form name="login" action="mainServlet" method="POST">
-		<input type="text" name="login" required placeholder="Login"/>
-		<input type="text" name="password" required placeholder="Password"/>
-		<input type = "hidden" name = "command" value = "login"/>
-        <button type = "submit">LOGIN</button>
-        </form>
+
     </header>
     <header1>
     YOUR CART
     </header1>
     <main>
-
+  ROLE ${role}
+                Page ${pageFoRole}
 
 <table>
  <th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>

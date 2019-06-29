@@ -4,6 +4,7 @@ import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class CreateCommand implements Command {
@@ -32,7 +33,9 @@ public class CreateCommand implements Command {
         allMethodsDataBase.create(headphones);
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
         request.setAttribute("headphonesArray",listHeadphones);
-        return "new.jsp";
+        HttpSession session =request.getSession(true);
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+        return pageFoRole;
 
     }
 

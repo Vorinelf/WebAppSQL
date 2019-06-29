@@ -10,14 +10,13 @@
 </head>
 <body>
     <div id="wrapper">
-		<header>
+		<header3>
+		    <h4>${role}: ${user.firstName} ${user.secondName}</h4>
 		    <form name="login" action="mainServlet" method="POST">
-		        <input type="text" name="login" required placeholder="Login"/>
-		        <input type="text" name="password" required placeholder="Password"/>
-		        <input type = "hidden" name = "command" value = "login"/>
-		        <button type = "submit">LOGIN</button>
+		        <input type = "hidden" name = "command" value = "logout"/>
+		        <button type = "submit">LOGOUT</button>
             </form>
-	   </header>
+	   </header3>
 	   <header2>
        		<ul class ="header-menu">
        		    <li>
@@ -26,7 +25,7 @@
                         <button type = "submit">MY CART ${sizeOfCart}</button>
                     </form>
                 </li>
-                 <li><a href="registrationUser.jsp"><h3>REGISTRATION</h3></a></li>
+                 <li><a href="session.jsp"><h3>SESSION</h3></a></li>
              </ul>
        </header2>
        <header1>HEADPHONES SHOP</header1>

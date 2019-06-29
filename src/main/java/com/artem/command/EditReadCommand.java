@@ -20,7 +20,7 @@ public class EditReadCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-       Headphones headphones = allMethodsDataBase.findEntityById(id);
+        Headphones headphones = allMethodsDataBase.findEntityById(id);
         if (headphones != null) {
             request.setAttribute("headphones", headphones);
         }

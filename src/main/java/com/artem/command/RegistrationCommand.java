@@ -25,7 +25,7 @@ public class RegistrationCommand implements Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request){
+    public String execute(HttpServletRequest request) {
         String page;
         boolean isAdmin = Boolean.parseBoolean(request.getParameter("isAdmin"));
         String login = request.getParameter("login");
@@ -47,15 +47,15 @@ public class RegistrationCommand implements Command {
         md.update(password.getBytes());
         byte[] byteData = md.digest();
         StringBuffer sb = new StringBuffer();
-        for (byte newByte: byteData){
-            sb.append(Integer.toString((newByte&0xff)+0x100,16).substring(1));
+        for (byte newByte : byteData) {
+            sb.append(Integer.toString((newByte & 0xff) + 0x100, 16).substring(1));
         }
         String passwordCipher = sb.toString();
         User userAfterCheck = loginMethods.checkLoginOrNewUser(login, passwordCipher);
-        if (userAfterCheck!= null) {
+        if (userAfterCheck != null) {
             page = "registrationError.jsp";
         } else {
-            User user = new User(isAdmin, login, passwordCipher,firstName, secondName, country,city,street, postIndex,phone);
+            User user = new User(isAdmin, login, passwordCipher, firstName, secondName, country, city, street, postIndex, phone);
             loginMethods.registration(user);
             request.setAttribute("user", user);
             page = "registrationOk.jsp";

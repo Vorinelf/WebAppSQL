@@ -4,6 +4,7 @@ import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,11 @@ public class FindByBrandCommand implements Command {
         String name = request.getParameter("name");
         List<Headphones> listHeadphones = allMethodsDataBase.findByName(name);
         request.setAttribute("headphonesArray", listHeadphones);
-        return "new.jsp";
+
+        HttpSession session = request.getSession(true);
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 
     public List<Headphones> sortByNameStream(String name, List<Headphones> listHeadphones) {

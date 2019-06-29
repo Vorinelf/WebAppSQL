@@ -47,13 +47,15 @@ public class InCartCommand implements Command {
             session.setAttribute("sizeOfCart", listHeadphonesSorted.size());
         }
         List<Headphones> list = (List<Headphones>) session.getAttribute("headphonesArray");
-        if (list!=null) {
+        if (list != null) {
             session.setAttribute("headphonesArray", list);
         } else {
             List<Headphones> listHd = allMethodsDataBase.findAll();
             request.setAttribute("headphonesArray", listHd);
         }
-        return "new.jsp";
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 
 

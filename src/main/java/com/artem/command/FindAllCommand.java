@@ -42,7 +42,7 @@ public class FindAllCommand implements Command {
         if (clientType == ClientType.ADMIN) {
             page = "headphonesAdmin.jsp";
         } else {
-            page = "new.jsp";
+            page = (String) session.getAttribute("pageFoRole");
         }
 
         return page;

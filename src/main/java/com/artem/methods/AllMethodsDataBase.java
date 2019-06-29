@@ -3,9 +3,12 @@ package com.artem.methods;
 import com.artem.connect.ConnectionPoolNew;
 import com.artem.dao.Dao;
 import com.artem.headphones.Headphones;
+import com.artem.users.User;
+
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -13,7 +16,9 @@ public class AllMethodsDataBase implements Dao<Headphones> {
     private final static AllMethodsDataBase INSTANCE = new AllMethodsDataBase();
     private List<Headphones> headphonesArray;
     private AtomicInteger idGenerator;
-    private AllMethodsDataBase(){}
+
+    private AllMethodsDataBase() {
+    }
 
     public static AllMethodsDataBase getInstance() {
         return INSTANCE;
@@ -166,7 +171,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         idGenerator = new AtomicInteger(headphonesArray.size());
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("INSERT INTO headphones (id, name, price, model,construction,hiRes,bluetooth,release,stock) Values (?,?,?,?,?,?,?,?,?)");
+                    ("INSERT INTO headphones (id, name, price, model, construction, hiRes, bluetooth, release, stock) Values (?,?,?,?,?,?,?,?,?)");
             preparedStatement.setInt(1, idGenerator.incrementAndGet());
             preparedStatement.setString(2, headphones.getModel());
             preparedStatement.setInt(3, headphones.getPrice());
@@ -345,7 +350,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
     }
 
     @Override
-    public List<Headphones> findAndSortByPrice (String column, String highOrLow) {
+    public List<Headphones> findAndSortByPrice(String column, String highOrLow) {
         List<Headphones> list = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
@@ -363,7 +368,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 Headphones headphones = new Headphones(id, name1, model, price, construction, hiRes, bluetooth, release, stock);
                 list.add(headphones);
             }
-           statement.close();
+            statement.close();
             if (connection != null) {
                 ConnectionPoolNew.getInstance().closeConnection(connection);
             }
@@ -402,5 +407,35 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         return list;
     }
 
-
+    @Override
+    public boolean saveOrderInBase(List<Headphones> listHeadphones, User user) {
+        boolean flag = false;
+        Date date = new Date();
+        try {
+            for (Headphones hd : listHeadphones) {
+                PreparedStatement preparedStatement = connection.prepareStatement
+                        ("INSERT INTO orders (dateOrder, firstName, secondName, brand, model, price, country, city, street, postIndex, phone) Values (?,?,?,?,?,?,?,?,?,?,?)");
+                preparedStatement.setString(1, date.toString());
+                preparedStatement.setString(2, user.getFirstName());
+                preparedStatement.setString(3, user.getSecondName());
+                preparedStatement.setString(4, hd.getName());
+                preparedStatement.setString(5, hd.getModel());
+                preparedStatement.setInt(6, hd.getPrice());
+                preparedStatement.setString(7, user.getCountry());
+                preparedStatement.setString(8, user.getCity());
+                preparedStatement.setString(9, user.getStreet());
+                preparedStatement.setString(10, user.getPostIndex());
+                preparedStatement.setString(11, user.getPhone());
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+            }
+            flag = true;
+            if (connection != null) {
+                ConnectionPoolNew.getInstance().closeConnection(connection);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }

@@ -27,6 +27,9 @@ public class FindByConstructionCommand implements Command {
         HttpSession session = request.getSession(true);
         session.setAttribute("headphonesArray", listHeadphones);
         request.setAttribute("headphonesArray", listHeadphones);
-        return "new.jsp";
+
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 }

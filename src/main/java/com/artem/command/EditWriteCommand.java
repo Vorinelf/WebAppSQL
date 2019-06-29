@@ -4,6 +4,7 @@ import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class EditWriteCommand implements Command {
@@ -13,7 +14,9 @@ public class EditWriteCommand implements Command {
     private EditWriteCommand() {
     }
 
-    public static Command getInstance() {return INSTANCE;}
+    public static Command getInstance() {
+        return INSTANCE;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -27,11 +30,15 @@ public class EditWriteCommand implements Command {
         int release = Integer.parseInt(request.getParameter("release"));
         String stock = request.getParameter("stock");
 
-        Headphones headphones= new Headphones(id, name, model, price, construction,hiRes,bluetooth,release,stock);
+        Headphones headphones = new Headphones(id, name, model, price, construction, hiRes, bluetooth, release, stock);
         allMethodsDataBase.update(headphones);
 
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
         request.setAttribute("bathroomDeviceArray", listHeadphones);
-        return "new.jsp";
+
+        HttpSession session =request.getSession(true);
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 }

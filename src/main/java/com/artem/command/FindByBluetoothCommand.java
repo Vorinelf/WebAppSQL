@@ -4,6 +4,7 @@ import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class FindByBluetoothCommand implements Command {
@@ -19,10 +20,14 @@ public class FindByBluetoothCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-            String blue = request.getParameter("blue");
-            List<Headphones> listHeadphones = allMethodsDataBase.findByBlue(blue);
-            request.setAttribute("headphonesArray", listHeadphones);
-            return "new.jsp";
-        }
+        String blue = request.getParameter("blue");
+        List<Headphones> listHeadphones = allMethodsDataBase.findByBlue(blue);
+        request.setAttribute("headphonesArray", listHeadphones);
+
+        HttpSession session = request.getSession(true);
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
+}
 

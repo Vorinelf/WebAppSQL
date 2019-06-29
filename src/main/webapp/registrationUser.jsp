@@ -19,7 +19,7 @@
 <input name="country" required/><br><br>
 <label>CITY</label><br>
 <input name="city" required/><br><br>
-<label>STREET</label><br>
+<label>STREET, HOUSE NUMBER</label><br>
 <input name="street" required/><br><br>
 <label>POST INDEX</label><br>
 <input name="postIndex" required/><br><br>

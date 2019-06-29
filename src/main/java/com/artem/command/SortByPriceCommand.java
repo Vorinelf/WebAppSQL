@@ -5,7 +5,6 @@ import com.artem.methods.AllMethodsDataBase;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,11 +30,11 @@ public class SortByPriceCommand implements Command {
             String param = "ASC";
             if (highOrLow.equals(param)) {
                 listSorted = list.stream()
-                        .sorted(Comparator.comparing(Headphones::getPrice).reversed())
+                        .sorted(Comparator.comparing(Headphones::getPrice))
                         .collect(Collectors.toList());
             } else {
                 listSorted = list.stream()
-                        .sorted(Comparator.comparing(Headphones::getPrice))
+                        .sorted(Comparator.comparing(Headphones::getPrice).reversed())
                         .collect(Collectors.toList());
             }
             session.setAttribute("headphonesArray", listSorted);
@@ -44,6 +43,8 @@ public class SortByPriceCommand implements Command {
             List<Headphones> listHeadphones = allMethodsDataBase.findAndSortByPrice(column, highOrLow);
             request.setAttribute("headphonesArray", listHeadphones);
         }
-        return "new.jsp";
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 }

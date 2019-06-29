@@ -20,7 +20,11 @@ public enum  CommandType {
     FIND_BY_STOCK(FindByStockCommand.getInstance()),
     SORT_BY_PRICE(SortByPriceCommand.getInstance()),
     SORT_BY(SortByCommand.getInstance()),
-    ORDER(OrderCommand.getInstance());
+    ORDER(OrderCommand.getInstance()),
+    BUY(BuyCommand.getInstance()),
+    CHECK_CART(CheckCartCommand.getInstance()),
+    LOGOUT(LogoutCommand.getInstance());
+
 
     private Command command;
 

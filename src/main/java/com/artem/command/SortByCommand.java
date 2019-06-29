@@ -23,9 +23,9 @@ public class SortByCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        List <Headphones> list = (List<Headphones>) session.getAttribute("headphonesArray");
+        List<Headphones> list = (List<Headphones>) session.getAttribute("headphonesArray");
         String column = request.getParameter("column");
-        if (list!=null){
+        if (list != null) {
             List<Headphones> listSorted;
             if (column.equals("name")) {
                 listSorted = list.stream()
@@ -36,11 +36,13 @@ public class SortByCommand implements Command {
                         .sorted(Comparator.comparing(Headphones::getRelease).reversed())
                         .collect(Collectors.toList());
             }
-            session.setAttribute("headphonesArray", listSorted);}
-            else {
+            session.setAttribute("headphonesArray", listSorted);
+        } else {
             List<Headphones> listHeadphones = allMethodsDataBase.findAndSortBy(column);
             request.setAttribute("headphonesArray", listHeadphones);
         }
-        return "new.jsp";
+        String pageFoRole = (String) session.getAttribute("pageFoRole");
+
+        return pageFoRole;
     }
 }

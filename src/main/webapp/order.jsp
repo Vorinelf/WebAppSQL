@@ -41,13 +41,13 @@
 <input name="country" required value ="${userOrder.country}"/><br><br>
 <label>CITY</label><br>
 <input name="city" required value ="${userOrder.city}"/><br><br>
-<label>STREET</label><br>
+<label>STREET, HOUSE NUMBER</label><br>
 <input name="street" required value ="${userOrder.street}"/><br><br>
 <label>POST INDEX</label><br>
 <input name="postIndex" required value ="${userOrder.postIndex}"/><br><br>
 <label>PHONE</label><br>
 <input name="phone" required value ="${userOrder.phone}"/><br><br>
-<input type = "hidden" name = "command" value = "order"/>
+<input type = "hidden" name = "command" value = "buy"/>
 <input type="submit" value="BUY">
 </form>
 </body>

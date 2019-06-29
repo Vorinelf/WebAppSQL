@@ -1,6 +1,7 @@
 package com.artem.dao;
 
 import com.artem.headphones.Headphones;
+import com.artem.users.User;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public interface Dao<T extends Headphones> {
     List<Headphones> findAndSortByPrice (String column, String highOrLow);
 
     List<Headphones> findAndSortBy(String column);
+
+    boolean saveOrderInBase(List<Headphones> listHeadphones, User user);
 
     T findEntityById(int id);
 
