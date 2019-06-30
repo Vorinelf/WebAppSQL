@@ -27,12 +27,12 @@
     <td>
 
     <form method = "POST" action = "mainServlet">
-    <input type = "hidden" name = "id" value = "${bd.id}"/>
+    <input type = "hidden" name = "id" value = "${hd.id}"/>
     <input type = "hidden" name = "command" value = "edit_read"/>
     <input type="submit" value = "Edit"/>
        </form>
         <form method = "POST" action = "mainServlet">
-        <input type="hidden" name="id" value="${bd.id}">
+        <input type="hidden" name="id" value="${hd.id}">
         <input type = "hidden" name = "command" value = "delete"/>
       <input type="submit" value="Delete">
     </form>
@@ -40,7 +40,7 @@
             <input type = "hidden" name = "id" value = "${bd.id}"/>
             <input type = "hidden" name = "command" value = "in_cart"/>
             <input type="submit" value = "in cart"/>
-               </form>
+          </form>
  </td></tr>
  </c:forEach>
 </table>

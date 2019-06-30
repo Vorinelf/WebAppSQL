@@ -26,6 +26,7 @@ public class LogoutCommand implements Command {
         session.setAttribute("pageFoRole",null);
         session.setAttribute("loginForOrder",null);
         session.setAttribute("passwordForOrder",null);
+        session.setAttribute("sizeOfCart",null);
 
         List<Headphones> listHeadphones =allMethodsDataBase.findAll();
         request.setAttribute("headphonesArray", listHeadphones);

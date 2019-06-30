@@ -21,19 +21,16 @@ button {
 	font-family: 'Oswald', sans-serif;
 }
 header {
-     display: inline-block;
- 	 padding: 5px 0;
-     margin-left: 90%;
-     font: 5px/5px 'Oswald', sans-serif;
-}
-
- #wrapper {
- 	margin: auto;
- 	padding: 0% 20%
- }
-
-header1 {
-     font: 60px/60px 'Oswald', sans-serif;
+     margin: 5% 30%;
      background-color: #29c5e6;
-  	 padding: 0%;
+     border: 5px solid #e7e7e7;
+     font: 50px/50px 'Oswald', sans-serif;
 }
+
+#wrapper {
+     margin: 5% 30%;
+     border: 2px solid #e7e7e7;
+
+}
+
+

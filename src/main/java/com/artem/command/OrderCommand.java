@@ -38,8 +38,6 @@ public class OrderCommand implements Command {
         request.setAttribute("orderCount", orderCount);
         request.setAttribute("totalSum", totalSum);
 
-        String pageFoRole = (String) session.getAttribute("pageFoRole");
-
-        return pageFoRole;
+        return "order.jsp";
     }
 }

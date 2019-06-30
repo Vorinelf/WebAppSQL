@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectorDataBaseWithProperties {
-    public static Connection getConnectionWithProperties () throws SQLException{
+    public Connection getConnectionWithProperties () throws SQLException{
         String url = "jdbc:mysql://localhost:3306/devices?useSSL=false";
         Properties properties = new Properties();
         properties.put("user","root");

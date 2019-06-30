@@ -24,6 +24,8 @@ public class FindByStockCommand implements Command {
         HttpSession session = request.getSession(true);
         String pageFoRole = (String) session.getAttribute("pageFoRole");
 
+        session.setAttribute("headphonesArray", listHeadphones);
+
         return pageFoRole;
     }
 }

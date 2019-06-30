@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 </head>
 <body>
+<div id="wrapper">
 <table>
 <tr>
 <th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>
@@ -34,7 +35,7 @@
 <p>COMPLETE THE FORM OF DELIVERY</p>
 <form method="POST" action = "mainServlet">
 <label>FIRST NAME</label><br>
-<input name="firstName"  value ="${userOrder.firstName}"/><br><br>
+<input name="firstName" required value ="${userOrder.firstName}"/><br><br>
 <label>SECOND </label><br>
 <input name="secondName" required value ="${userOrder.secondName}"/><br><br>
 <label>COUNTRY</label><br>
@@ -48,7 +49,7 @@
 <label>PHONE</label><br>
 <input name="phone" required value ="${userOrder.phone}"/><br><br>
 <input type = "hidden" name = "command" value = "buy"/>
-<input type="submit" value="BUY">
-</form>
+<button type = "submit">BUY</button></form>
+</div>
 </body>
 </html>

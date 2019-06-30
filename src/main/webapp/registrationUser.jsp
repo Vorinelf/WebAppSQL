@@ -1,10 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<meta charset="UTF-8">
 <html>
-<head><title>Registration</title></head>
-<h3> Please, enter your information</h3>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>Headphones shop</title>
+<link href="stylesCart.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css"/>
+</head>
+<h3>PLEASE, ENTER YOUR INFORMATION</h3>
 <body>
+<div id="wrapper">
 <form method="POST" action = "mainServlet">
 <name="isAdmin" value = "false"/>
 <label>LOGIN</label><br>
@@ -26,7 +32,8 @@
 <label>PHONE</label><br>
 <input name="phone" required/><br><br>
 <input type = "hidden" name = "command" value = "registration"/>
-<input type="submit" value="Registration">
+<button type = "submit">REGISTRATION</button></form>
 </form>
+</div>
 </body>
 </html>

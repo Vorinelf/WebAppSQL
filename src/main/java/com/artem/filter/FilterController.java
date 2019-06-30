@@ -22,20 +22,21 @@ public class FilterController implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        servletResponse.setCharacterEncoding("UTF-8");
+        servletRequest.setCharacterEncoding("UTF-8");
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
         session.setAttribute("messages", SessionLocator.addMessage(session));
-        session.setMaxInactiveInterval(60*5);
+        session.setMaxInactiveInterval(60 * 5);
         ClientType clientType = (ClientType) session.getAttribute("role");
         if (clientType == null) {
             clientType = ClientType.GUEST;
             session.setAttribute("role", clientType);
-            String pageFoRole ="index.jsp";
+            String pageFoRole = "index.jsp";
             session.setAttribute("pageFoRole", pageFoRole);
             RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/mainServlet");
             dispatcher.forward(req, resp);
-            return;
         }
         filterChain.doFilter(servletRequest, servletResponse);
 

@@ -5,7 +5,7 @@
     <meta http-equiv="Content-type" content="text/html; charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>Headphones shop</title>
-    <link href="styles1.css" rel="stylesheet" type="text/css" />
+    <link href="styles.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 </head>
 <body>
@@ -242,6 +242,16 @@
                                     <input type = "hidden" name = "id" value = "${hp.id}"/>
                                     <input type = "hidden" name = "command" value = "in_cart"/>
                                     <button type = "submit">ADD IN CART</button>
+                                </form>
+                                <form method = "POST" action = "mainServlet">
+                                    <input type = "hidden" name = "id" value = "${hp.id}"/>
+                                    <input type = "hidden" name = "command" value = "edit_read"/>
+                                    <button type = "submit">EDIT</button>
+                                </form>
+                                    <form method = "POST" action = "mainServlet">
+                                    <input type="hidden" name="id" value="${hp.id}">
+                                    <input type = "hidden" name = "command" value = "delete"/>
+                                    <button type = "submit">DELETE</button>
                                 </form>
                             </td>
                         </tr>

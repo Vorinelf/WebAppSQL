@@ -143,7 +143,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         boolean flag = false;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE headphones SET name=?, model=?, price=?, construction=?, hiRes=?,bluetooth=?, release=?,stock=? WHERE id=?");
+                    ("UPDATE headphones SET name=?, model=?, price=?, construction=?, hiRes=?, bluetooth=?, releas=?, stock=? WHERE id=?");
             preparedStatement.setString(1, headphones.getName());
             preparedStatement.setString(2, headphones.getModel());
             preparedStatement.setInt(3, headphones.getPrice());
@@ -152,6 +152,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
             preparedStatement.setString(6, headphones.getBluetooth());
             preparedStatement.setInt(7, headphones.getRelease());
             preparedStatement.setString(8, headphones.getStock());
+            preparedStatement.setInt(9, headphones.getId());
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();

@@ -24,18 +24,17 @@ public class MainServlet extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookies.setCookie(resp);
-
-
-            processRequest(req, resp);
+        processRequest(req, resp);
 
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            processRequest(req, resp);
+        processRequest(req, resp);
+
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,9 +42,13 @@ public class MainServlet extends HttpServlet {
         String nameCommand = req.getParameter("command");
         Command command = CommandType.findCommand(nameCommand);
         String page = command.execute(req);
+        if (page==null) {
+            page = "index.jsp";
+        }
         req.getRequestDispatcher(page).forward(req, resp);
         req.setAttribute("messagesCookie", Cookies.addToRequest(req));
         System.out.println(Cookies.addToRequest(req));
+    }
 
 
 //        HttpSession session;
@@ -71,5 +74,5 @@ public class MainServlet extends HttpServlet {
 //
 //
 //        session.setAttribute("messages", SessionLocator.addMessage(session));
-    }
 }
+

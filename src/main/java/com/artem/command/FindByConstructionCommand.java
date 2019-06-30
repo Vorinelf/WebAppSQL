@@ -30,6 +30,8 @@ public class FindByConstructionCommand implements Command {
 
         String pageFoRole = (String) session.getAttribute("pageFoRole");
 
+        session.setAttribute("headphonesArray", listHeadphones);
+
         return pageFoRole;
     }
 }

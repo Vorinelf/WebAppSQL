@@ -22,7 +22,7 @@
 //            BathroomDevice bathroomDevice = allMethodsDataBase.findEntityById(id);
 //            if (bathroomDevice != null) {
 //                request.setAttribute("bathroomDevice", bathroomDevice);
-//                getServletContext().getRequestDispatcher("/editBathroom.jsp").forward(request, response);
+//                getServletContext().getRequestDispatcher("/editHeadphones.jsp").forward(request, response);
 //            } else {
 //                getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
 //            }

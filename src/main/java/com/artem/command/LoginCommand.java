@@ -35,6 +35,8 @@ public class LoginCommand implements Command {
     public String execute(HttpServletRequest request)  {
         String page;
         HttpSession session=request.getSession(true);
+        session.setAttribute("cart",null);
+        session.setAttribute("sizeOfCart",null);
         ClientType clientType;
         String login= request.getParameter("login");
         String password = request.getParameter("password");
