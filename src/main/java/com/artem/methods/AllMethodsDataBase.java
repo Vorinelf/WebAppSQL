@@ -48,11 +48,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 headphonesArray.add(headphones);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return headphonesArray;
     }
@@ -79,11 +79,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -109,11 +109,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 headphones = new Headphones(id1, name, model, price, construction, hiRes, bluetooth, release, stock);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return headphones;
     }
@@ -128,11 +128,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return flag;
 
@@ -156,11 +156,10 @@ public class AllMethodsDataBase implements Dao<Headphones> {
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
 
         return flag;
@@ -172,8 +171,8 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         idGenerator = new AtomicInteger(headphonesArray.size());
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("INSERT INTO headphones (id, name, price, model, construction, hiRes, bluetooth, release, stock) Values (?,?,?,?,?,?,?,?,?)");
-            preparedStatement.setInt(1, idGenerator.incrementAndGet());
+                    ("INSERT INTO headphones (name, model, price, construction, hiRes, bluetooth, releas, stock) Values (?,?,?,?,?,?,?,?)");
+            preparedStatement.setString(1, headphones.getName());
             preparedStatement.setString(2, headphones.getModel());
             preparedStatement.setInt(3, headphones.getPrice());
             preparedStatement.setString(4, headphones.getConstruction());
@@ -181,15 +180,14 @@ public class AllMethodsDataBase implements Dao<Headphones> {
             preparedStatement.setString(6, headphones.getBluetooth());
             preparedStatement.setInt(7, headphones.getRelease());
             preparedStatement.setString(8, headphones.getStock());
-            preparedStatement.setString(9, headphones.getStock());
             preparedStatement.executeUpdate();
             flag = true;
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return flag;
     }
@@ -217,11 +215,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -248,11 +246,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -279,11 +277,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -310,11 +308,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -341,11 +339,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             preparedStatement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -370,11 +368,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             statement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -399,11 +397,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 list.add(headphones);
             }
             statement.close();
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -431,11 +429,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
                 preparedStatement.close();
             }
             flag = true;
-            if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            ConnectionPoolNew.getInstance().closeConnection(connection);
         }
         return flag;
     }

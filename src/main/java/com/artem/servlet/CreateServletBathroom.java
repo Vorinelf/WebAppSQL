@@ -19,7 +19,7 @@ public class CreateServletBathroom extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/createHeadphones.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,7 +38,7 @@ public class CreateServletBathroom extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/selectBathroom");
         } catch (Exception ex) {
 
-            getServletContext().getRequestDispatcher("/createBathroom.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/createHeadphones.jsp").forward(request, response);
         }
     }
 }

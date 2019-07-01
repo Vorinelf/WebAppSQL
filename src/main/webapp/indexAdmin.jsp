@@ -20,9 +20,8 @@
 	   <header2>
        		<ul class ="header-menu">
        		    <li>
-       		        <form method = "POST" action = "mainServlet">
-       		            <input type = "hidden" name = "command" value = "check_cart"/>
-                        <button type = "submit">MY CART ${sizeOfCart}</button>
+       		        <form method = "POST" action = "createHeadphones.jsp">
+                        <button type = "submit">ADD HEADPHONES</button>
                     </form>
                 </li>
                  <li><a href="session.jsp"><h3>SESSION</h3></a></li>
@@ -238,12 +237,7 @@
                             <td>${hp.release}</td>
                             <td>${hp.stock}</td>
                             <td>
-                                <form method = "POST" action = "mainServlet">
-                                    <input type = "hidden" name = "id" value = "${hp.id}"/>
-                                    <input type = "hidden" name = "command" value = "in_cart"/>
-                                    <button type = "submit">ADD IN CART</button>
-                                </form>
-                                <form method = "POST" action = "mainServlet">
+                                        <form method = "POST" action = "mainServlet">
                                     <input type = "hidden" name = "id" value = "${hp.id}"/>
                                     <input type = "hidden" name = "command" value = "edit_read"/>
                                     <button type = "submit">EDIT</button>

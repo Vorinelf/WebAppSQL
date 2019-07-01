@@ -12,25 +12,25 @@
 <div id="wrapper">
 <h3>EDIT HEADPHONES</h3>
 <form method="POST" action = "mainServlet">
-<input type="hidden" name="id" value="${headphones.id}" required/>
+<input input type="hidden" name="id" required/>
 <label>BRAND</label><br>
-<input name="name" value="${headphones.name}" required /><br><br>
+<input name="name" required/><br><br>
 <label>MODEL</label><br>
-<input name="model" value="${headphones.model}" required/><br><br>
+<input name="model" required/><br><br>
 <label>PRICE</label><br>
-<input name="price" value="${headphones.price}" required/><br><br>
+<input name="price" required/><br><br>
 <label>CONSTRUCTION</label><br>
-<input name="construction" value="${headphones.construction}" required/><br><br>
+<input name="construction" required/><br><br>
 <label>HI-RES</label><br>
-<input name="hiRes" value="${headphones.hiRes}" required/><br><br>
+<input name="hiRes" required/><br><br>
 <label>BLUETOOTH</label><br>
-<input name="bluetooth" value="${headphones.bluetooth}" required/><br><br>
+<input name="bluetooth" required/><br><br>
 <label>RELEASE</label><br>
-<input name="release" value="${headphones.release}" required/><br><br>
+<input name="release" required/><br><br>
 <label>STOCK</label><br>
-<input name="stock" value="${headphones.stock}" required/><br><br>
-<input type="hidden" name = "command" value = "edit_write"/>
-<button type = "submit">UPDATE</button>
+<input name="stock"required/><br><br>
+<input type="hidden" name = "command" value = "create"/>
+<button type = "submit">SAVE</button>
 </form>
 </div>
 </body>

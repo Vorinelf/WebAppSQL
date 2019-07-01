@@ -26,8 +26,6 @@ public class FindAllCommand implements Command {
         String page;
         List<Headphones> listHd;
         HttpSession session = request.getSession();
-        session.setAttribute("messages", SessionLocator.addMessage(session));
-
         listHd = (List<Headphones>) session.getAttribute("headphonesArray");
         if (listHd != null) {
             listHd = null;
