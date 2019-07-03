@@ -12,13 +12,13 @@
     <div id="wrapper">
 		<header>
 		    <form name="login" action="mainServlet" method="POST">
-		        <input type="text" name="login" required placeholder="Login"/>
-		        <input type="text" name="password" required placeholder="Password"/>
+		        <input type="text" name="login" required pattern="[a-zA-Z0-9\(\)\[\]\-\_\@\.\,\?\!\:\$\s\;]+" maxlength = "30" placeholder="Login"/>
+		        <input type="text" name="password" required pattern="[a-zA-Z0-9\(\)\[\]\-\_\@\.\,\?\!\:\$\s\;]+" maxlength = "30" placeholder="Password"/>
 		        <input type = "hidden" name = "command" value = "login"/>
 		        <button type = "submit">LOGIN</button>
             </form>
-	   </header>
-	   <header2>
+	    </header>
+	    <header2>
        		<ul class ="header-menu">
        		    <li>
        		        <form method = "POST" action = "mainServlet">
@@ -28,9 +28,9 @@
                 </li>
                  <li><a href="registrationUser.jsp"><h3>REGISTRATION</h3></a></li>
              </ul>
-       </header2>
-       <header1>HEADPHONES SHOP</header1>
-       <nav>
+        </header2>
+        <header1>HEADPHONES SHOP</header1>
+        <nav>
 		    <ul class="top-menu">
         		<li>
         		    <form name ="topMenu" action="mainServlet" method "POST">

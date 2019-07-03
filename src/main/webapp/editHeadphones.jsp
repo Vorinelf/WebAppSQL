@@ -14,21 +14,21 @@
 <form method="POST" action = "mainServlet">
 <input type="hidden" name="id" value="${headphones.id}" required/>
 <label>BRAND</label><br>
-<input name="name" value="${headphones.name}" required /><br><br>
+<input name="name" value="${headphones.name}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <label>MODEL</label><br>
-<input name="model" value="${headphones.model}" required/><br><br>
+<input name="model" value="${headphones.model}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <label>PRICE</label><br>
-<input name="price" value="${headphones.price}" required/><br><br>
+<input name="price" value="${headphones.price}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <label>CONSTRUCTION</label><br>
-<input name="construction" value="${headphones.construction}" required/><br><br>
+<input name="construction" value="${headphones.construction}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <label>HI-RES</label><br>
-<input name="hiRes" value="${headphones.hiRes}" required/><br><br>
+<input name="hiRes" value="${headphones.hiRes}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <label>BLUETOOTH</label><br>
-<input name="bluetooth" value="${headphones.bluetooth}" required/><br><br>
+<input name="bluetooth" value="${headphones.bluetooth}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <label>RELEASE</label><br>
-<input name="release" value="${headphones.release}" required/><br><br>
+<input name="release" value="${headphones.release}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <label>STOCK</label><br>
-<input name="stock" value="${headphones.stock}" required/><br><br>
+<input name="stock" value="${headphones.stock}" required pattern="[a-zA-Z0-9]+" maxlength = "30"/><br><br>
 <input type="hidden" name = "command" value = "edit_write"/>
 <button type = "submit">UPDATE</button>
 </form>

@@ -14,23 +14,23 @@
 <form method="POST" action = "mainServlet">
 <name="isAdmin" value = "false"/>
 <label>LOGIN</label><br>
-<input name="login" required/><br><br>
+<input name="login" required pattern="[a-zA-Z0-9\(\)\[\]\-\_\@\.\,\?\!\:\$\s\;]+" maxlength = "30"/><br><br>
 <label>PASSWORD</label><br>
-<input name="password" required/><br><br>
+<input name="password" required pattern="[a-zA-Z0-9\(\)\[\]\-\_\@\.\,\?\!\:\$\s\;]+" maxlength = "30"/><br><br>
 <label>FIRST NAME</label><br>
-<input name="firstName" required/><br><br>
+<input name="firstName" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]" maxlength = "30"/><br><br>
 <label>SECOND </label><br>
-<input name="secondName" required/><br><br>
+<input name="secondName" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>COUNTRY</label><br>
-<input name="country" required/><br><br>
+<input name="country" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>CITY</label><br>
-<input name="city" required/><br><br>
+<input name="city" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>STREET, HOUSE NUMBER</label><br>
-<input name="street" required/><br><br>
+<input name="street" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>POST INDEX</label><br>
-<input name="postIndex" required/><br><br>
+<input name="postIndex" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,\:\;]+" maxlength = "30"/><br><br>
 <label>PHONE</label><br>
-<input name="phone" required/><br><br>
+<input name="phone" pattern="[^[ 0-9]+$\-\+]+" maxlength = "30"/><br><br>
 <input type = "hidden" name = "command" value = "registration"/>
 <button type = "submit">REGISTRATION</button></form>
 </form>

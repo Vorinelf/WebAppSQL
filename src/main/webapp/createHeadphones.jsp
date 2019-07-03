@@ -12,23 +12,23 @@
 <div id="wrapper">
 <h3>EDIT HEADPHONES</h3>
 <form method="POST" action = "mainServlet">
-<input input type="hidden" name="id" required/>
+<input input type="hidden" name="id" required pattern="^[0-9]+$" maxlength = "30"/>
 <label>BRAND</label><br>
-<input name="name" required/><br><br>
+<input name="name" required pattern="[a-zA-Z0-9\-\_\#\:\s]+" maxlength = "30"/><br><br>
 <label>MODEL</label><br>
-<input name="model" required/><br><br>
+<input name="model" required pattern="[a-zA-Z0-9\-\_\#\:\s]+" maxlength = "30"/><br><br>
 <label>PRICE</label><br>
-<input name="price" required/><br><br>
+<input name="price" required pattern="^[0-9]+$" maxlength = "9"/><br><br>
 <label>CONSTRUCTION</label><br>
-<input name="construction" required/><br><br>
+<input name="construction" required pattern="[a-zA-Z0-9\-\_\#\:\s]+" maxlength = "30"/><br><br>
 <label>HI-RES</label><br>
-<input name="hiRes" required/><br><br>
+<input name="hiRes" requiredpattern="[a-zA-Z0-9\-\_\#\:\s]+" maxlength = "30"/><br><br>
 <label>BLUETOOTH</label><br>
-<input name="bluetooth" required/><br><br>
+<input name="bluetooth" required pattern="[a-zA-Z0-9\-\_\#\:\s]+" maxlength = "30"/><br><br>
 <label>RELEASE</label><br>
-<input name="release" required/><br><br>
+<input name="release" required pattern="^[0-9]+$" maxlength = "30"/><br><br>
 <label>STOCK</label><br>
-<input name="stock"required/><br><br>
+<input name="stock"required pattern="[a-zA-Z0-9\-\_\#\:\s]+" maxlength = "30"/><br><br>
 <input type="hidden" name = "command" value = "create"/>
 <button type = "submit">SAVE</button>
 </form>
