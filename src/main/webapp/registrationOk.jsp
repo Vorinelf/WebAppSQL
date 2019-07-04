@@ -10,7 +10,9 @@
 </head>
 <body>
 <div id="wrapper">
-<h3> SUCCESSFUL REGISTRATION!</h3>
+ <header>
+SUCCESSFUL REGISTRATION!
+  </header>
 <h3> Welcome, ${user.firstName} ${user.secondName} </h3>
    <form method = "POST" action = "mainServlet">
     <input type = "hidden" name = "command" value = "find_all"/>

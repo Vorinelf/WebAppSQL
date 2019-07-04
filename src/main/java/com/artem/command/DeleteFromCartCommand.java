@@ -1,6 +1,5 @@
 package com.artem.command;
 
-import com.artem.device.BathroomDevice;
 import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
@@ -10,8 +9,8 @@ import java.util.List;
 
 public class DeleteFromCartCommand implements Command {
     private static final Command INSTANCE = new DeleteFromCartCommand();
-    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
     List<Headphones> cartList;
+
     private DeleteFromCartCommand() {
     }
 
@@ -26,11 +25,11 @@ public class DeleteFromCartCommand implements Command {
         cartList = (List<Headphones>) session.getAttribute("cart");
         Headphones headphones = cartList
                 .stream()
-                .filter(p->p.getId()==id)
+                .filter(p -> p.getId() == id)
                 .findFirst()
                 .get();
         cartList.remove(headphones);
-        session.setAttribute("cart",cartList);
+        session.setAttribute("cart", cartList);
         return "cart.jsp";
     }
 }

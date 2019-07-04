@@ -11,12 +11,14 @@
 </head>
 <body>
 <div id="wrapper">
-<h3>Session count</h3>
-<h3> Your count  is ${count} </h3>
+<header>
+  SESSION
+  </header>
 <h3> Your role: ${role} </h3>
 <h3> ${messages} </h3>
-<h3> ${messagesCookie} </h3><p>
-<h3> Devices in cart: ${cart} </h3>
 <div>
+ <form method = "POST" action = "mainServlet">
+  <input type = "hidden" name = "command" value = "find_all"/>
+        <button type = "submit">OK</button>
 </body>
 </html>

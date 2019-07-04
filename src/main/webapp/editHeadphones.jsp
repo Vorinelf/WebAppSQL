@@ -10,7 +10,9 @@
 </head>
 <body>
 <div id="wrapper">
-<h3>EDIT HEADPHONES</h3>
+<header>
+EDIT HEADPHONES
+  </header>
 <form method="POST" action = "mainServlet">
 <input type="hidden" name="id" value="${headphones.id}" required/>
 <label>BRAND</label><br>
@@ -32,6 +34,9 @@
 <input type="hidden" name = "command" value = "edit_write"/>
 <button type = "submit">UPDATE</button>
 </form>
+ <form method = "POST" action = "mainServlet">
+  <input type = "hidden" name = "command" value = "find_all"/>
+        <button type = "submit">BACK</button>
 </div>
 </body>
 </html>

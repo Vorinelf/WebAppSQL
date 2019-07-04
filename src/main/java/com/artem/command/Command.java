@@ -8,5 +8,5 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 public interface Command {
-    String execute (HttpServletRequest request);
+    String execute(HttpServletRequest request);
 }

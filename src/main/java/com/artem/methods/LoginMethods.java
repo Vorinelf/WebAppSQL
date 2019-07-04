@@ -1,6 +1,6 @@
 package com.artem.methods;
 
-import com.artem.connect.ConnectionPoolNew;
+import com.artem.connect.ConnectionPool;
 import com.artem.users.User;
 
 import java.sql.*;
@@ -13,7 +13,7 @@ public class LoginMethods {
         return INSTANCE;
     }
 
-    private Connection connection = ConnectionPoolNew.getInstance().getConnection();
+    private Connection connection = ConnectionPool.getInstance().getConnection();
 
     public boolean registration(User entity) {
         boolean flag = false;
@@ -34,7 +34,7 @@ public class LoginMethods {
             flag = true;
             preparedStatement.close();
             if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
+                ConnectionPool.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class LoginMethods {
             }
             preparedStatement.close();
             if (connection != null) {
-                ConnectionPoolNew.getInstance().closeConnection(connection);
+                ConnectionPool.getInstance().closeConnection(connection);
             }
         } catch (SQLException e) {
             e.printStackTrace();

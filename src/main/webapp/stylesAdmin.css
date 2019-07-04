@@ -167,7 +167,7 @@ aside {display: inline-block;
 section {
 	margin-left: 20%;
 	padding: 0%, 10%;
-	width: 100%;
+	width: 90%;
 	font: 20px 'Oswald', sans-serif;
 }
 .aside-menu li {
@@ -212,6 +212,7 @@ p {
         	width: 30%
         	padding 0% 0% 10% 0%
 }
+
 
 
 

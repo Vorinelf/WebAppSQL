@@ -32,13 +32,13 @@ public class LoginCommand implements Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request)  {
+    public String execute(HttpServletRequest request) {
         String page;
-        HttpSession session=request.getSession(true);
-        session.setAttribute("cart",null);
-        session.setAttribute("sizeOfCart",null);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("cart", null);
+        session.setAttribute("sizeOfCart", null);
         ClientType clientType;
-        String login= request.getParameter("login");
+        String login = request.getParameter("login");
         String password = request.getParameter("password");
         MessageDigest md = null;
         try {
@@ -49,15 +49,15 @@ public class LoginCommand implements Command {
         md.update(password.getBytes());
         byte[] byteData = md.digest();
         StringBuffer sb = new StringBuffer();
-        for (byte newByte: byteData){
-            sb.append(Integer.toString((newByte&0xff)+0x100,16).substring(1));
+        for (byte newByte : byteData) {
+            sb.append(Integer.toString((newByte & 0xff) + 0x100, 16).substring(1));
         }
         String passwordCipher = sb.toString();
         User user = loginMethods.checkLoginOrNewUser(login, passwordCipher);
 
         if (user != null) {
-            session.setAttribute("loginForOrder",login);
-            session.setAttribute("passwordForOrder",passwordCipher);
+            session.setAttribute("loginForOrder", login);
+            session.setAttribute("passwordForOrder", passwordCipher);
             if (user.isAdmin()) {
                 clientType = ClientType.ADMIN;
                 session.setAttribute("role", clientType);
@@ -72,10 +72,10 @@ public class LoginCommand implements Command {
             session.setAttribute("user", user);
             page = (String) session.getAttribute("pageFoRole");
         } else {
-            page = "checkLoginError.jsp";
+            page = "loginError.jsp";
         }
 
-        List<Headphones> listHeadphones =allMethodsDataBase.findAll();
+        List<Headphones> listHeadphones = allMethodsDataBase.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
         return page;

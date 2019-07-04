@@ -10,7 +10,9 @@
 </head>
 <body>
 <div id="wrapper">
-<h3>EDIT HEADPHONES</h3>
+ <header>
+ADD HEADPHONES
+  </header>
 <form method="POST" action = "mainServlet">
 <input input type="hidden" name="id" required pattern="^[0-9]+$" maxlength = "30"/>
 <label>BRAND</label><br>
@@ -32,6 +34,9 @@
 <input type="hidden" name = "command" value = "create"/>
 <button type = "submit">SAVE</button>
 </form>
+ <form method = "POST" action = "mainServlet">
+  <input type = "hidden" name = "command" value = "find_all"/>
+        <button type = "submit">BACK</button>
 </div>
 </body>
 </html>

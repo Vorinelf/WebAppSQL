@@ -29,11 +29,11 @@ public class CreateCommand implements Command {
         int release = Integer.parseInt(request.getParameter("release"));
         String stock = request.getParameter("stock");
 
-        Headphones headphones= new Headphones(name, model,price, construction,hiRes,bluetooth,release,stock);
+        Headphones headphones = new Headphones(name, model, price, construction, hiRes, bluetooth, release, stock);
         allMethodsDataBase.create(headphones);
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
-        request.setAttribute("headphonesArray",listHeadphones);
-        HttpSession session =request.getSession(true);
+        request.setAttribute("headphonesArray", listHeadphones);
+        HttpSession session = request.getSession(true);
         String pageFoRole = (String) session.getAttribute("pageFoRole");
         return pageFoRole;
 

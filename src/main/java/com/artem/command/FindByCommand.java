@@ -9,12 +9,12 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FindByBrandCommand implements Command {
-    private static final Command INSTANCE = new FindByBrandCommand();
+public class FindByCommand implements Command {
+    private static final Command INSTANCE = new FindByCommand();
 
     AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
-    private FindByBrandCommand() {
+    private FindByCommand() {
     }
 
 
@@ -24,9 +24,9 @@ public class FindByBrandCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-
-        String name = request.getParameter("name");
-        List<Headphones> listHeadphones = allMethodsDataBase.findByName(name);
+        String column = request.getParameter("column");
+        String param = request.getParameter("param");
+        List<Headphones> listHeadphones = allMethodsDataBase.findBy(column, param);
         request.setAttribute("headphonesArray", listHeadphones);
 
         HttpSession session = request.getSession(true);

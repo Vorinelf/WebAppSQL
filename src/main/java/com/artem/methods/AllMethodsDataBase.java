@@ -1,6 +1,6 @@
 package com.artem.methods;
 
-import com.artem.connect.ConnectionPoolNew;
+import com.artem.connect.ConnectionPool;
 import com.artem.dao.Dao;
 import com.artem.headphones.Headphones;
 import com.artem.users.User;
@@ -25,7 +25,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
     }
 
 
-    private Connection connection = ConnectionPoolNew.getInstance().getConnection();
+    private Connection connection = ConnectionPool.getInstance().getConnection();
 
 
     @Override
@@ -52,41 +52,11 @@ public class AllMethodsDataBase implements Dao<Headphones> {
             e.printStackTrace();
         } finally {
 
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return headphonesArray;
     }
 
-    @Override
-    public List<Headphones> findByName(String name) {
-        List<Headphones> list = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM headphones WHERE name=?");
-            preparedStatement.setString(1, name);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String name1 = resultSet.getString(2);
-                String model = resultSet.getString(3);
-                int price = resultSet.getInt(4);
-                String construction = resultSet.getString(5);
-                String hiRes = resultSet.getString(6);
-                String bluetooth = resultSet.getString(7);
-                int release = resultSet.getInt(8);
-                String stock = resultSet.getString(9);
-                Headphones headphones = new Headphones(id, name1, model, price, construction, hiRes, bluetooth, release, stock);
-                list.add(headphones);
-            }
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
-        }
-        return list;
-    }
 
     @Override
     public Headphones findEntityById(int id) {
@@ -113,7 +83,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return headphones;
     }
@@ -132,7 +102,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return flag;
 
@@ -159,7 +129,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
 
         return flag;
@@ -187,7 +157,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return flag;
     }
@@ -219,131 +189,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
-        }
-        return list;
-    }
-
-    @Override
-    public List<Headphones> findByConstruction(String construct) {
-        List<Headphones> list = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM headphones WHERE construction=?");
-            preparedStatement.setString(1, construct);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String name1 = resultSet.getString(2);
-                String model = resultSet.getString(3);
-                int price = resultSet.getInt(4);
-                String construction = resultSet.getString(5);
-                String hiRes = resultSet.getString(6);
-                String bluetooth = resultSet.getString(7);
-                int release = resultSet.getInt(8);
-                String stock = resultSet.getString(9);
-                Headphones headphones = new Headphones(id, name1, model, price, construction, hiRes, bluetooth, release, stock);
-                list.add(headphones);
-            }
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
-        }
-        return list;
-    }
-
-    @Override
-    public List<Headphones> findByHiRes(String hiRes) {
-        List<Headphones> list = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM headphones WHERE hiRes=?");
-            preparedStatement.setString(1, hiRes);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String model = resultSet.getString(3);
-                int price = resultSet.getInt(4);
-                String construction = resultSet.getString(5);
-                String hiRes1 = resultSet.getString(6);
-                String bluetooth = resultSet.getString(7);
-                int release = resultSet.getInt(8);
-                String stock = resultSet.getString(9);
-                Headphones headphones = new Headphones(id, name, model, price, construction, hiRes1, bluetooth, release, stock);
-                list.add(headphones);
-            }
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
-        }
-        return list;
-    }
-
-    @Override
-    public List<Headphones> findByBlue(String blue) {
-        List<Headphones> list = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM headphones WHERE bluetooth=?");
-            preparedStatement.setString(1, blue);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String model = resultSet.getString(3);
-                int price = resultSet.getInt(4);
-                String construction = resultSet.getString(5);
-                String hiRes1 = resultSet.getString(6);
-                String bluetooth = resultSet.getString(7);
-                int release = resultSet.getInt(8);
-                String stock = resultSet.getString(9);
-                Headphones headphones = new Headphones(id, name, model, price, construction, hiRes1, bluetooth, release, stock);
-                list.add(headphones);
-            }
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
-        }
-        return list;
-    }
-
-    @Override
-    public List<Headphones> findByStock(String stock) {
-        List<Headphones> list = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM headphones WHERE stock=?");
-            preparedStatement.setString(1, stock);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String mode = resultSet.getString(3);
-                int price = resultSet.getInt(4);
-                String construction = resultSet.getString(5);
-                String hiRes = resultSet.getString(6);
-                String bluetooth = resultSet.getString(7);
-                int release = resultSet.getInt(8);
-                String stock1 = resultSet.getString(9);
-                Headphones headphones = new Headphones(id, name, mode, price, construction, hiRes, bluetooth, release, stock1);
-                list.add(headphones);
-            }
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -372,7 +218,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -401,7 +247,7 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return list;
     }
@@ -433,8 +279,38 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ConnectionPoolNew.getInstance().closeConnection(connection);
+            ConnectionPool.getInstance().closeConnection(connection);
         }
         return flag;
     }
+
+    @Override
+    public List<Headphones> findBy(String column, String param) {
+        List<Headphones> list = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM headphones WHERE " + column + "=" + param);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String mode = resultSet.getString(3);
+                int price = resultSet.getInt(4);
+                String construction = resultSet.getString(5);
+                String hiRes = resultSet.getString(6);
+                String bluetooth = resultSet.getString(7);
+                int release = resultSet.getInt(8);
+                String stock1 = resultSet.getString(9);
+                Headphones headphones = new Headphones(id, name, mode, price, construction, hiRes, bluetooth, release, stock1);
+                list.add(headphones);
+            }
+            statement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().closeConnection(connection);
+        }
+        return list;
+    }
+
 }

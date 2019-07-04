@@ -10,13 +10,10 @@
 </head>
 <body>
 <div id="wrapper">
-    <header1>
-    YOUR CART IS EMPTY
-    </header1>
-    <main>
-  ROLE ${role}
-                Page ${pageFoRole}
-
+ <header>
+  YOUR CART
+  </header>
+<h3> YOUR CART IS EMPTY NOW </h3>
  <form method = "POST" action = "mainServlet">
   <input type = "hidden" name = "command" value = "find_all"/>
         <button type = "submit">CONTINUE SHOPPING</button>

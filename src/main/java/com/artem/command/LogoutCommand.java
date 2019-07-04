@@ -12,23 +12,26 @@ public class LogoutCommand implements Command {
     private static final Command INSTANCE = new LogoutCommand();
     private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
-    private LogoutCommand(){}
+    private LogoutCommand() {
+    }
 
-    public static Command getInstance() {return INSTANCE;}
+    public static Command getInstance() {
+        return INSTANCE;
+    }
 
 
     @Override
     public String execute(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        ClientType clientType =ClientType.GUEST;
-        session.setAttribute("role",clientType);
-        session.setAttribute("cart",null);
-        session.setAttribute("pageFoRole",null);
-        session.setAttribute("loginForOrder",null);
-        session.setAttribute("passwordForOrder",null);
-        session.setAttribute("sizeOfCart",null);
+        ClientType clientType = ClientType.GUEST;
+        session.setAttribute("role", clientType);
+        session.setAttribute("cart", null);
+        session.setAttribute("pageFoRole", null);
+        session.setAttribute("loginForOrder", null);
+        session.setAttribute("passwordForOrder", null);
+        session.setAttribute("sizeOfCart", null);
 
-        List<Headphones> listHeadphones =allMethodsDataBase.findAll();
+        List<Headphones> listHeadphones = allMethodsDataBase.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
         return "index.jsp";

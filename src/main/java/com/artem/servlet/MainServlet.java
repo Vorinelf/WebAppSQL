@@ -42,37 +42,10 @@ public class MainServlet extends HttpServlet {
         String nameCommand = req.getParameter("command");
         Command command = CommandType.findCommand(nameCommand);
         String page = command.execute(req);
-        if (page==null) {
+        if (page == null) {
             page = "index.jsp";
         }
         req.getRequestDispatcher(page).forward(req, resp);
-        req.setAttribute("messagesCookie", Cookies.addToRequest(req));
-        System.out.println(Cookies.addToRequest(req));
     }
-
-
-//        HttpSession session;
-//        if (SessionLocator.flag) {
-//            session = req.getSession();
-//            session.setMaxInactiveInterval(20);
-//            SessionLocator.flag = false;
-//
-//        } else {
-//            session = req.getSession(false);
-//            if (session == null) {
-//                SessionLocator.flag = true;
-//            }
-//        }
-//
-//        Integer count = (Integer) session.getAttribute("count");
-//        if (count == null) {
-//            session.setAttribute("count", 1);
-//        } else {
-//            session.setAttribute("count", count + 1);
-//        }
-//
-//
-//
-//        session.setAttribute("messages", SessionLocator.addMessage(session));
 }
 

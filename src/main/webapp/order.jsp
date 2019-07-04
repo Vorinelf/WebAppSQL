@@ -10,6 +10,10 @@
 </head>
 <body>
 <div id="wrapper">
+ <header>
+  YOUR ORDER
+  </header>
+  <div class="list">
 <table>
 <tr>
 <th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>
@@ -28,11 +32,10 @@
 </td>
 </tr>
 </c:forEach>
-</table>
-<p>YOUR ORDER: ${orderCount} headphones</p>
-<p>TOTAL SUM: ${totalSum}</p>
-
-<p>COMPLETE THE FORM OF DELIVERY</p>
+</table
+</div>
+<p>________________________________________</p>
+<h3>COMPLETE THE FORM OF DELIVERY</h3>
 <form method="POST" action = "mainServlet">
 <label>FIRST NAME</label><br>
 <input name="firstName" required value ="${userOrder.firstName}"/><br><br>
@@ -49,7 +52,14 @@
 <label>PHONE</label><br>
 <input name="phone" required value ="${userOrder.phone}"/><br><br>
 <input type = "hidden" name = "command" value = "buy"/>
+  <h3 align="left">TOTAL ORDER: ${orderCount} headphones</h3>
+  <h3 align="left">TOTAL SUM: ${totalSum}$</h3>
 <button type = "submit">BUY</button></form>
+ <form method = "POST" action = "mainServlet">
+  <input type = "hidden" name = "command" value = "find_all"/>
+        <button type = "submit">CONTINUE SHOPPING</button>
+</form>
+
 </div>
 </body>
 </html>

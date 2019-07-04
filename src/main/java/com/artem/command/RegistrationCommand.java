@@ -65,8 +65,8 @@ public class RegistrationCommand implements Command {
             HttpSession session = request.getSession(true);
             session.setAttribute("user", user);
 
-            session.setAttribute("loginForOrder",login);
-            session.setAttribute("passwordForOrder",passwordCipher);
+            session.setAttribute("loginForOrder", login);
+            session.setAttribute("passwordForOrder", passwordCipher);
 
             ClientType clientType = ClientType.USER;
             session.setAttribute("role", clientType);

@@ -10,10 +10,13 @@
 </head>
 <body>
 <div id="wrapper">
-<p>YOUR ORDER IS SUCCESSFULLY COMPLETED</p>
-<p>THANK FOR YOUR BUY</p>
+ <header>
+  SUCCESSFULL ORDER
+  </header>
+<h3>YOUR ORDER IS SUCCESSFULLY COMPLETED</h3>
+<h3>THANKS FOR YOUR BUY</h3>
 <form action="mainServlet" method "POST">
-    <input type="hidden" name="command" value="buy_ok"/>
+    <input type="hidden" name="command" value="find_all"/>
     <button type = "submit">OK</button>
 </form>
 </div>

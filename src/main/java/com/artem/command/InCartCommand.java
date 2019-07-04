@@ -1,7 +1,6 @@
 package com.artem.command;
 
 
-import com.artem.device.BathroomDevice;
 import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 

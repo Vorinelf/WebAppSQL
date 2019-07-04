@@ -8,21 +8,13 @@ import java.util.List;
 public interface Dao<T extends Headphones> {
     List<Headphones> findAll();
 
-    List<Headphones> findByBlue(String blue);
+    List<Headphones> findByPrice(int priceFrom, int priceTo);
 
-    List<Headphones> findByHiRes(String hiRes);
-
-    List<Headphones> findByPrice (int priceFrom, int priceTo);
-
-    List<Headphones> findByName(String name);
-
-    List<Headphones> findByConstruction(String construct);
-
-    List<Headphones> findByStock(String stock);
-
-    List<Headphones> findAndSortByPrice (String column, String highOrLow);
+    List<Headphones> findAndSortByPrice(String column, String highOrLow);
 
     List<Headphones> findAndSortBy(String column);
+
+    List<Headphones> findBy(String column, String param);
 
     boolean saveOrderInBase(List<Headphones> listHeadphones, User user);
 
@@ -33,8 +25,6 @@ public interface Dao<T extends Headphones> {
     boolean delete(int id);
 
     boolean update(T entity);
-
-
 
 
 }

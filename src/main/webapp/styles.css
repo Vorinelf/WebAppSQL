@@ -19,6 +19,7 @@ button {
 	border: none;
 	height:25px;
 	font-family: 'Oswald', sans-serif;
+
 }
 section button {
 	color: #fff;
@@ -27,9 +28,6 @@ section button {
 	height:25px;
 	font-family: 'Oswald', sans-serif;
 }
-p {
- 	margin: 20px 0;
- }
 
 #wrapper {
 	margin: auto;

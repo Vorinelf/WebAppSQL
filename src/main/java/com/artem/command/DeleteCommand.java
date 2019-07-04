@@ -1,6 +1,5 @@
 package com.artem.command;
 
-import com.artem.device.BathroomDevice;
 import com.artem.headphones.Headphones;
 import com.artem.methods.AllMethodsDataBase;
 
@@ -12,9 +11,12 @@ public class DeleteCommand implements Command {
     private final static Command INSTANCE = new DeleteCommand();
     private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
 
-    private DeleteCommand() {}
+    private DeleteCommand() {
+    }
 
-    public static Command getInstance(){return INSTANCE;}
+    public static Command getInstance() {
+        return INSTANCE;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -24,7 +26,7 @@ public class DeleteCommand implements Command {
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
-        HttpSession session =request.getSession(true);
+        HttpSession session = request.getSession(true);
         String pageFoRole = (String) session.getAttribute("pageFoRole");
 
         return pageFoRole;

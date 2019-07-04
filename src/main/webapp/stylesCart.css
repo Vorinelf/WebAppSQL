@@ -21,16 +21,27 @@ button {
 	font-family: 'Oswald', sans-serif;
 }
 header {
-     margin: 5% 30%;
+     margin: 1%;
      background-color: #29c5e6;
-     border: 5px solid #e7e7e7;
      font: 50px/50px 'Oswald', sans-serif;
 }
 
 #wrapper {
      margin: 5% 30%;
      border: 2px solid #e7e7e7;
+     text-align: center;
 
 }
+
+form{
+margin: 5px;}
+
+.list {
+margin-left: 10%;
+margin-top: 5%;
+
+}
+
+
 
 

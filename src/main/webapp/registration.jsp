@@ -8,9 +8,12 @@
 <link href="stylesCart.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css"/>
 </head>
-<h3>PLEASE, ENTER YOUR INFORMATION</h3>
 <body>
 <div id="wrapper">
+ <header>
+  REGISTRATION
+  </header>
+<h3>PLEASE, ENTER YOUR INFORMATION</h3>
 <form method="POST" action = "mainServlet">
 <name="isAdmin" value = "false"/>
 <label>LOGIN</label><br>

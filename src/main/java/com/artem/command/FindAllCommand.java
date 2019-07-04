@@ -37,15 +37,11 @@ public class FindAllCommand implements Command {
             session.setAttribute("sizeOfCart", list.size());
         }
 
-        ClientType clientType = (ClientType) session.getAttribute("role");
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
-        if (clientType == ClientType.ADMIN) {
-            page = "headphonesAdmin.jsp";
-        } else {
-            page = (String) session.getAttribute("pageFoRole");
-        }
+        page = (String) session.getAttribute("pageFoRole");
+
 
         return page;
     }

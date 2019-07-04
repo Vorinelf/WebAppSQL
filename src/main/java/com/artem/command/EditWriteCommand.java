@@ -36,7 +36,7 @@ public class EditWriteCommand implements Command {
         List<Headphones> listHeadphones = allMethodsDataBase.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
-        HttpSession session =request.getSession(true);
+        HttpSession session = request.getSession(true);
         String pageFoRole = (String) session.getAttribute("pageFoRole");
 
         return pageFoRole;

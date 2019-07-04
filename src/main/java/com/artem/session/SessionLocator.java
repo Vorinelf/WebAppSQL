@@ -7,7 +7,6 @@ import java.util.List;
 
 public class SessionLocator {
     private final static String BR = "<br/><hr/>";
-    public static boolean flag = true;
 
     public static List<String> addMessage(HttpSession session) {
         List<String> messages = new ArrayList<>();

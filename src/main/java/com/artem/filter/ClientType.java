@@ -1,5 +1,5 @@
 package com.artem.filter;
 
-public enum  ClientType {
+public enum ClientType {
     GUEST, USER, ADMIN
 }

@@ -8,8 +8,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Headphones {
-    private int id,price,release;
-    private String name,construction,model,hiRes,bluetooth,stock;
+    private int id, price, release;
+    private String name, construction, model, hiRes, bluetooth, stock;
 
     public int getId() {
         return id;

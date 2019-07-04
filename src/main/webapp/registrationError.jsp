@@ -11,13 +11,16 @@
 </head>
 <body>
 <div id="wrapper">
-<h3> REGISTRATION ERROR </h3>
+<header>
+REGISTRATION ERROR
+</header>
 <h3> User with this login and password already exists </h3>
-<form action = "registrationUser.jsp">
-<input type="submit" value = "Registration"/>
-</form>
-<form action = "index.jsp">
-<input type="submit" value = "Go to LogIn page"/>
+<form method = "POST" action = "mainServlet">
+  <input type = "hidden" name = "command" value = "find_all"/>
+        <button type = "submit">OK</button>
+        </form>
+<form action = "registration.jsp">
+<button type = "submit">TO REGISTER AGAIN</button>
 </form>
 </div>
 </body>

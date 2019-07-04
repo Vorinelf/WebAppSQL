@@ -71,39 +71,40 @@
 	<aside>
 	    <navy>
         	<ul class="aside-menu">
-        		<li>BRAND</li>
+<li>BRAND</li>
         		    <form name ="selectMenu" action="mainServlet" method "POST">
                         <li>
                             <a>
-                                <input type = "radio" name ="name" value ="SONY"/>SONY
+                                <input type = "radio" name ="param" value ="'SONY'"/>SONY
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="name" value="JBL"/>JBL
+                                <input type="radio" name="param" value="'JBL'"/>JBL
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="name" value="AUDIO-TECHNICA"/>AUDIO-TECHNICA
+                                <input type="radio" name="param" value="'AUDIO-TECHNICA'"/>AUDIO-TECHNICA
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="name" value="SENNHEISER"/>SENNHEISER
+                                <input type="radio" name="param" value="'SENNHEISER'"/>SENNHEISER
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio"name="name" value="BOSE"/>BOSE
+                                <input type="radio"name="param" value="'BOSE'"/>BOSE
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio"name="name" value="APPLE"/>APPLE
+                                <input type="radio"name="param" value="'APPLE'"/>APPLE
                             </a>
                         </li>
-                        <input type="hidden" name="command" value="find_by_name"/>
+                        <input type="hidden" name="column" value="name"/>
+                        <input type="hidden" name="command" value="find_by"/>
                         <button type = "submit">SELECT</button>
                     </form>
                     <form name ="selectMenu" action="mainServlet" method "POST">
@@ -127,25 +128,26 @@
         		    <form name = "selectMenu" action="mainServlet" method "POST">
                         <li>
                             <a>
-                                <input type="radio" name="constr" value="insert">INSERT
+                                <input type="radio" name="param" value="'insert'">INSERT
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="constr" value="intra-channel" >INTRA-CHANNEL
+                                <input type="radio" name="param" value="'intra-channel'" >INTRA-CHANNEL
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="constr" value="monitor" >MONITOR
+                                <input type="radio" name="param" value="'monitor'" >MONITOR
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="constr" value="overhead">OVERHEAD
+                                <input type="radio" name="param" value="'overhead'">OVERHEAD
                             </a>
                         </li>
-                            <input type="hidden" name="command" value="find_by_construction"/>
+                            <input type="hidden" name="column" value="construction"/>
+                            <input type="hidden" name="command" value="find_by"/>
                             <button type = "submit">SELECT</button>
                     </form>
                     <form name ="selectMenu" action="mainServlet" method "POST">
@@ -156,15 +158,16 @@
         		    <form name = "selectMenu" action="mainServlet" method "POST">
                         <li>
                             <a>
-                                <input type="radio" name="hiRes" value="YES">YES
+                                <input type="radio" name="param" value="'YES'">YES
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="hiRes" value="NO">NO
+                                <input type="radio" name="param" value="'NO'">NO
                             </a>
                         </li>
-                        <input type="hidden" name="command" value="find_by_hires"/>
+                        <input type="hidden" name="column" value="hiRes"/>
+                        <input type="hidden" name="command" value="find_by"/>
                         <button type = "submit">SELECT</button>
                     </form>
                     <form name ="selectMenu" action="mainServlet" method "POST">
@@ -175,15 +178,16 @@
         		    <form name = "selectMenu" action="mainServlet" method "POST">
                         <li>
                             <a>
-                                <input type="radio" name="blue" value="YES">YES
+                                <input type="radio" name="param" value="'YES'">YES
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="blue" value="NO">NO
+                                <input type="radio" name="param" value="'NO'">NO
                             </a>
                         </li>
-                        <input type="hidden" name="command" value="find_by_blue"/>
+                        <input type="hidden" name="column" value="bluetooth"/>
+                        <input type="hidden" name="command" value="find_by"/>
                         <button type = "submit">SELECT</button>
                     </form>
                     <form name ="selectMenu" action="mainServlet" method "POST">
@@ -194,15 +198,16 @@
         		    <form name = "selectMenu" action="mainServlet" method "POST">
                         <li>
                             <a>
-                                <input type="radio" name="stock" value="YES">YES
+                                <input type="radio" name="param" value="'YES'">YES
                             </a>
                         </li>
                         <li>
                             <a>
-                                <input type="radio" name="stock" value="NO"> NO
+                                <input type="radio" name="param" value="'NO'"> NO
                             </a>
                         </li>
-                        <input type="hidden" name="command" value="find_by_stock"/>
+                        <input type="hidden" name="column" value="stock"/>
+                        <input type="hidden" name="command" value="find_by"/>
                         <button type = "submit">SELECT</button>
                     </form>
                     <form name ="selectMenu" action="mainServlet" method "POST">

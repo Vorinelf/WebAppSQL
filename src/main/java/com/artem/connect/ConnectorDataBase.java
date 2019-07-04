@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-public class ConnectorDataBaseWithResourcesFile {
+public class ConnectorDataBase {
 
 
     public Connection getConnect() throws SQLException {
@@ -14,8 +14,7 @@ public class ConnectorDataBaseWithResourcesFile {
         String url = resourceBundle.getString("db.url");
         String user = resourceBundle.getString("db.user");
         String password = resourceBundle.getString("db.password");
-        String useUnicode = resourceBundle.getString("db.useUnicode");
-        String encoding = resourceBundle.getString("db.encoding");
+
 
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 

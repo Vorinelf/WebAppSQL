@@ -13,12 +13,9 @@
     <header>
  YOUR CART
     </header>
-    <header1>
-
-    </header1>
-    <main>
+    <div class="list">
   <table>
- <th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>
+  <tr><th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>
 <c:forEach var="hp" items="${cart}">
  <tr>
                 <td>${hp.name}</td>
@@ -39,14 +36,14 @@
 </tr>
 </c:forEach>
 </table>
-
+</div>
  <form method = "POST" action = "mainServlet">
   <input type = "hidden" name = "command" value = "find_all"/>
         <button type = "submit">CONTINUE SHOPPING</button>
 </form>
  <form method = "POST" action = "mainServlet">
   <input type = "hidden" name = "command" value = "order"/>
-        <button type = "submit">ORDER</button>
+        <button type = "submit">MAKE AN ORDER</button>
 </form>
 </div>
 </body>
