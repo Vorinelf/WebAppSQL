@@ -8,6 +8,7 @@
     <title>Headphones shop</title>
     <link href="stylesCart.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+
 </head>
 <body>
 <div id="wrapper">
@@ -16,8 +17,8 @@
   </header>
 <h3>ERROR LOGIN OR PASSWORD </h3>
 <form method = "POST" action = "mainServlet">
-  <input type = "hidden" name = "command" value = "find_all"/>
-   <button type = "submit">OK</button>
+<input type = "hidden" name = "command" value = "find_all"/>
+<button type = "submit">OK</button>
 </div>
 </body>
 </html>
