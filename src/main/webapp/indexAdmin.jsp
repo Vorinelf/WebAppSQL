@@ -24,7 +24,19 @@
                         <button type = "submit">ADD HEADPHONES</button>
                     </form>
                 </li>
-                 <li><a href="session.jsp"><h3>SESSION</h3></a></li>
+                <li>
+                    <form method = "POST" action = "mainServlet">
+                        <input type = "hidden" name = "command" value = "find_users"/>
+                        <button type = "submit">USERS BASE</button>
+                    </form>
+                </li>
+                <li>
+                    <form method = "POST" action = "mainServlet">
+                        <input type = "hidden" name = "command" value = "find_orders"/>
+                        <button type = "submit">ORDERS BASE</button>
+                    </form>
+                </li>
+                <li><a href="session.jsp"><h3>SESSION</h3></a></li>
              </ul>
        </header2>
        <header1>HEADPHONES SHOP</header1>

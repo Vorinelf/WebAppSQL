@@ -5,7 +5,7 @@ import com.artem.users.User;
 
 import java.util.List;
 
-public interface Dao<T extends Headphones> {
+public interface DaoHeadphones<T extends Headphones> {
     List<Headphones> findAll();
 
     List<Headphones> findByPrice(int priceFrom, int priceTo);
@@ -15,8 +15,6 @@ public interface Dao<T extends Headphones> {
     List<Headphones> findAndSortBy(String column);
 
     List<Headphones> findBy(String column, String param);
-
-    boolean saveOrderInBase(List<Headphones> listHeadphones, User user);
 
     T findEntityById(int id);
 

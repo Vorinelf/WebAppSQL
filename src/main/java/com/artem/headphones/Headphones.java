@@ -1,12 +1,7 @@
 package com.artem.headphones;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 
-@Builder
-@Data
-@AllArgsConstructor
+
 public class Headphones {
     private int id, price, release;
     private String name, construction, model, hiRes, bluetooth, stock;

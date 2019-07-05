@@ -1,7 +1,8 @@
 package com.artem.command;
 
 import com.artem.headphones.Headphones;
-import com.artem.methods.AllMethodsDataBase;
+import com.artem.methods.HeadphonesMethods;
+import com.artem.methods.OrderMethods;
 import com.artem.users.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class BuyCommand implements Command {
     private static final Command INSTANCE = new BuyCommand();
-    AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
+    OrderMethods orderMethods = OrderMethods.getInstance();
 
     private BuyCommand(){}
 
@@ -21,7 +22,7 @@ public class BuyCommand implements Command {
         HttpSession session = request.getSession(true);
         List<Headphones> listHeadphones = (List<Headphones>) session.getAttribute("cart");
         User user = (User) session.getAttribute("userOrder");
-        allMethodsDataBase.saveOrderInBase(listHeadphones,user);
+        orderMethods.saveOrderInBase(listHeadphones,user);
 
         return "buyOk.jsp";
     }

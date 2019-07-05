@@ -2,27 +2,20 @@ package com.artem.command;
 
 import com.artem.filter.ClientType;
 import com.artem.headphones.Headphones;
-import com.artem.methods.AllMethodsDataBase;
-import com.artem.methods.LoginMethods;
-import com.artem.session.SessionLocator;
+import com.artem.methods.HeadphonesMethods;
+import com.artem.methods.UserMethods;
 import com.artem.users.User;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class LoginCommand implements Command {
     private static final Command INSTANCE = new LoginCommand();
-    private final LoginMethods loginMethods = LoginMethods.getInstance();
-    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
+    private final UserMethods userMethods = UserMethods.getInstance();
+    private final HeadphonesMethods headphonesMethods = HeadphonesMethods.getInstance();
 
     private LoginCommand() {
     }
@@ -53,7 +46,7 @@ public class LoginCommand implements Command {
             sb.append(Integer.toString((newByte & 0xff) + 0x100, 16).substring(1));
         }
         String passwordCipher = sb.toString();
-        User user = loginMethods.checkLoginOrNewUser(login, passwordCipher);
+        User user = userMethods.checkLoginOrNewUser(login, passwordCipher);
 
         if (user != null) {
             session.setAttribute("loginForOrder", login);
@@ -75,7 +68,7 @@ public class LoginCommand implements Command {
             page = "loginError.jsp";
         }
 
-        List<Headphones> listHeadphones = allMethodsDataBase.findAll();
+        List<Headphones> listHeadphones = headphonesMethods.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
         return page;

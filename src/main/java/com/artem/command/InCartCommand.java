@@ -2,7 +2,7 @@ package com.artem.command;
 
 
 import com.artem.headphones.Headphones;
-import com.artem.methods.AllMethodsDataBase;
+import com.artem.methods.HeadphonesMethods;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class InCartCommand implements Command {
     private static final Command INSTANCE = new InCartCommand();
-    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
+    private final HeadphonesMethods headphonesMethods = HeadphonesMethods.getInstance();
     private List<Headphones> listHeadphonesCart;
 
     public static Command getInstance() {
@@ -28,7 +28,7 @@ public class InCartCommand implements Command {
     public String execute(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         HttpSession session = request.getSession(true);
-        Headphones headphones = allMethodsDataBase.findEntityById(id);
+        Headphones headphones = headphonesMethods.findEntityById(id);
         listHeadphonesCart = (List<Headphones>) session.getAttribute("cart");
         if (listHeadphonesCart == null) {
             listHeadphonesCart = new ArrayList<>();
@@ -49,7 +49,7 @@ public class InCartCommand implements Command {
         if (list != null) {
             session.setAttribute("headphonesArray", list);
         } else {
-            List<Headphones> listHd = allMethodsDataBase.findAll();
+            List<Headphones> listHd = headphonesMethods.findAll();
             request.setAttribute("headphonesArray", listHd);
         }
         String pageFoRole = (String) session.getAttribute("pageFoRole");

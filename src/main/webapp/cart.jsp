@@ -17,7 +17,7 @@
   <table>
   <tr><th>BRAND</th><th>MODEL</th><th>PRICE</th><th>CONSTRUCTION</th><th>HI-RES</th><th>BLUETOOTH</th><th>RELEASE</th><th>IN STOCK</th></tr>
 <c:forEach var="hp" items="${cart}">
- <tr>
+                <tr>
                 <td>${hp.name}</td>
                 <td>${hp.model}</td>
                 <td>${hp.price}$</td>

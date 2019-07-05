@@ -1,7 +1,7 @@
 package com.artem.command;
 
 import com.artem.headphones.Headphones;
-import com.artem.methods.AllMethodsDataBase;
+import com.artem.methods.HeadphonesMethods;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DeleteCommand implements Command {
     private final static Command INSTANCE = new DeleteCommand();
-    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
+    private final HeadphonesMethods headphonesMethods = HeadphonesMethods.getInstance();
 
     private DeleteCommand() {
     }
@@ -21,9 +21,9 @@ public class DeleteCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        allMethodsDataBase.delete(id);
+        headphonesMethods.delete(id);
 
-        List<Headphones> listHeadphones = allMethodsDataBase.findAll();
+        List<Headphones> listHeadphones = headphonesMethods.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
         HttpSession session = request.getSession(true);

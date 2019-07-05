@@ -1,23 +1,17 @@
 package com.artem.command;
 
 import com.artem.filter.ClientType;
-import com.artem.methods.LoginMethods;
+import com.artem.methods.UserMethods;
 import com.artem.users.User;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class RegistrationCommand implements Command {
     private static final Command INSTANCE = new RegistrationCommand();
-    private final LoginMethods loginMethods = LoginMethods.getInstance();
+    private final UserMethods userMethods = UserMethods.getInstance();
 
     private RegistrationCommand() {
     }
@@ -54,12 +48,12 @@ public class RegistrationCommand implements Command {
             sb.append(Integer.toString((newByte & 0xff) + 0x100, 16).substring(1));
         }
         String passwordCipher = sb.toString();
-        User userAfterCheck = loginMethods.checkLoginOrNewUser(login, passwordCipher);
+        User userAfterCheck = userMethods.checkLoginOrNewUser(login, passwordCipher);
         if (userAfterCheck != null) {
             page = "registrationError.jsp";
         } else {
             User user = new User(isAdmin, login, passwordCipher, firstName, secondName, country, city, street, postIndex, phone);
-            loginMethods.registration(user);
+            userMethods.registration(user);
             request.setAttribute("user", user);
 
             HttpSession session = request.getSession(true);

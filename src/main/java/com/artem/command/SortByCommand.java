@@ -1,7 +1,7 @@
 package com.artem.command;
 
 import com.artem.headphones.Headphones;
-import com.artem.methods.AllMethodsDataBase;
+import com.artem.methods.HeadphonesMethods;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class SortByCommand implements Command {
     private static final Command INSTANCE = new SortByCommand();
-    AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
+    HeadphonesMethods headphonesMethods = HeadphonesMethods.getInstance();
 
     private SortByCommand() {
     }
@@ -38,7 +38,7 @@ public class SortByCommand implements Command {
             }
             session.setAttribute("headphonesArray", listSorted);
         } else {
-            List<Headphones> listHeadphones = allMethodsDataBase.findAndSortBy(column);
+            List<Headphones> listHeadphones = headphonesMethods.findAndSortBy(column);
             request.setAttribute("headphonesArray", listHeadphones);
         }
         String pageFoRole = (String) session.getAttribute("pageFoRole");

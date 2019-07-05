@@ -1,7 +1,7 @@
 package com.artem.methods;
 
 import com.artem.connect.ConnectionPool;
-import com.artem.dao.Dao;
+import com.artem.dao.DaoHeadphones;
 import com.artem.headphones.Headphones;
 import com.artem.users.User;
 
@@ -12,15 +12,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AllMethodsDataBase implements Dao<Headphones> {
-    private final static AllMethodsDataBase INSTANCE = new AllMethodsDataBase();
+public class HeadphonesMethods implements DaoHeadphones<Headphones> {
+    private final static HeadphonesMethods INSTANCE = new HeadphonesMethods();
     private List<Headphones> headphonesArray;
     private AtomicInteger idGenerator;
 
-    private AllMethodsDataBase() {
+    private HeadphonesMethods() {
     }
 
-    public static AllMethodsDataBase getInstance() {
+    public static HeadphonesMethods getInstance() {
         return INSTANCE;
     }
 
@@ -252,37 +252,6 @@ public class AllMethodsDataBase implements Dao<Headphones> {
         return list;
     }
 
-    @Override
-    public boolean saveOrderInBase(List<Headphones> listHeadphones, User user) {
-        boolean flag = false;
-        Date date = new Date();
-        try {
-            for (Headphones hd : listHeadphones) {
-                PreparedStatement preparedStatement = connection.prepareStatement
-                        ("INSERT INTO orders (dateOrder, firstName, secondName, brand, model, price, country, city, street, postIndex, phone) Values (?,?,?,?,?,?,?,?,?,?,?)");
-                preparedStatement.setString(1, date.toString());
-                preparedStatement.setString(2, user.getFirstName());
-                preparedStatement.setString(3, user.getSecondName());
-                preparedStatement.setString(4, hd.getName());
-                preparedStatement.setString(5, hd.getModel());
-                preparedStatement.setInt(6, hd.getPrice());
-                preparedStatement.setString(7, user.getCountry());
-                preparedStatement.setString(8, user.getCity());
-                preparedStatement.setString(9, user.getStreet());
-                preparedStatement.setString(10, user.getPostIndex());
-                preparedStatement.setString(11, user.getPhone());
-                preparedStatement.executeUpdate();
-                preparedStatement.close();
-            }
-            flag = true;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionPool.getInstance().closeConnection(connection);
-        }
-        return flag;
-    }
 
     @Override
     public List<Headphones> findBy(String column, String param) {

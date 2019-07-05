@@ -1,18 +1,15 @@
 package com.artem.command;
 
-import com.artem.filter.ClientType;
 import com.artem.headphones.Headphones;
-import com.artem.methods.AllMethodsDataBase;
-import com.artem.session.SessionLocator;
+import com.artem.methods.HeadphonesMethods;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FindAllCommand implements Command {
     private static final Command INSTANCE = new FindAllCommand();
-    private final AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
+    private final HeadphonesMethods headphonesMethods = HeadphonesMethods.getInstance();
 
     private FindAllCommand() {
     }
@@ -37,7 +34,7 @@ public class FindAllCommand implements Command {
             session.setAttribute("sizeOfCart", list.size());
         }
 
-        List<Headphones> listHeadphones = allMethodsDataBase.findAll();
+        List<Headphones> listHeadphones = headphonesMethods.findAll();
         request.setAttribute("headphonesArray", listHeadphones);
 
         page = (String) session.getAttribute("pageFoRole");

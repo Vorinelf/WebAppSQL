@@ -1,8 +1,8 @@
 package com.artem.command;
 
 import com.artem.headphones.Headphones;
-import com.artem.methods.AllMethodsDataBase;
-import com.artem.methods.LoginMethods;
+import com.artem.methods.HeadphonesMethods;
+import com.artem.methods.UserMethods;
 import com.artem.users.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +12,8 @@ import java.util.List;
 
 public class OrderCommand implements Command {
     private static final Command INSTANCE = new OrderCommand();
-    AllMethodsDataBase allMethodsDataBase = AllMethodsDataBase.getInstance();
-    LoginMethods loginMethods = LoginMethods.getInstance();
+    HeadphonesMethods headphonesMethods = HeadphonesMethods.getInstance();
+    UserMethods userMethods = UserMethods.getInstance();
 
 
     private OrderCommand() {
@@ -28,7 +28,7 @@ public class OrderCommand implements Command {
         HttpSession session = request.getSession(true);
         String login = (String) session.getAttribute("loginForOrder");
         String password = (String) session.getAttribute("passwordForOrder");
-        User user = loginMethods.checkLoginOrNewUser(login, password);
+        User user = userMethods.checkLoginOrNewUser(login, password);
         session.setAttribute("userOrder", user);
 
         List<Headphones> list = (List<Headphones>) session.getAttribute("cart");

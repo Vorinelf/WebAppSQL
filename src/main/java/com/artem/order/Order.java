@@ -1,65 +1,46 @@
-package com.artem.users;
+package com.artem.order;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+public class Order {
 
-@Builder
-@Data
-@AllArgsConstructor
-public class User {
-    private boolean isAdmin;
-    private String login, password, firstName, secondName, country, city, street, postIndex, phone;
-    private int id;
+   private String dateOrder, firstName, secondName, brand,
+           model,  country, city, street, postIndex, phone;
+   private int price, id;
 
-    public User(int id, boolean isAdmin, String login, String password, String firstName, String secondName, String country, String city, String street, String postIndex, String phone) {
-        this.isAdmin = isAdmin;
-        this.login = login;
-        this.password = password;
+    public Order(int id, String dateOrder, String firstName, String secondName, String brand, String model, int price, String country, String city, String street, String postIndex, String phone) {
+        this.dateOrder = dateOrder;
         this.firstName = firstName;
         this.secondName = secondName;
+        this.brand = brand;
+        this.model = model;
         this.country = country;
         this.city = city;
         this.street = street;
         this.postIndex = postIndex;
         this.phone = phone;
+        this.price = price;
         this.id = id;
     }
 
-    public User(boolean isAdmin, String login, String password, String firstName, String secondName, String country, String city, String street, String postIndex, String phone) {
-        this.isAdmin = isAdmin;
-        this.login = login;
-        this.password = password;
+    public Order(String dateOrder, String firstName, String secondName, String brand, String model, int price, String country, String city, String street, String postIndex, String phone) {
+        this.dateOrder = dateOrder;
         this.firstName = firstName;
         this.secondName = secondName;
+        this.brand = brand;
+        this.model = model;
         this.country = country;
         this.city = city;
         this.street = street;
         this.postIndex = postIndex;
         this.phone = phone;
-    }
-    public boolean isAdmin() {
-        return isAdmin;
+        this.price = price;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public String getDateOrder() {
+        return dateOrder;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDateOrder(String dateOrder) {
+        this.dateOrder = dateOrder;
     }
 
     public String getFirstName() {
@@ -76,6 +57,22 @@ public class User {
 
     public void setSecondName(String secondName) {
         this.secondName = secondName;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getCountry() {
@@ -118,6 +115,14 @@ public class User {
         this.phone = phone;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }
@@ -127,3 +132,4 @@ public class User {
     }
 
 }
+

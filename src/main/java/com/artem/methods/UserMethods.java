@@ -1,20 +1,26 @@
 package com.artem.methods;
 
 import com.artem.connect.ConnectionPool;
+import com.artem.dao.DaoUser;
+import com.artem.headphones.Headphones;
 import com.artem.users.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class LoginMethods {
-    private static final LoginMethods INSTANCE = new LoginMethods();
+public class UserMethods implements DaoUser {
+    private static final UserMethods INSTANCE = new UserMethods();
 
-    public static LoginMethods getInstance() {
+    public static UserMethods getInstance() {
         return INSTANCE;
     }
 
     private Connection connection = ConnectionPool.getInstance().getConnection();
 
+
+    @Override
     public boolean registration(User entity) {
         boolean flag = false;
         try {
@@ -42,6 +48,8 @@ public class LoginMethods {
         return flag;
     }
 
+
+    @Override
     public User checkLoginOrNewUser(String login, String password) {
         User user = null;
         try {
@@ -51,6 +59,7 @@ public class LoginMethods {
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                int id = resultSet.getInt(1);
                 Boolean isAdmin = resultSet.getBoolean(2);
                 String log = resultSet.getString(3);
                 String passw = resultSet.getString(4);
@@ -61,7 +70,7 @@ public class LoginMethods {
                 String street = resultSet.getString(9);
                 String postIndex = resultSet.getString(10);
                 String phone = resultSet.getString(11);
-                user = new User(isAdmin, log, passw, firstName, secondName, country, city, street, postIndex, phone);
+                user = new User(id, isAdmin, log, passw, firstName, secondName, country, city, street, postIndex, phone);
             }
             preparedStatement.close();
             if (connection != null) {
@@ -74,4 +83,55 @@ public class LoginMethods {
     }
 
 
+    @Override
+    public List<User> findAllUsers() {
+        List<User> usersArray = new ArrayList<>();
+        User user;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                Boolean isAdmin = resultSet.getBoolean(2);
+                String log = resultSet.getString(3);
+                String passw = resultSet.getString(4);
+                String firstName = resultSet.getString(5);
+                String secondName = resultSet.getString(6);
+                String country = resultSet.getString(7);
+                String city = resultSet.getString(8);
+                String street = resultSet.getString(9);
+                String postIndex = resultSet.getString(10);
+                String phone = resultSet.getString(11);
+                user = new User(id, isAdmin, log, passw, firstName, secondName, country, city, street, postIndex, phone);
+                usersArray.add(user);
+            }
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            ConnectionPool.getInstance().closeConnection(connection);
+        }
+        return usersArray;
+    }
+
+
+    @Override
+    public boolean deleteUser(int id) {
+        boolean flag = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement
+                    ("DELETE FROM users WHERE id=?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            flag = true;
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().closeConnection(connection);
+        }
+        return flag;
+    }
 }
