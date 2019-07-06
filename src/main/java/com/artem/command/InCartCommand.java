@@ -23,12 +23,14 @@ public class InCartCommand implements Command {
     private InCartCommand() {
     }
 
-
     @Override
     public String execute(HttpServletRequest request) {
+
         int id = Integer.parseInt(request.getParameter("id"));
+
         HttpSession session = request.getSession(true);
         Headphones headphones = headphonesMethods.findEntityById(id);
+
         listHeadphonesCart = (List<Headphones>) session.getAttribute("cart");
         if (listHeadphonesCart == null) {
             listHeadphonesCart = new ArrayList<>();
@@ -45,18 +47,19 @@ public class InCartCommand implements Command {
             session.setAttribute("cart", listHeadphonesSorted);
             session.setAttribute("sizeOfCart", listHeadphonesSorted.size());
         }
+
         List<Headphones> list = (List<Headphones>) session.getAttribute("headphonesArray");
+
         if (list != null) {
             session.setAttribute("headphonesArray", list);
         } else {
             List<Headphones> listHd = headphonesMethods.findAll();
             request.setAttribute("headphonesArray", listHd);
         }
+
         String pageFoRole = (String) session.getAttribute("pageFoRole");
 
         return pageFoRole;
     }
-
-
 }
 

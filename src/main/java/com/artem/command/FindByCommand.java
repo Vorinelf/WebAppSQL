@@ -24,8 +24,10 @@ public class FindByCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         String column = request.getParameter("column");
         String param = request.getParameter("param");
+
         List<Headphones> listHeadphones = headphonesMethods.findBy(column, param);
         request.setAttribute("headphonesArray", listHeadphones);
 
@@ -35,30 +37,6 @@ public class FindByCommand implements Command {
         session.setAttribute("headphonesArray", listHeadphones);
 
         return pageFoRole;
-    }
-
-    public List<Headphones> sortByNameStream(String name, List<Headphones> listHeadphones) {
-        return listHeadphones
-                .stream()
-                .filter(p -> p.getName().equals(name))
-                .collect(Collectors.toList());
-    }
-
-    List<Headphones> addHeadphonesInFinalFilter(List<Headphones> fromList, List<Headphones> inList) {
-        for (Headphones hd : fromList) {
-            int id = hd.getId();
-            String name = hd.getName();
-            String model = hd.getModel();
-            int price = hd.getPrice();
-            String construction = hd.getConstruction();
-            String hiRes = hd.getHiRes();
-            String bluetooth = hd.getBluetooth();
-            int release = hd.getRelease();
-            String stock = hd.getStock();
-            Headphones headphones = new Headphones(id, name, model, price, construction, hiRes, bluetooth, release, stock);
-            inList.add(headphones);
-        }
-        return inList;
     }
 }
 

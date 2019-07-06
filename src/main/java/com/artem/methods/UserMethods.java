@@ -11,6 +11,7 @@ import java.util.List;
 
 
 public class UserMethods implements DaoUser {
+
     private static final UserMethods INSTANCE = new UserMethods();
 
     public static UserMethods getInstance() {
@@ -19,6 +20,8 @@ public class UserMethods implements DaoUser {
 
     private Connection connection = ConnectionPool.getInstance().getConnection();
 
+    private UserMethods() {
+    }
 
     @Override
     public boolean registration(User entity) {
@@ -26,7 +29,7 @@ public class UserMethods implements DaoUser {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("INSERT INTO users (isAdmin, login, password, firstName, secondName, country, city, street, postIndex, phone) Values (?,?,?,?,?,?,?,?,?,?)");
-            preparedStatement.setString(1, String.valueOf(entity.isAdmin()));
+            preparedStatement.setString(1,entity.getIsAdmin());
             preparedStatement.setString(2, entity.getLogin());
             preparedStatement.setString(3, entity.getPassword());
             preparedStatement.setString(4, entity.getFirstName());
@@ -60,7 +63,7 @@ public class UserMethods implements DaoUser {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
-                Boolean isAdmin = resultSet.getBoolean(2);
+                String isAdmin = resultSet.getString(2);
                 String log = resultSet.getString(3);
                 String passw = resultSet.getString(4);
                 String firstName = resultSet.getString(5);
@@ -92,7 +95,7 @@ public class UserMethods implements DaoUser {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
-                Boolean isAdmin = resultSet.getBoolean(2);
+                String isAdmin = resultSet.getString(2);
                 String log = resultSet.getString(3);
                 String passw = resultSet.getString(4);
                 String firstName = resultSet.getString(5);

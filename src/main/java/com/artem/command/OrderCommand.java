@@ -13,7 +13,7 @@ import java.util.List;
 public class OrderCommand implements Command {
     private static final Command INSTANCE = new OrderCommand();
     HeadphonesMethods headphonesMethods = HeadphonesMethods.getInstance();
-    UserMethods userMethods = UserMethods.getInstance();
+    private final UserMethods userMethods = UserMethods.getInstance();
 
 
     private OrderCommand() {
@@ -25,6 +25,7 @@ public class OrderCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         HttpSession session = request.getSession(true);
         String login = (String) session.getAttribute("loginForOrder");
         String password = (String) session.getAttribute("passwordForOrder");
@@ -34,7 +35,7 @@ public class OrderCommand implements Command {
         List<Headphones> list = (List<Headphones>) session.getAttribute("cart");
         int orderCount = list.size();
         int totalSum = list
-                .stream().mapToInt(p -> p.getPrice()).sum();
+                .stream().mapToInt(Headphones::getPrice).sum();
         request.setAttribute("orderCount", orderCount);
         request.setAttribute("totalSum", totalSum);
 

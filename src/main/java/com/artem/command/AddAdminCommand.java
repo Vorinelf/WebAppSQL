@@ -8,20 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
-public class RegistrationCommand implements Command {
-    private static final Command INSTANCE = new RegistrationCommand();
+public class AddAdminCommand implements Command {
+
+    private static final Command INSTANCE =new AddAdminCommand();
+
     private final UserMethods userMethods = UserMethods.getInstance();
 
-    private RegistrationCommand() {
-    }
+    private AddAdminCommand(){}
 
-    public static Command getInstance() {
-        return INSTANCE;
-    }
+    public static Command getInstance(){return INSTANCE;}
 
     @Override
     public String execute(HttpServletRequest request) {
+
         String page;
 
         String isAdmin = request.getParameter("isAdmin");
@@ -29,11 +30,9 @@ public class RegistrationCommand implements Command {
         String password = request.getParameter("password");
         String firstName = request.getParameter("firstName");
         String secondName = request.getParameter("secondName");
-        String country = request.getParameter("country");
-        String city = request.getParameter("city");
-        String street = request.getParameter("street");
-        String postIndex = request.getParameter("postIndex");
-        String phone = request.getParameter("phone");
+        String emptyFild = "0";
+
+
 
         MessageDigest md = null;
         try {
@@ -47,34 +46,29 @@ public class RegistrationCommand implements Command {
         for (byte newByte : byteData) {
             sb.append(Integer.toString((newByte & 0xff) + 0x100, 16).substring(1));
         }
-
         String passwordCipher = sb.toString();
-
         User userAfterCheck = userMethods.checkLoginOrNewUser(login, passwordCipher);
-
         if (userAfterCheck != null) {
-            page = "registrationError.jsp";
+            page = "registrationAdminError.jsp";
         } else {
-            User user = new User(isAdmin, login, passwordCipher, firstName, secondName, country, city, street, postIndex, phone);
+            User user = new User(isAdmin, login, passwordCipher, firstName, secondName, emptyFild, emptyFild, emptyFild, emptyFild, emptyFild);
             userMethods.registration(user);
-            request.setAttribute("user", user);
 
             HttpSession session = request.getSession(true);
             session.setAttribute("user", user);
 
-            session.setAttribute("loginForOrder", login);
-            session.setAttribute("passwordForOrder", passwordCipher);
 
-            ClientType clientType = ClientType.USER;
+            ClientType clientType = ClientType.ADMIN;
             session.setAttribute("role", clientType);
 
-            session.setAttribute("cart", null);
-            session.setAttribute("sizeOfCart", null);
 
-            String pageForRole = "indexUser.jsp";
+            String pageForRole = "indexAdmin.jsp";
             session.setAttribute("pageFoRole", pageForRole);
 
-            page = "registrationOk.jsp";
+            List<User> listOrders = userMethods.findAllUsers();
+            request.setAttribute("usersArray", listOrders);
+
+            page = "usersAdmin.jsp";
         }
         return page;
     }

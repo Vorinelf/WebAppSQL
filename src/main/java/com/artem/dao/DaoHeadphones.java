@@ -1,8 +1,6 @@
 package com.artem.dao;
 
 import com.artem.headphones.Headphones;
-import com.artem.users.User;
-
 import java.util.List;
 
 public interface DaoHeadphones<T extends Headphones> {

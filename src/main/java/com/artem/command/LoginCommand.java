@@ -26,13 +26,17 @@ public class LoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         String page;
+        ClientType clientType;
+
         HttpSession session = request.getSession(true);
         session.setAttribute("cart", null);
         session.setAttribute("sizeOfCart", null);
-        ClientType clientType;
+
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
@@ -40,18 +44,23 @@ public class LoginCommand implements Command {
             e.printStackTrace();
         }
         md.update(password.getBytes());
+
         byte[] byteData = md.digest();
+
         StringBuffer sb = new StringBuffer();
+
         for (byte newByte : byteData) {
             sb.append(Integer.toString((newByte & 0xff) + 0x100, 16).substring(1));
         }
+
         String passwordCipher = sb.toString();
+
         User user = userMethods.checkLoginOrNewUser(login, passwordCipher);
 
         if (user != null) {
             session.setAttribute("loginForOrder", login);
             session.setAttribute("passwordForOrder", passwordCipher);
-            if (user.isAdmin()) {
+            if (user.getIsAdmin().equals("true")) {
                 clientType = ClientType.ADMIN;
                 session.setAttribute("role", clientType);
                 String pageForRole = "indexAdmin.jsp";

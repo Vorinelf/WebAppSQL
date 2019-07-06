@@ -24,11 +24,14 @@ public class FilterController implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         servletResponse.setCharacterEncoding("UTF-8");
         servletRequest.setCharacterEncoding("UTF-8");
+
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
+
         HttpSession session = req.getSession();
         session.setAttribute("messages", SessionLocator.addMessage(session));
         session.setMaxInactiveInterval(60 * 5);
+
         ClientType clientType = (ClientType) session.getAttribute("role");
         if (clientType == null) {
             clientType = ClientType.GUEST;
@@ -38,13 +41,11 @@ public class FilterController implements Filter {
             RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/mainServlet");
             dispatcher.forward(req, resp);
         }
+
         filterChain.doFilter(servletRequest, servletResponse);
-
-
     }
 
     @Override
     public void destroy() {
-
     }
 }

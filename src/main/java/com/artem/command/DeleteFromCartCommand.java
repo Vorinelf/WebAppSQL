@@ -8,7 +8,6 @@ import java.util.List;
 
 public class DeleteFromCartCommand implements Command {
     private static final Command INSTANCE = new DeleteFromCartCommand();
-    List<Headphones> cartList;
 
     private DeleteFromCartCommand() {
     }
@@ -19,9 +18,11 @@ public class DeleteFromCartCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         int id = Integer.parseInt(request.getParameter("id"));
+
         HttpSession session = request.getSession(true);
-        cartList = (List<Headphones>) session.getAttribute("cart");
+        List<Headphones> cartList = (List<Headphones>) session.getAttribute("cart");
         Headphones headphones = cartList
                 .stream()
                 .filter(p -> p.getId() == id)
@@ -29,6 +30,7 @@ public class DeleteFromCartCommand implements Command {
                 .get();
         cartList.remove(headphones);
         session.setAttribute("cart", cartList);
+
         return "cart.jsp";
     }
 }

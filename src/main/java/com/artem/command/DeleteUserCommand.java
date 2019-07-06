@@ -6,17 +6,19 @@ import com.artem.users.User;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class FindUsersCommand implements Command {
-    private final static Command INSTANCE = new FindUsersCommand();
+public class DeleteUserCommand implements Command {
+
+    private static final Command INSTANCE = new DeleteUserCommand();
+
     private final UserMethods userMethods = UserMethods.getInstance();
 
-    public static Command getInstance() {
-        return INSTANCE;
-    }
+    private DeleteUserCommand(){}
 
-
+    public static Command getInstance(){return INSTANCE;}
     @Override
     public String execute(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        userMethods.deleteUser(id);
 
         List<User> listOrders = userMethods.findAllUsers();
         request.setAttribute("usersArray", listOrders);

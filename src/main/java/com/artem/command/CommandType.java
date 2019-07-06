@@ -19,7 +19,13 @@ public enum CommandType {
     ORDER(OrderCommand.getInstance()),
     BUY(BuyCommand.getInstance()),
     CHECK_CART(CheckCartCommand.getInstance()),
-    LOGOUT(LogoutCommand.getInstance());
+    LOGOUT(LogoutCommand.getInstance()),
+    FIND_ORDERS(FindOrdersCommand.getInstance()),
+    FIND_USERS(FindUsersCommand.getInstance()),
+    DELETE_ORDER(DeleteOrderCommand.getInstance()),
+    DELETE_ALL_ORDERS(DeleteAllOrdersCommand.getInstance()),
+    DELETE_USER(DeleteUserCommand.getInstance()),
+    ADD_ADMIN(AddAdminCommand.getInstance());
 
 
     private Command command;

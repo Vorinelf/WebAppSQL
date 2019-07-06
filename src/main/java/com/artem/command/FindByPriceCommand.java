@@ -22,10 +22,13 @@ public class FindByPriceCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
         int priceFrom = Integer.parseInt(request.getParameter("priceFrom"));
         int priceTo = Integer.parseInt(request.getParameter("priceTo"));
+
         List<Headphones> listHeadphones = headphonesMethods.findByPrice(priceFrom, priceTo);
         HttpSession session = request.getSession(true);
+
         session.setAttribute("headphonesArray", listHeadphones);
         request.setAttribute("headphonesArray", listHeadphones);
 

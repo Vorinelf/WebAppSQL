@@ -24,6 +24,8 @@ public class OrderMethods implements DaoOrder {
 
     private Connection connection = ConnectionPool.getInstance().getConnection();
 
+    private OrderMethods(){}
+
     @Override
     public boolean saveOrderInBase(List<Headphones> listHeadphones, User user) {
         boolean flag = false;

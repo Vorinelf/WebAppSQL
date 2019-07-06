@@ -12,14 +12,14 @@
 <body>
 <div id="wrapper">
 <header>
-REGISTRATION ERROR
+REGISTRATION NEW ADMIN IS ERROR
 </header>
-<h3>USER WITH THIS LOGIN AND PASSWORD ALREADY EXIST</h3>
+<h3> ADMIN WITH THIS LOGIN AND PASSWORD ALREADY EXIST</h3>
 <form method = "POST" action = "mainServlet">
-  <input type = "hidden" name = "command" value = "find_all"/>
+  <input type = "hidden" name = "command" value = "find_users"/>
         <button type = "submit">OK</button>
         </form>
-<form action = "registration.jsp">
+<form action = "registrationAdmin.jsp">
 <button type = "submit">TO REGISTER AGAIN</button>
 </form>
 </div>

@@ -1,18 +1,14 @@
 package com.artem.users;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 
-@Builder
-@Data
-@AllArgsConstructor
+
+
 public class User {
-    private boolean isAdmin;
-    private String login, password, firstName, secondName, country, city, street, postIndex, phone;
+
+    private String isAdmin,login, password, firstName, secondName, country, city, street, postIndex, phone;
     private int id;
 
-    public User(int id, boolean isAdmin, String login, String password, String firstName, String secondName, String country, String city, String street, String postIndex, String phone) {
+    public User(int id, String isAdmin, String login, String password, String firstName, String secondName, String country, String city, String street, String postIndex, String phone) {
         this.isAdmin = isAdmin;
         this.login = login;
         this.password = password;
@@ -26,7 +22,7 @@ public class User {
         this.id = id;
     }
 
-    public User(boolean isAdmin, String login, String password, String firstName, String secondName, String country, String city, String street, String postIndex, String phone) {
+    public User(String isAdmin, String login, String password, String firstName, String secondName, String country, String city, String street, String postIndex, String phone) {
         this.isAdmin = isAdmin;
         this.login = login;
         this.password = password;
@@ -38,12 +34,13 @@ public class User {
         this.postIndex = postIndex;
         this.phone = phone;
     }
-    public boolean isAdmin() {
+
+    public String getIsAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public String getLogin() {

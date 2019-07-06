@@ -19,11 +19,13 @@ public class LogoutCommand implements Command {
         return INSTANCE;
     }
 
-
     @Override
     public String execute(HttpServletRequest request) {
+
         HttpSession session = request.getSession(true);
+
         ClientType clientType = ClientType.GUEST;
+
         session.setAttribute("role", clientType);
         session.setAttribute("cart", null);
         session.setAttribute("pageFoRole", null);

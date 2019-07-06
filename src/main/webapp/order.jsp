@@ -38,19 +38,19 @@
 <h3>COMPLETE THE FORM OF DELIVERY</h3>
 <form method="POST" action = "mainServlet">
 <label>FIRST NAME</label><br>
-<input name="firstName" required value ="${userOrder.firstName}"/><br><br>
+<input name="firstName" required value ="${userOrder.firstName}" pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]" maxlength = "30"/><br><br>
 <label>SECOND </label><br>
-<input name="secondName" required value ="${userOrder.secondName}"/><br><br>
+<input name="secondName" required value ="${userOrder.secondName}" pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>COUNTRY</label><br>
-<input name="country" required value ="${userOrder.country}"/><br><br>
+<input name="country" required value ="${userOrder.country}" pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>CITY</label><br>
-<input name="city" required value ="${userOrder.city}"/><br><br>
+<input name="city" required value ="${userOrder.city}" pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>STREET, HOUSE NUMBER</label><br>
-<input name="street" required value ="${userOrder.street}"/><br><br>
+<input name="street" required value ="${userOrder.street}"  pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
 <label>POST INDEX</label><br>
-<input name="postIndex" required value ="${userOrder.postIndex}"/><br><br>
+<input name="postIndex" required value ="${userOrder.postIndex}" pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,\:\;]+" maxlength = "30"/><br><br>
 <label>PHONE</label><br>
-<input name="phone" required value ="${userOrder.phone}"/><br><br>
+<input name="phone" required value ="${userOrder.phone}" pattern="[0-9\+\-]+" maxlength = "20"/><br><br>
 <input type = "hidden" name = "command" value = "buy"/>
   <h3 align="left">TOTAL ORDER: ${orderCount} headphones</h3>
   <h3 align="left">TOTAL SUM: ${totalSum}$</h3>

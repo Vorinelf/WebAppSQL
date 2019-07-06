@@ -22,9 +22,12 @@ public class SortByPriceCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
+        String highOrLow = request.getParameter("highOrLow");
+
         HttpSession session = request.getSession(true);
         List<Headphones> list = (List<Headphones>) session.getAttribute("headphonesArray");
-        String highOrLow = request.getParameter("highOrLow");
+
         if (list != null) {
             List<Headphones> listSorted;
             String param = "ASC";
@@ -43,6 +46,7 @@ public class SortByPriceCommand implements Command {
             List<Headphones> listHeadphones = headphonesMethods.findAndSortByPrice(column, highOrLow);
             request.setAttribute("headphonesArray", listHeadphones);
         }
+
         String pageFoRole = (String) session.getAttribute("pageFoRole");
 
         return pageFoRole;

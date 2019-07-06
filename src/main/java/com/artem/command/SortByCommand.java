@@ -22,9 +22,11 @@ public class SortByCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+
+        String column = request.getParameter("column");
+
         HttpSession session = request.getSession(true);
         List<Headphones> list = (List<Headphones>) session.getAttribute("headphonesArray");
-        String column = request.getParameter("column");
         if (list != null) {
             List<Headphones> listSorted;
             if (column.equals("name")) {
@@ -41,6 +43,7 @@ public class SortByCommand implements Command {
             List<Headphones> listHeadphones = headphonesMethods.findAndSortBy(column);
             request.setAttribute("headphonesArray", listHeadphones);
         }
+
         String pageFoRole = (String) session.getAttribute("pageFoRole");
 
         return pageFoRole;

@@ -1,7 +1,6 @@
 package com.artem.command;
 
 import com.artem.headphones.Headphones;
-import com.artem.methods.HeadphonesMethods;
 import com.artem.methods.OrderMethods;
 import com.artem.users.User;
 
@@ -11,7 +10,7 @@ import java.util.List;
 
 public class BuyCommand implements Command {
     private static final Command INSTANCE = new BuyCommand();
-    OrderMethods orderMethods = OrderMethods.getInstance();
+    private final OrderMethods orderMethods = OrderMethods.getInstance();
 
     private BuyCommand(){}
 

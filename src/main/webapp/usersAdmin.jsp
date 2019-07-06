@@ -6,7 +6,7 @@
     <meta http-equiv="Content-type" content="text/html; charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>Headphones shop</title>
-    <link href="stylesCart.css" rel="stylesheet" type="text/css">
+    <link href="stylesUsersAdmin.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
 
 </head>
@@ -38,6 +38,7 @@
                         <td>${user.country}</td>
                         <td>${user.city}</td>
                         <td>${user.street}</td>
+                        <td>${user.postIndex}</td>
                         <td>${user.phone}</td>
                         <td>
                             <form method = "POST" action = "mainServlet">
@@ -48,8 +49,12 @@
                         </td>
                     </tr>
                 </c:forEach>
+<form action ="registrationAdmin.jsp">
+
+                                          <button type = "submit">ADD NEW ADMIN</button>
+                                         </form>
             </table>
-            form method = "POST" action = "mainServlet">
+            <form method = "POST" action = "mainServlet">
                                            <input type = "hidden" name = "command" value = "find_all"/>
                                             <button type = "submit">BACK</button>
                                         </form>

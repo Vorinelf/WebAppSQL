@@ -11,11 +11,11 @@
 <body>
 <div id="wrapper">
  <header>
-  REGISTRATION
+  REGISTRATION NEW ADMIN
   </header>
-<h3>PLEASE, ENTER YOUR INFORMATION</h3>
+<h3>PLEASE, ENTER INFORMATION</h3>
 <form method="POST" action = "mainServlet">
-<input type ="hidden" name="isAdmin" value = "false"/>
+<input type ="hidden" name="isAdmin" value = "true"/>
 <label>LOGIN</label><br>
 <input name="login" required pattern="[a-zA-Z0-9\(\)\[\]\-\_\@\.\,\?\!\:\$\s\;]+" maxlength = "30"/><br><br>
 <label>PASSWORD</label><br>
@@ -24,17 +24,7 @@
 <input name="firstName" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]" maxlength = "30"/><br><br>
 <label>SECOND </label><br>
 <input name="secondName" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
-<label>COUNTRY</label><br>
-<input name="country" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
-<label>CITY</label><br>
-<input name="city" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
-<label>STREET, HOUSE NUMBER</label><br>
-<input name="street" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,]+" maxlength = "30"/><br><br>
-<label>POST INDEX</label><br>
-<input name="postIndex" required pattern="[A-Za-zА-Яа-яЁё0-9\-\_\s\.\,\:\;]+" maxlength = "30"/><br><br>
-<label>PHONE</label><br>
-<input name="phone" pattern="[0-9\+\-]+" maxlength = "20"/><br><br>
-<input type = "hidden" name = "command" value = "registration"/>
+<input type = "hidden" name = "command" value = "add_admin"/>
 <button type = "submit">REGISTRATION</button></form>
 </form>
 </div>

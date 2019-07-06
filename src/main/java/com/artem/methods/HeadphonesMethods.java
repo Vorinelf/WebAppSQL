@@ -3,12 +3,10 @@ package com.artem.methods;
 import com.artem.connect.ConnectionPool;
 import com.artem.dao.DaoHeadphones;
 import com.artem.headphones.Headphones;
-import com.artem.users.User;
 
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
