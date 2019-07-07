@@ -71,7 +71,6 @@
                 </li>
             </ul>
         </nav>
-	<div id="heading"></div>
 	<aside>
 	    <navy>
         	<ul class="aside-menu">
@@ -222,7 +221,6 @@
         </navy>
 	</aside>
 	<section>
-	    <blockquote>
             <table>
                 <tr>
                     <th>BRAND</th>
@@ -254,7 +252,6 @@
                     </tr>
                 </c:forEach>
             </table>
-        </blockquote>
     </section>
     <footer></footer>
 </body>

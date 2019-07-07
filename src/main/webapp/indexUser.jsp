@@ -69,11 +69,10 @@
                 </li>
             </ul>
         </nav>
-	<div id="heading"></div>
 	<aside>
 	    <navy>
         	<ul class="aside-menu">
-<li>BRAND</li>
+                <li>BRAND</li>
         		    <form name ="selectMenu" action="mainServlet" method "POST">
                         <li>
                             <a>
@@ -219,43 +218,39 @@
         	</ul>
         </navy>
 	</aside>
-	<section>
-	    <p>
-	        <blockquote>
-        	    <table>
+	    <section>
+	        <table>
+                <tr>
+                    <th>BRAND</th>
+                    <th>MODEL</th>
+                    <th>PRICE</th>
+                    <th>CONSTRUCTION</th>
+                    <th>HI-RES</th>
+                    <th>BLUETOOTH</th>
+                    <th>RELEASE</th>
+                    <th>IN STOCK</th>
+                </tr>
+                <c:forEach var="hp" items="${headphonesArray}">
                     <tr>
-                        <th>BRAND</th>
-                        <th>MODEL</th>
-                        <th>PRICE</th>
-                        <th>CONSTRUCTION</th>
-                        <th>HI-RES</th>
-                        <th>BLUETOOTH</th>
-                        <th>RELEASE</th>
-                        <th>IN STOCK</th>
+                        <td>${hp.name}</td>
+                        <td>${hp.model}</td>
+                        <td>${hp.price}$</td>
+                        <td>${hp.construction}</td>
+                        <td>${hp.hiRes}</td>
+                        <td>${hp.bluetooth}</td>
+                        <td>${hp.release}</td>
+                        <td>${hp.stock}</td>
+                        <td>
+                            <form method = "POST" action = "mainServlet">
+                                <input type = "hidden" name = "id" value = "${hp.id}"/>
+                                <input type = "hidden" name = "command" value = "in_cart"/>
+                                <button type = "submit">ADD IN CART</button>
+                            </form>
+                        </td>
                     </tr>
-                    <c:forEach var="hp" items="${headphonesArray}">
-                        <tr>
-                            <td>${hp.name}</td>
-                            <td>${hp.model}</td>
-                            <td>${hp.price}$</td>
-                            <td>${hp.construction}</td>
-                            <td>${hp.hiRes}</td>
-                            <td>${hp.bluetooth}</td>
-                            <td>${hp.release}</td>
-                            <td>${hp.stock}</td>
-                            <td>
-                                <form method = "POST" action = "mainServlet">
-                                    <input type = "hidden" name = "id" value = "${hp.id}"/>
-                                    <input type = "hidden" name = "command" value = "in_cart"/>
-                                    <button type = "submit">ADD IN CART</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </blockquote>
-        </p>
-    </section>
+                </c:forEach>
+            </table>
+        </section>
     </div>
     <footer></footer>
 </body>

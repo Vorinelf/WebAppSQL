@@ -33,19 +33,18 @@ section button {
 
 #wrapper {
 	margin: auto;
-	padding: 0% 20%
+	padding: 0% 20%;
     }
 
 header {
-     display: inline-block;
- 	 padding: 5px 0;
+ 	 padding: 5px 0px;
      margin-left: 90%;
      font: 10px/10px 'Oswald', sans-serif;
     }
 
 header3 {
       display: inline-block;
-  	 padding: 5px 0;
+  	  padding: 5px 0;
       margin-left: 85%;
       font: 10px/10px 'Oswald', sans-serif;
     }
@@ -163,7 +162,8 @@ h4 {
 	padding: 10px 0px;
     }
 
-aside {display: inline-block;
+aside {
+    display: inline-block;
 	float: left;
 	width: 20%;
 	padding 0% 0% 10% 0%
@@ -190,8 +190,6 @@ section {
 	color: #29c5e6;
 }
 
-
-
 p {
 	border: 1px solid #e7e7e7;
 	padding:5px;
@@ -213,11 +211,11 @@ p {
     }
 
 table {
-	margin: 0;
+    padding-top: 20px;
+	margin: 1% 0%;
 	background: #29c5e6;
 	font-family: 'Oswald', sans-serif;
-
-}
+    }
 
 
 

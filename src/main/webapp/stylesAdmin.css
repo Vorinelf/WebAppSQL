@@ -194,14 +194,6 @@ section {
 	color: #29c5e6;
     }
 
-blockquote {
-	margin: 0;
-	background: #29c5e6;
-	padding: 10px 20px;
-	font-family: 'Oswald', sans-serif;
-	font-weight: 300;
-    }
-
 p {
 	border: 1px solid #e7e7e7;
 	padding:5px;
@@ -221,6 +213,13 @@ p {
    	width: 30%
    	padding 0% 0% 10% 0%
 }
+
+table {
+    padding-top: 20px;
+	margin: 1% 0%;
+	background: #29c5e6;
+	font-family: 'Oswald', sans-serif;
+    }
 
 
 
