@@ -4,7 +4,8 @@ body {
 	background-color: #f8f8f8;
 	border-top: 5px solid #7e7e7e;
 	margin: 0;
-}
+    }
+
 input[type="text"] {
 	background-color: #f3f3f3;
 	border: 1px solid #e7e7e7;
@@ -12,162 +13,169 @@ input[type="text"] {
 	color: #b2b2b2;
 	padding: 0 10px;
 	vertical-align: top;
-}
+    }
+
 button {
 	color: #fff;
 	background-color: #29c5e6;
 	border: none;
 	height:25px;
 	font-family: 'Oswald', sans-serif;
+    }
 
-}
 section button {
 	color: #fff;
 	background-color: #8f8f8f;
 	border: none;
 	height:25px;
 	font-family: 'Oswald', sans-serif;
-}
+    }
 
 #wrapper {
 	margin: auto;
 	padding: 0% 20%
-}
+    }
 
 header {
      display: inline-block;
  	 padding: 5px 0;
      margin-left: 90%;
      font: 10px/10px 'Oswald', sans-serif;
- }
- header3 {
+    }
+
+header3 {
       display: inline-block;
   	 padding: 5px 0;
       margin-left: 85%;
       font: 10px/10px 'Oswald', sans-serif;
-  }
+    }
 
- header1 {
+header1 {
     font: 60px/60px 'Oswald', sans-serif;
     background-color: #29c5e6;
  	padding: 0px 50px;
- }
-
+    }
 
 header2 {
     margin-left:0%;
-}
+    }
+
 header2 a {
 	text-decoration: none;
-}
+    }
 
 header2 ul {
     display: inline-block;
 	padding: 0px 0px;
 	margin-left: 70%;
-}
-.header-menu li {
+    }
 
+.header-menu li {
 	display: inline-block;
 	padding: 0px 0px;
 	margin: 0;
-}
+    }
 
 .header-menu li.active {
 	background: #29c5e6;
 	color: #fff;
-}
+    }
 
 .header-menu a {
 	color: #b2b2b2;
-}
+    }
 
 nav a {
 	text-decoration: none;
-}
+    }
 
 nav ul {
 	margin: 0%;
 	padding: 3% 0% 0% 28%;
-}
+    }
 
 nav li {
 	list-style-position: inside;
 	font: 14px 'Oswald', sans-serif;
 	padding: 5px;
-}
+    }
 
 .top-menu li {
 	display: inline-block;
     padding: 1%;
-
-}
+    }
 
 .top-menu li.active {
 	background: #29c5e6;
 	color: #fff;
-}
+    }
 
 .top-menu a {
 	color: #b2b2b2;
-}
+    }
 
 navy a {
 	text-decoration: none;
-}
+    }
 
 navy ul {
 	padding: 0;
 	margin-left: 0%;
-}
+    }
+
 navy li {
 	font: 22px 'Oswald', sans-serif;
 	padding: 11% 0% 0% 0%;
-}
+    }
 
 h1 {
     background: #29c5e6;
 	color: #7e7e7e;
 	font: 60px/60px 'Oswald', sans-serif;
 	padding: 0px 0px;
-}
+    }
 
 section th {
     background: #29c5e6;
 	color: #7e7e7e;
 	font: 22px 'Oswald', sans-serif;
-	padding: 0px 10px;}
+	padding: 0px 10px;
+	}
 
 section td {
     background: #29c5e6;
 	color: #7e7e7e;
 	font: 15px 'Oswald', sans-serif;
-	padding: 10px 10px;}
+	padding: 10px 10px;
+	}
 
 h3 {
 	color: #7e7e7e;
 	font: 15px/15px 'Oswald', sans-serif;
 	margin: 0;
 	padding: 0 10px;
-}
+    }
 
 h4 {
 	color: #7e7e7e;
 	font: 20px/20px 'Oswald', sans-serif;
 	margin: 0;
 	padding: 10px 0px;
-}
+    }
+
 aside {display: inline-block;
 	float: left;
 	width: 20%;
 	padding 0% 0% 10% 0%
-}
+    }
+
 section {
 	margin-left: 20%;
 	padding: 0%, 10%;
 	width: 90%;
 	font: 20px 'Oswald', sans-serif;
-}
+    }
+
 .aside-menu li {
 	font-weight: 300;
 	list-style-type: square;
@@ -176,13 +184,11 @@ section {
 
 .aside-menu li:first-child {
 	border: none;
-}
+    }
 
 .aside-menu li.active {
 	color: #29c5e6;
 }
-
-
 
 blockquote {
 	margin: 0;
@@ -190,12 +196,13 @@ blockquote {
 	padding: 10px 20px;
 	font-family: 'Oswald', sans-serif;
 	font-weight: 300;
-}
+    }
+
 p {
 	border: 1px solid #e7e7e7;
 	padding:5px;
 	margin: 0px;
-}
+    }
 
 .aside-menu form li {
 	font: 10px 'Oswald', sans-serif;
@@ -203,13 +210,13 @@ p {
 	}
 
 .aside-menu form  button {
-            float: left;
-	  	    color: #fff;
-            background:  #29c5e6;
-        	border-left: 1px solid #8f8f8f;
-        	width: 30%
-        	padding 0% 0% 10% 0%
-}
+    float: left;
+    color: #fff;
+    background:  #29c5e6;
+    border-left: 1px solid #8f8f8f;
+    width: 30%
+    padding 0% 0% 10% 0%
+    }
 
 
 

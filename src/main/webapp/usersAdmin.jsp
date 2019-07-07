@@ -2,20 +2,21 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
-<head>
-    <meta http-equiv="Content-type" content="text/html; charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>Headphones shop</title>
-    <link href="stylesUsersAdmin.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
-
-</head>
-<body>
-<div id="wrapper">
- <header>
-  LIST OF USERS
-  </header>
-  <table>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <title>
+            Headphones shop
+        </title>
+        <link href="stylesUsersAdmin.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                LIST OF USERS
+            </header>
+            <table>
                 <tr>
                     <th>IS ADMIN</th>
                     <th>LOGIN</th>
@@ -49,15 +50,14 @@
                         </td>
                     </tr>
                 </c:forEach>
-<form action ="registrationAdmin.jsp">
-
-                                          <button type = "submit">ADD NEW ADMIN</button>
-                                         </form>
+                <form action ="registrationAdmin.jsp">
+                    <button type = "submit">ADD NEW ADMIN</button>
+                </form>
             </table>
             <form method = "POST" action = "mainServlet">
-                                           <input type = "hidden" name = "command" value = "find_all"/>
-                                            <button type = "submit">BACK</button>
-                                        </form>
-            </div>
-            </body>
-            </html>
+                <input type = "hidden" name = "command" value = "find_all"/>
+                <button type = "submit">BACK</button>
+            </form>
+        </div>
+    </body>
+</html>

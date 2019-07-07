@@ -2,20 +2,21 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
-<head>
-    <meta http-equiv="Content-type" content="text/html; charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>Headphones shop</title>
-    <link href="stylesOrdersAdmin.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
-
-</head>
-<body>
-<div id="wrapper">
- <header>
-  LIST OF ORDERS
-  </header>
-  <table>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <title>
+            Headphones shop
+        </title>
+        <link href="stylesOrdersAdmin.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                LIST OF ORDERS
+            </header>
+            <table>
                 <tr>
                     <th>DATE</th>
                     <th>FIRST NAME</th>
@@ -44,24 +45,22 @@
                         <td>${order.phone}</td>
                         <td>
                             <form method = "POST" action = "mainServlet">
-                                                            <input type="hidden" name="id" value="${order.id}">
-                                                            <input type = "hidden" name = "command" value = "delete_order"/>
-                                                            <button type = "submit">DELETE</button>
-                                                        </form>
+                                <input type="hidden" name="id" value="${order.id}">
+                                <input type = "hidden" name = "command" value = "delete_order"/>
+                                <button type = "submit">DELETE</button>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>
- <form method = "POST" action = "mainServlet">
-
-                                             <input type = "hidden" name = "command" value = "delete_all_orders"/>
-                                             <button type = "submit">DELETE ALL</button>
-                                         </form>
+                    <form method = "POST" action = "mainServlet">
+                        <input type = "hidden" name = "command" value = "delete_all_orders"/>
+                        <button type = "submit">DELETE ALL</button>
+                    </form>
             </table>
-
-                <form method = "POST" action = "mainServlet">
+            <form method = "POST" action = "mainServlet">
                 <input type = "hidden" name = "command" value = "find_all"/>
                 <button type = "submit">BACK</button>
-                </form>
-            </div>
-            </body>
-            </html>
+            </form>
+        </div>
+    </body>
+</html>

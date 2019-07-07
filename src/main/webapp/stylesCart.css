@@ -4,7 +4,8 @@ body {
 	background-color: #f8f8f8;
 	border-top: 5px solid #7e7e7e;
 	margin: 0;
-}
+    }
+
 input[type="text"] {
 	background-color: #f3f3f3;
 	border: 1px solid #e7e7e7;
@@ -12,35 +13,36 @@ input[type="text"] {
 	color: #b2b2b2;
 	padding: 0 10px;
 	vertical-align: top;
-}
+    }
+
 button {
 	color: #fff;
 	background-color: #29c5e6;
 	border: none;
 	height:25px;
 	font-family: 'Oswald', sans-serif;
-}
+    }
+
 header {
      margin: 1%;
      background-color: #29c5e6;
      font: 50px/50px 'Oswald', sans-serif;
-}
+    }
 
 #wrapper {
      margin: 5% 30%;
      border: 2px solid #e7e7e7;
      text-align: center;
+    }
 
-}
-
-form{
-margin: 5px;}
+form {
+    margin: 5px;
+    }
 
 .list {
-margin-left: 10%;
-margin-top: 5%;
-
-}
+    margin-left: 10%;
+    margin-top: 5%;
+    }
 
 
 
